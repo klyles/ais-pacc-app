@@ -8,17 +8,149 @@
   </div> -->
 
   <sa-widgets-grid>
-
+    <sa-widget>
+      <div class="row">
+        <article class="col-sm-12 text-center">
+            <header>
+              <h2>
+                Call Status
+              </h2>
+            </header>
+            <div class="widget-body">
+              <button (click)="startCall()" class="btn btn-success btn-lg">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                  Answer
+              </button>
+              <button (click)="(null)" class="btn btn-primary btn-lg">
+                <i class="fa fa-pause-circle-o" aria-hidden="true"></i>
+                  Hold
+              </button>
+              <button (click)="endCall()" [disabled]="!startLoad" class="btn btn-danger btn-lg">Hang up</button>
+                <!-- <button (click)="getCallDuration()" [disabled]="!startLoad" class="btn btn-danger btn-lg">Total Duration</button> -->
+            </div>
+            <!-- <p *ngIf="endLoad == true"> Total Duration : {{totalMinutes}}:{{totalSeconds}}</p> -->
+            <div class="widget-body">
+              <span *ngIf="startLoad == true" class="animated fadeInDownBig"> <strong> Call Started : <span class="text-success"> {{startCallTime | date:'medium'}} </span> </strong> </span>  <br> <br>
+              <span *ngIf="endLoad == true" class="animated fadeInUpBig"> <strong> Call Ended : <span class="text-danger"> {{endCallTime | date:'medium'}} </span> </strong> </span>
+            </div>
+        </article>
+      </div>
+  </sa-widget>
     <div class="row">
-      <article class="col-sm-12">
+      <article class="col-sm-6">
 
-        <live-feeds-widget></live-feeds-widget>
+        <!-- <live-feeds-widget></live-feeds-widget> -->
 
+        <onCall-wizard></onCall-wizard>
+      </article>
+      <article class="col-sm-6">
+        <div class="well well-sm">
+            <h3 class="asc-text-primary">Confirmation Details</h3>
+
+            <div class="bs-example">
+              <dl>
+                <dt>Description lists</dt>
+                <dd>A description list is perfect for defining terms.</dd>
+                <dt>Euismod</dt>
+                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                <dt>Malesuada porta</dt>
+                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+              </dl>
+            </div>
+
+            <div class="bs-example">
+              <dl class="dl-horizontal">
+                <dt>Description lists</dt>
+                <dd>A description list is perfect for defining terms.</dd>
+                <dt>Euismod</dt>
+                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
+                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
+                <dt>Malesuada porta</dt>
+                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
+                <dt>Felis euismod semper eget lacinia</dt>
+                <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
+              </dl>
+            </div>
+
+        </div>
+      </article>
+      <article class="col-sm-6">
+        <sa-widget>
+          <header>
+            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+
+            <h2>Call History</h2>
+          </header>
+          <div>
+            <div class="widget-body">
+              <p class="lead">Name: <strong> Ascension </strong> | Age: <strong> 20 years </strong></p>
+
+              <div class="table-responsive">
+
+                <table class="table table-bordered">
+                  <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Call Start</th>
+                    <th>Call End</th>
+                    <th>Duration</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                    <td>Aug 16, 2017</td>
+                    <td>11:30:05 AM</td>
+                    <td>11:45:05 AM</td>
+                    <td>15 Mins</td>
+                  </tr>
+                  <tr>
+                    <td>Aug 11, 2017</td>
+                    <td>3:00:00 PM</td>
+                    <td>3:17:00 PM</td>
+                    <td>17 Mins</td>
+                  </tr>
+                  <tr>
+                    <td>July 29, 2017</td>
+                    <td>9:30:45 AM</td>
+                    <td>10:00:05 AM</td>
+                    <td>30 Mins</td>
+                  </tr>
+                  <tr>
+                    <td>July 17, 2017</td>
+                    <td>4:45:51 PM</td>
+                    <td>5:05:12 PM</td>
+                    <td>20 Mins</td>
+                  </tr>
+                  <tr>
+                    <td>June 16, 2017</td>
+                    <td>2:30:05 PM</td>
+                    <td>3:15:05 AM</td>
+                    <td>45 Mins</td>
+                  </tr>
+                  </tbody>
+                </table>
+
+              </div>
+
+            </div>
+          </div>
+        </sa-widget>
+      </article>
+
+      <article class="col-sm-6">
+        <div class="well well-sm">
+            <h3 class="asc-text-primary">Notes: </h3>
+            <div class="bs-example">
+                <textarea style="min-height: 200px; width: 100%; padding: 10px" placeholder="Patient details can be updated and save the data "></textarea>
+                <button type="submit" class="col-md-2 btn btn-success pull-right" (click)="saveNotes()">Save</button>
+            </div>
+        </div>
       </article>
     </div>
 
 
-    <div class="row">
+    <!-- <div class="row">
 
       <article class="col-sm-12 col-md-12 col-lg-6">
 
@@ -33,6 +165,29 @@
 
        <todo-widget></todo-widget>
       </article>
-    </div>
+    </div> -->
   </sa-widgets-grid>
+</div>
+
+<div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Confirmation</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hideChildModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="lead">
+          <span class="text-success text-center"> <strong> Data Updated </strong> </span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-default pull-right" (click)="hideChildModal()">
+            Close
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

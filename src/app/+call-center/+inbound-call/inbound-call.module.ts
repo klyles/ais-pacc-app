@@ -14,6 +14,15 @@ import { TodoWidgetComponent } from './todo-widget/todo-widget.component';
 import { TodoListComponent } from './todo-widget/todo-list.component';
 import {FlotChartModule} from "../../shared/graphs/flot-chart/flot-chart.module";
 import {D3Module} from "../../shared/graphs/d3/d3.module";
+import { WizardsModule } from "../../+forms/+wizards/wizards.module";
+
+import { OnCallComponent } from './oncall-wizard/oncall-wizard.component';
+
+import {SmartadminWizardsModule} from "../../shared/forms/wizards/smartadmin-wizards.module";
+
+import { SelectModule } from 'ng2-select';
+
+import { ModalModule } from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -23,10 +32,13 @@ import {D3Module} from "../../shared/graphs/d3/d3.module";
     CalendarModule,
     FlotChartModule,
     D3Module,
+    WizardsModule,
+    SmartadminWizardsModule,
+    SelectModule,
+    ModalModule.forRoot()
   ],
   declarations: [
     InboundCallComponent,
-
     LiveFeedsComponent,
     LiveStatsComponent,
     RevenueComponent,
@@ -36,7 +48,9 @@ import {D3Module} from "../../shared/graphs/d3/d3.module";
 
     TodoWidgetComponent,
 
-    TodoListComponent
+    TodoListComponent,
+
+    OnCallComponent
   ],
   providers: [],
 })

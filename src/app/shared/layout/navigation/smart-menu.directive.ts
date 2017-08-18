@@ -62,7 +62,7 @@ export class SmartMenuDirective implements OnInit, AfterContentInit {
           e.stopPropagation();
           return false;
         }).append(sign);
-        
+
       });
       this.togglersBinded = true;
     }

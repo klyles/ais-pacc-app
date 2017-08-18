@@ -1,0 +1,165 @@
+<sa-widget [editbutton]="false" [deletebutton]="false">
+  <!-- widget options:
+  usage: <sa-widget [editbutton]="false">
+
+  [colorbutton]="false"
+  [editbutton]="false"
+  [togglebutton]="false"
+  [deletebutton]="false"
+  [fullscreenbutton]="false"
+  [custombutton]="false"
+  [collapsed]="true"
+  [sortable]="false"
+
+  -->
+  <header>
+    <h2> Patient Details </h2>
+
+  </header>
+
+  <!-- widget div-->
+  <div>
+
+    <!-- widget content -->
+    <div class="widget-body fuelux">
+      <fuel-ux-wizard (complete)="onWizardComplete($event)">
+        <div class="wizard">
+          <div class="steps-container">
+            <ul class="steps">
+              <li data-step="1" class="active">
+                <span class="badge badge-info">1</span>Welcome<span class="chevron"></span>
+              </li>
+              <li data-step="2">
+                <span class="badge">2</span>Step 2<span class="chevron"></span>
+              </li>
+              <li data-step="3">
+                <span class="badge">3</span>Step 3<span class="chevron"></span>
+              </li>
+              <li data-step="4">
+                <span class="badge">4</span>Step 4<span class="chevron"></span>
+              </li>
+              <li data-step="5">
+                <span class="badge">5</span>Step 5<span class="chevron"></span>
+              </li>
+            </ul>
+          </div>
+          <div class="actions">
+            <button type="button" class="btn btn-sm btn-primary btn-prev">
+              <i class="fa fa-arrow-left"></i>Prev
+            </button>
+            <button type="button" class="btn btn-sm btn-success btn-next" data-last="Finish">
+              Next<i class="fa fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+        <div class="step-content">
+          <form class="form-horizontal">
+
+            <div class="step-pane active" data-step="1">
+              <h3><strong>Step 1 </strong> - Welcome</h3>
+
+              <!-- wizard form starts here -->
+              <div class="row">
+                <div class="col-sm-6" style="border-right: 1px solid #ddd">
+                    <p> Welcome to the call center!! My name is {{employeeName}}. blah!! blah!! blah!!! </p>
+                    <p> lorem ipsum  ipsum  ipsum </p>
+                    <p> lorem ipsum  ipsum  ipsum lorem ipsum  ipsum  ipsum </p>
+                    <p> lorem ipsum  ipsum  ipsum lorem ipsum  ipsum  ipsum lorem ipsum  ipsum  ipsum lorem ipsum  ipsum  ipsum  </p>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <h3>Search Patients</h3>
+                    <ng-select
+                                [items]="items"
+                                (data)="refreshValue($event)"
+                                (selected)="selected($event)"
+                                (typed)="typed($event)"
+                                placeholder="Start typing name">
+                    </ng-select>
+                    <p></p>
+                    <!-- <pre>{{value.text}}</pre> -->
+                </div>
+                <article class="col-sm-12 animated fadeInUp" *ngIf="value.text">
+                  <div class="well well-sm">
+                    <h3 class="asc-text-primary">Patient Details </h3>
+                      <div class="bs-example">
+                        <p><strong> {{value.text}} </strong> is diagnosed with acute sinusitis. </p>
+                        <p> Prescribed Medicines:
+                        <ul>
+                            <li> paracetamol </li>
+                            <li> Ibuprofen </li>
+                            <li> Diclofenac </li>
+                            <li> Tramadol </li>
+                            <li> Naloxone </li>
+                        </ul>
+                    </div>
+                  </div>
+                </article>
+            </div>
+
+            </div>
+
+            <div class="step-pane" data-step="2">
+              <h3><strong>Step 2 </strong> - Applications</h3>
+
+                <ul class="step2" style="list-style: none; text-align: center;">
+                  <li>Application 1 </li>
+                  <li>Application 2 </li>
+                  <li>Application 3 </li>
+                  <li>Application 4 </li>
+                  <li>Application 5 </li>
+                  <li>Application 6 </li>
+                  <li>Application 7 </li>
+                </ul>
+
+
+            </div>
+
+            <div class="step-pane" data-step="3">
+              <h3><strong>Step 3 </strong> - Wizard continued</h3>
+              <br>
+              <br>
+
+              <h1 class="text-center text-primary"> This will be your Step 3 </h1>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+
+            <div class="step-pane" data-step="4">
+              <h3><strong>Step 4 </strong> - Wizard continued...</h3>
+              <br>
+              <br>
+
+              <h1 class="text-center text-danger"> This will be your Step 4 </h1>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+
+            <div class="step-pane" data-step="5">
+              <h3><strong>Step 5 </strong> - Finished!</h3>
+              <br>
+              <br>
+
+              <h1 class="text-center text-success"><i class="fa fa-check"></i> Congratulations!
+                <br>
+                <small>Click finish to end wizard</small>
+              </h1>
+              <br>
+              <br>
+              <br>
+              <br>
+            </div>
+
+          </form>
+        </div>
+      </fuel-ux-wizard>
+    </div>
+    <!-- end widget content -->
+
+  </div>
+  <!-- end widget div -->
+
+</sa-widget>

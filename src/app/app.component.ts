@@ -10,10 +10,10 @@ export class AppComponent {
   public title = 'app works!';
   private apiURL='http://localhost:5000/api/patient_list';
   //data:any={};
-  
+
   data: any = null;
 
-  
+
   public constructor(private viewContainerRef: ViewContainerRef) {}
 
 }

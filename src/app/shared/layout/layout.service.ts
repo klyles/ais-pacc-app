@@ -16,13 +16,13 @@ const store = {
     return _skin.name == (localStorage.getItem('sm-skin') || config.smartSkin)
   }),
   skins: config.skins,
-  fixedHeader: localStorage.getItem('sm-fixed-header') == 'true',
-  fixedNavigation: localStorage.getItem('sm-fixed-navigation') == 'true',
-  fixedRibbon: localStorage.getItem('sm-fixed-ribbon') == 'true',
-  fixedPageFooter: localStorage.getItem('sm-fixed-page-footer') == 'true',
+ fixedHeader: localStorage.getItem('sm-fixed-header') == 'true',
+ fixedNavigation: localStorage.getItem('sm-fixed-navigation') == 'true',
+ fixedRibbon: localStorage.getItem('sm-fixed-ribbon') == 'true',
+ fixedPageFooter: localStorage.getItem('sm-fixed-page-footer') == 'true',
   insideContainer: localStorage.getItem('sm-inside-container') == 'true',
   rtl: localStorage.getItem('sm-rtl') == 'true',
-  menuOnTop: localStorage.getItem('sm-menu-on-top') == 'true',
+ menuOnTop: localStorage.getItem('sm-menu-on-top') == 'true',
   colorblindFriendly: localStorage.getItem('sm-colorblind-friendly') == 'true',
 
   shortcutOpen: false,
@@ -156,10 +156,10 @@ export class LayoutService {
 
     this.trigger();
   }
-  
+
 
   onMinifyMenu(){
-    this.store.menuMinified = !this.store.menuMinified;    
+    this.store.menuMinified = !this.store.menuMinified;
     this.trigger();
   }
 
@@ -204,15 +204,17 @@ export class LayoutService {
     let $body = $('body');
     $body.removeClass(state.skins.map((it)=>(it.name)).join(' '));
     $body.addClass(state.skin.name);
+    $body.addClass('menu-on-top');
+    $body.addClass('fixed-page-footer');
     $("#logo img").attr('src', state.skin.logo);
 
     $body.toggleClass('fixed-header', state.fixedHeader);
     $body.toggleClass('fixed-navigation', state.fixedNavigation);
     $body.toggleClass('fixed-ribbon', state.fixedRibbon);
-    $body.toggleClass('fixed-page-footer', state.fixedPageFooter);
+    // $body.toggleClass('fixed-page-footer', state.fixedPageFooter);
     $body.toggleClass('container', state.insideContainer);
     $body.toggleClass('smart-rtl', state.rtl);
-    $body.toggleClass('menu-on-top', state.menuOnTop);
+    // $body.toggleClass('menu-on-top', state.menuOnTop);
     $body.toggleClass('colorblind-friendly', state.colorblindFriendly);
     $body.toggleClass('shortcut-on', state.shortcutOpen);
 
