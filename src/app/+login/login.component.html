@@ -1,0 +1,89 @@
+<!-- MAIN CONTENT -->
+<div class="modal-dialog modal-md">
+  <br><br><br><br>
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" (click)="mdModal.hide()" aria-hidden="false">
+        &times;
+      </button>
+      <h4 class="modal-title">
+        <img src="assets/img/ascensionLogo.png" width="150" alt="SmartAdmin">
+      </h4>
+    </div>
+    <div class="modal-body no-padding">
+
+        <!-- <form id="login-form" class="smart-form" > -->
+         <form #loginForm="ngForm" class="smart-form" novalidate="novalidate" (ngSubmit)="onSubmit()">
+
+          <fieldset>
+            <section>
+              <div class="row">
+                <label class="label col col-2">Username<span class="text-danger">*</span>
+                </label>
+
+                <div class="col col-10">
+                  <label class="input"> <i class="icon-append fa fa-user"></i>
+                    <input type="text" 
+                    #username="ngModel" id="username"
+                    name="username" placeholder="Username"
+                    required="required" 
+                    autocomplete="off"
+                    [(ngModel)]="form.username" autofocus>
+                    <br>
+                    <div *ngIf="username.errors && (username.dirty || username.touched)"
+                      class="alert alert-danger animated shake">
+                      Please enter your user name
+                    </div>
+                   </label>
+                </div>
+              </div>
+            </section>
+
+            <section>
+              <div class="row">
+                <label class="label col col-2">Password<span class="text-danger">*</span>
+                </label>
+
+                <div class="col col-10">
+                  <label class="input"> <i class="icon-append fa fa-lock"></i>
+                    <input type="password" name="password" 
+                    #password="ngModel" id="password"
+                    placeholder="Password" 
+                    required="required" 
+                    autocomplete="off" 
+                    [(ngModel)]="form.password"> 
+                    <br>
+                    <div *ngIf="password.errors && (password.dirty || password.touched)"
+                      class="alert alert-danger animated shake">
+                      Please enter your password
+                    </div>
+                  </label>
+                </div>
+              </div>
+            </section>
+
+            <!-- <section>
+              <div class="row">
+                <div class="col col-2"></div>
+                <div class="col col-10">
+                  <label class="checkbox">
+                    <input type="checkbox" name="remember" checked="">
+                    <i></i>Keep me logged in</label>
+                </div>
+              </div>
+            </section> -->
+          </fieldset>
+
+          <footer>
+          <span class="pull-left"> <span class="text-danger">*</span> <em> Required </em> </span>
+              <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">
+               Sign in 
+              </button>
+          </footer>
+        </form>
+      </div>
+  </div>
+</div>
+
+
+
