@@ -7,6 +7,7 @@ import {MainLayoutComponent} from "./shared/layout/app-layouts/main-layout.compo
 import {AuthLayoutComponent} from "./shared/layout/app-layouts/auth-layout.component";
 import {EmptyLayoutComponent} from "./shared/layout/app-layouts/empty-layout.component";
 import {ModuleWithProviders} from "@angular/core";
+import {LoginComponent} from "./+login/login.component";
 
 export const routes: Routes = [
   {
@@ -18,11 +19,11 @@ export const routes: Routes = [
       {
         path: '', redirectTo: 'login', pathMatch: 'full'
       },
-      {
-        path: 'login',
-        loadChildren: 'app/+auth/+login/login.module#LoginModule',
-        data: {pageTitle: 'Login'}
-      },
+     // {
+     //    path: 'login',
+     //    loadChildren: 'app/+auth/+login/login.module#LoginModule',
+     //    data: {pageTitle: 'Login'}
+     //  },
       {
         path: 'call-center',
         loadChildren: 'app/+call-center/call-center.module#CallCenterModule',
@@ -95,6 +96,9 @@ export const routes: Routes = [
       },
     ]
   },
+
+  {path: 'login', component: LoginComponent, loadChildren: 'app/+login/login.module#LoginModule'},
+  // {path: 'login', component: AuthLayoutComponent, loadChildren: 'app/+auth/+login/login.module#LoginModule'},
 
   {path: 'auth', component: AuthLayoutComponent, loadChildren: 'app/+auth/auth.module#AuthModule'},
 

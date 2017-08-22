@@ -17,6 +17,9 @@ import {TooltipModule, BsDropdownModule} from "ngx-bootstrap";
 import { RouteBreadcrumbsComponent } from './ribbon/route-breadcrumbs.component';
 import {UtilsModule} from "../utils/utils.module";
 
+
+import {LoginModule} from '../../+login/login.module';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -27,7 +30,7 @@ import {UtilsModule} from "../utils/utils.module";
 
     UtilsModule,
 
-
+    LoginModule,
     TooltipModule,
     BsDropdownModule,
   ],
