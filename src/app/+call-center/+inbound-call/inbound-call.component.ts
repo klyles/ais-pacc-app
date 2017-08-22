@@ -23,7 +23,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal';
 })
 export class InboundCallComponent implements OnInit {
   @ViewChild('childModal') public childModal: ModalDirective;
-  callStatus: string = '';
+  callStatus: string;
 
   startCallTime: any;
   endCallTime: any;

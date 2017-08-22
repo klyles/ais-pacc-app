@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {InboundCallComponent} from "./inbound-call.component";
+import {InboundCallComponent} from './inbound-call.component';
 
 const routes: Routes = [{
   path: '',
