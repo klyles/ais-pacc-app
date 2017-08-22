@@ -23,6 +23,7 @@ import {SmartadminWizardsModule} from '../../shared/forms/wizards/smartadmin-wiz
 import { SelectModule } from 'ng2-select';
 
 import { ModalModule } from 'ngx-bootstrap';
+import { InboundService } from './inbound-call.service';
 
 
 @NgModule({
@@ -52,7 +53,7 @@ import { ModalModule } from 'ngx-bootstrap';
 
     OnCallComponent
   ],
-  providers: [],
+  providers: [InboundService]
 })
 export class InboundCallModule {
 

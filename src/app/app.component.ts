@@ -27,6 +27,11 @@ export class AppComponent {
   public constructor(private viewContainerRef: ViewContainerRef,
     public appState: AppState, private router: Router
   ) {
+    /**
+    * Implementing localStorage to set previous Url based on router NavigationStart and NavigationEnd events;
+    * (e) is the parameter in the below snippet;
+    * [0] and [1] are the properties for router events;
+    */
 		// save prev and curr url's;
     this.router.events.pairwise().subscribe((e) => {
       this.temp['prev'] = e[0]['url'] ? e[0]['url'] : undefined;
