@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FadeInTop } from "../../shared/animations/fade-in-top.decorator";
+import { FadeInTop } from '../../shared/animations/fade-in-top.decorator';
 import { ModalDirective } from 'ngx-bootstrap/modal';
+import { InboundService } from './inbound-call.service';
+
 
 @FadeInTop()
 @Component({
@@ -25,8 +27,8 @@ export class InboundCallComponent implements OnInit {
   @ViewChild('childModal') public childModal: ModalDirective;
   callStatus: string;
 
-  startCallTime: any;
-  endCallTime: any;
+  startCallTime: number;
+  endCallTime: number;
   callDuration: any;
   totalMinutes: any;
   totalSeconds: any;
@@ -41,15 +43,37 @@ export class InboundCallComponent implements OnInit {
   private _disabledV: string = '0';
   private disabled: boolean = false;
 
+  patientDetails: any;
+  patientData: any;
+  patientName: any;
+  patientTelecom: any;
+  patientEmail: any;
+  patientAddress: any;
 
-  constructor() {
+  constructor(
+    private _InboundService: InboundService
+  ) {
     this.startLoad = false;
     this.endLoad = false;
   }
 
   ngOnInit() {
-    this.employeeName = 'Seton'
+    this.employeeName = 'Seton';
+    this.getPatientData();
   }
+
+  getPatientData() {
+    this.patientDetails = this._InboundService.getInboundData()
+      .subscribe((response: any) => {
+        this.patientData = response;
+        this.patientName = response.name[0];
+        this.patientTelecom = response.telecom[0];
+        this.patientEmail = response.telecom[1];
+        this.patientAddress = response.address[0];
+        console.log(this.patientData);
+      })
+  }
+
   public saveNotes(): void {
     this.childModal.show();
   }

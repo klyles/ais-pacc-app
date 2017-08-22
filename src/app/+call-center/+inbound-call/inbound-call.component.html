@@ -1,12 +1,4 @@
 <div id="content">
-
-  <!-- <div class="row">
-    <sa-big-breadcrumbs [items]="['Dashboard', 'My Dashboard']" icon="home"
-    class="col-xs-12 col-sm-7 col-md-7 col-lg-4" ></sa-big-breadcrumbs>
-    <sa-stats></sa-stats>
-
-  </div> -->
-
   <sa-widgets-grid>
     <sa-widget>
       <div class="row">
@@ -32,7 +24,7 @@
         <!-- <onCall-wizard></onCall-wizard> -->
         <sa-widget [editbutton]="false" [deletebutton]="false">
           <header>
-            <h2> Patient Details </h2>
+            <h2> Search Patients </h2>
 
           </header>
 
@@ -159,24 +151,25 @@
           </header>
           <div class="row">
             <div class="col-sm-6 mb-md">
-              <strong>First Name: </strong> {{value.text}}  <br>
-              <strong>Last Name: </strong> Last Name <br>
-              <strong>Birthdate: </strong> 1969-12-12 <strong> &nbsp; Age: </strong>98 <br>
-              <strong>Gender: </strong> M <br>
-              <strong>Phone Number: </strong>(123) 456-789 <br>
+              <!-- <strong>First Name: </strong> {{value.text}}  <br> -->
+              <strong>First Name: </strong> {{patientName.given}}  <br>
+              <strong>Last Name: </strong> {{patientName.family}} <br>
+              <strong>Birthdate: </strong> {{patientData.birthDate}} <strong> &nbsp; Age: </strong>98 <br>
+              <strong>Gender: </strong> {{patientData.gender}} <br>
+              <strong>Phone Number: </strong>{{patientTelecom.value}} <br>
               <strong>Preferred Contact: </strong> 
                 <select>
-                  <option>Phone</option>
-                  <option>Email</option>
+                  <option>Phone ({{patientTelecom.value}})</option>
+                  <option>Email ({{patientEmail.value}}) </option>
                   <option>Mail</option>
                 </select>   
               <br>
               <strong>Preferred Phone: </strong> Preferred Phone <br>
             </div>
             <div class="col-sm-6 mb-md">
-              <strong>Address 1:</strong> 1775 Chevy Chase Dr <br>
-              <strong>Address 2: </strong> Address 2 <br>
-              <strong>City/St/Zip: </strong> Lacrosse WI 54601 <br>
+              <strong>Address 1:</strong> {{patientAddress.line}} <br>
+              <!-- <strong>Address 2: </strong> Address 2 <br> -->
+              <strong>City/St/Zip: </strong> {{patientAddress.city}} {{patientAddress.state}} {{patientAddress.postalCode}}, {{patientAddress.country}}<br>
               <strong>Provider Name: </strong> Frierson-Stroud, Lenor B MD <br>
             </div>
           </div>
@@ -255,24 +248,6 @@
         </sa-widget>
       </article>
     </div>
-
-
-    <!-- <div class="row">
-
-      <article class="col-sm-12 col-md-12 col-lg-6">
-
-        <chat-widget></chat-widget>
-
-        <calendar-widget></calendar-widget>
-      </article>
-
-      <article class="col-sm-12 col-md-12 col-lg-6">
-
-        <bird-eye-widget></bird-eye-widget>
-
-       <todo-widget></todo-widget>
-      </article>
-    </div> -->
   </sa-widgets-grid>
 </div>
 
