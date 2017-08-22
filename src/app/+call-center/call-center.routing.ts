@@ -1,4 +1,4 @@
-import {ModuleWithProviders} from "@angular/core"
+import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
 
@@ -8,12 +8,11 @@ export const routes: Routes = [
   },
   {
     path: 'inbound-call',
-    loadChildren:'./+inbound-call/inbound-call.module#InboundCallModule',
-     
+    loadChildren: './+inbound-call/inbound-call.module#InboundCallModule',
   },
   {
     path: 'outbound-call',
-    loadChildren:'./+outbound-call/outbound-call.module#OutboundCallModule',
+    loadChildren: './+outbound-call/outbound-call.module#OutboundCallModule',
   }
 ];
 

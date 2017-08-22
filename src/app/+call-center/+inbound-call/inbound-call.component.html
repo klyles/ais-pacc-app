@@ -10,71 +10,188 @@
   <sa-widgets-grid>
     <sa-widget>
       <div class="row">
-        <article class="col-sm-12 text-center">
-            <header>
-              <h2>
-                Call Status
-              </h2>
-            </header>
-            <div class="widget-body">
-              <button (click)="startCall()" class="btn btn-success btn-lg">
-                <i class="fa fa-phone" aria-hidden="true"></i>
-                  Answer
-              </button>
-              <button (click)="(null)" class="btn btn-primary btn-lg">
-                <i class="fa fa-pause-circle-o" aria-hidden="true"></i>
-                  Hold
-              </button>
-              <button (click)="endCall()" [disabled]="!startLoad" class="btn btn-danger btn-lg">Hang up</button>
-                <!-- <button (click)="getCallDuration()" [disabled]="!startLoad" class="btn btn-danger btn-lg">Total Duration</button> -->
-            </div>
+        <article class="mb-md">
+          <button (click)="startCall()" class="btn btn-success btn-lg">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+              Answer
+          </button>
+          <button (click)="(null)" class="btn btn-primary btn-lg">
+            <i class="fa fa-pause-circle-o" aria-hidden="true"></i>
+              Hold
+          </button>
+          <button (click)="endCall()" [disabled]="!startLoad" class="btn btn-danger btn-lg">Hang up</button>
+            <!-- <button (click)="getCallDuration()" [disabled]="!startLoad" class="btn btn-danger btn-lg">Total Duration</button> -->
+             <span *ngIf="startLoad == true" class="animated fadeInDownBig mar-md"> <strong> Call Started : <span class="text-success"> {{startCallTime | date:'medium'}} </span> </strong> </span>
+            <span *ngIf="endLoad == true" class="animated fadeInUpBig"> <strong> Call Ended : <span class="text-danger"> {{endCallTime | date:'medium'}} </span> </strong> </span>
             <!-- <p *ngIf="endLoad == true"> Total Duration : {{totalMinutes}}:{{totalSeconds}}</p> -->
-            <div class="widget-body">
-              <span *ngIf="startLoad == true" class="animated fadeInDownBig"> <strong> Call Started : <span class="text-success"> {{startCallTime | date:'medium'}} </span> </strong> </span>  <br> <br>
-              <span *ngIf="endLoad == true" class="animated fadeInUpBig"> <strong> Call Ended : <span class="text-danger"> {{endCallTime | date:'medium'}} </span> </strong> </span>
-            </div>
         </article>
       </div>
-  </sa-widget>
+    </sa-widget>
     <div class="row">
       <article class="col-sm-6">
+        <!-- <onCall-wizard></onCall-wizard> -->
+        <sa-widget [editbutton]="false" [deletebutton]="false">
+          <header>
+            <h2> Patient Details </h2>
 
-        <!-- <live-feeds-widget></live-feeds-widget> -->
+          </header>
 
-        <onCall-wizard></onCall-wizard>
+          <!-- widget div-->
+          <div>
+
+            <!-- widget content -->
+            <div class="widget-body fuelux">
+              <fuel-ux-wizard (complete)="onWizardComplete($event)">
+                <div class="wizard">
+                  <div class="steps-container">
+                    <ul class="steps">
+                      <li data-step="1" class="active">
+                        <span class="badge badge-info">1</span>List<span class="chevron"></span>
+                      </li>
+                      <li data-step="2">
+                        <span class="badge">2</span>Step 2<span class="chevron"></span>
+                      </li>
+                      <li data-step="3">
+                        <span class="badge">3</span>Step 3<span class="chevron"></span>
+                      </li>
+                      <li data-step="4">
+                        <span class="badge">4</span>Step 4<span class="chevron"></span>
+                      </li>
+                      <li data-step="5">
+                        <span class="badge">5</span>Step 5<span class="chevron"></span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="actions">
+                    <button type="button" class="btn btn-sm btn-primary btn-prev">
+                      <i class="fa fa-arrow-left"></i>Prev
+                    </button>
+                    <button type="button" class="btn btn-sm btn-success btn-next" data-last="Finish">
+                      Next<i class="fa fa-arrow-right"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="step-content">
+                  <form class="form-horizontal">
+
+                    <div class="step-pane active" data-step="1">
+                      <h3><strong>Step 1 </strong> - Search Patients</h3>
+
+                      <!-- wizard form starts here -->
+                      <ng-select
+                          [items]="items"
+                          (data)="refreshValue($event)"
+                          (selected)="selected($event)"
+                          (typed)="typed($event)"
+                          placeholder="Start typing name">
+                      </ng-select><br><br>
+                    </div>
+
+                    <div class="step-pane" data-step="2">
+                      <h3><strong>Step 2 </strong> - Applications</h3>
+
+                        <ul class="step2" style="list-style: none; text-align: center;">
+                          <li>Application 1 </li>
+                          <li>Application 2 </li>
+                          <li>Application 3 </li>
+                          <li>Application 4 </li>
+                          <li>Application 5 </li>
+                          <li>Application 6 </li>
+                          <li>Application 7 </li>
+                        </ul>
+                    </div>
+
+                    <div class="step-pane" data-step="3">
+                      <h3><strong>Step 3 </strong> - Wizard continued</h3>
+                      <br>
+                      <br>
+
+                      <h1 class="text-center text-primary"> This will be your Step 3 </h1>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                    </div>
+
+                    <div class="step-pane" data-step="4">
+                      <h3><strong>Step 4 </strong> - Wizard continued...</h3>
+                      <br>
+                      <br>
+
+                      <h1 class="text-center text-danger"> This will be your Step 4 </h1>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                    </div>
+
+                    <div class="step-pane" data-step="5">
+                      <h3><strong>Step 5 </strong> - Finished!</h3>
+                      <br>
+                      <br>
+
+                      <h1 class="text-center text-success"><i class="fa fa-check"></i> Congratulations!
+                        <br>
+                        <small>Click finish to end wizard</small>
+                      </h1>
+                      <br>
+                      <br>
+                      <br>
+                      <br>
+                    </div>
+
+                  </form>
+                </div>
+              </fuel-ux-wizard>
+            </div>
+            <!-- end widget content -->
+
+          </div>
+          <!-- end widget div -->
+
+        </sa-widget>
+
+      </article>
+      <article class="col-sm-6 animated fadeInUp" *ngIf="value.text">
+        <sa-widget [editbutton]="false" [deletebutton]="false">
+          <header>
+            <h2> Patient Details </h2>
+          </header>
+          <div class="row">
+            <div class="col-sm-6 mb-md">
+              <strong>First Name: </strong> {{value.text}}  <br>
+              <strong>Last Name: </strong> Last Name <br>
+              <strong>Birthdate: </strong> 1969-12-12 <strong> &nbsp; Age: </strong>98 <br>
+              <strong>Gender: </strong> M <br>
+              <strong>Phone Number: </strong>(123) 456-789 <br>
+              <strong>Preferred Contact: </strong> 
+                <select>
+                  <option>Phone</option>
+                  <option>Email</option>
+                  <option>Mail</option>
+                </select>   
+              <br>
+              <strong>Preferred Phone: </strong> Preferred Phone <br>
+            </div>
+            <div class="col-sm-6 mb-md">
+              <strong>Address 1:</strong> 1775 Chevy Chase Dr <br>
+              <strong>Address 2: </strong> Address 2 <br>
+              <strong>City/St/Zip: </strong> Lacrosse WI 54601 <br>
+              <strong>Provider Name: </strong> Frierson-Stroud, Lenor B MD <br>
+            </div>
+          </div>
+        </sa-widget>
       </article>
       <article class="col-sm-6">
         <div class="well well-sm">
-            <h3 class="asc-text-primary">Confirmation Details</h3>
-
+            <h3 class="asc-text-primary">Notes: </h3>
             <div class="bs-example">
-              <dl>
-                <dt>Description lists</dt>
-                <dd>A description list is perfect for defining terms.</dd>
-                <dt>Euismod</dt>
-                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-                <dt>Malesuada porta</dt>
-                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-              </dl>
+                <textarea style="min-height: 200px; width: 100%; padding: 10px" placeholder="Patient details can be updated and save the data "></textarea>
+                <button type="submit" class="col-md-2 btn btn-success pull-right" (click)="saveNotes()">Save</button>
             </div>
-
-            <div class="bs-example">
-              <dl class="dl-horizontal">
-                <dt>Description lists</dt>
-                <dd>A description list is perfect for defining terms.</dd>
-                <dt>Euismod</dt>
-                <dd>Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.</dd>
-                <dd>Donec id elit non mi porta gravida at eget metus.</dd>
-                <dt>Malesuada porta</dt>
-                <dd>Etiam porta sem malesuada magna mollis euismod.</dd>
-                <dt>Felis euismod semper eget lacinia</dt>
-                <dd>Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</dd>
-              </dl>
-            </div>
-
         </div>
       </article>
+
       <article class="col-sm-6">
         <sa-widget>
           <header>
@@ -136,16 +253,6 @@
             </div>
           </div>
         </sa-widget>
-      </article>
-
-      <article class="col-sm-6">
-        <div class="well well-sm">
-            <h3 class="asc-text-primary">Notes: </h3>
-            <div class="bs-example">
-                <textarea style="min-height: 200px; width: 100%; padding: 10px" placeholder="Patient details can be updated and save the data "></textarea>
-                <button type="submit" class="col-md-2 btn btn-success pull-right" (click)="saveNotes()">Save</button>
-            </div>
-        </div>
       </article>
     </div>
 
