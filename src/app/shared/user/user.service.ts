@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Observable, Subject} from "rxjs/Rx";
+import {Observable, Subject} from 'rxjs/Rx';
 
-import {JsonApiService} from "../../core/api/json-api.service";
+import {JsonApiService} from '../../core/api/json-api.service';
 
 @Injectable()
 export class UserService {
@@ -12,13 +12,13 @@ export class UserService {
     username: 'Guest'
   };
 
-  constructor(private jsonApiService:JsonApiService) {
+  constructor(private jsonApiService: JsonApiService) {
     this.user = new Subject();
   }
 
-  getLoginInfo():Observable<any> {
+  getLoginInfo(): Observable<any> {
     return this.jsonApiService.fetch('/user/login-info.json')
-      .do((user)=>{
+      .do((user) => {
         this.userInfo = user;
       this.user.next(user)
     })

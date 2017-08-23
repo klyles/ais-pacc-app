@@ -20,8 +20,32 @@ import { InboundService } from './inbound-call.service';
     li {
       list-style: none;
 
-    }`
-  ]
+    }
+    ::-webkit-input-placeholder {
+      color: #000000;
+    }
+    ::-moz-placeholder { /* Firefox 19+ */
+      color: #000000;
+    }
+    :-ms-input-placeholder { /* IE 10+ */
+      color: #000000;
+    }
+    :-moz-placeholder { /* Firefox 18- */
+      color: #000000;
+    }
+    input:focus::-webkit-input-placeholder {
+        color: transparent;
+    }
+    input:focus::-moz-placeholder {
+      color: transparent;
+    }
+    input:focus:-ms-input-placeholder {
+      color: transparent;
+    }
+    input:-moz-placeholder { /* Firefox 18- */
+      color: #000000;
+    }
+    `]
 })
 export class InboundCallComponent implements OnInit {
   @ViewChild('childModal') public childModal: ModalDirective;
@@ -50,6 +74,9 @@ export class InboundCallComponent implements OnInit {
   patientEmail: any;
   patientAddress: any;
 
+  form: any = {
+  };
+
   constructor(
     private _InboundService: InboundService
   ) {
@@ -73,13 +100,15 @@ export class InboundCallComponent implements OnInit {
         console.log(this.patientData);
       })
   }
+  onSavePatientData() {
+    alert('updated');
+  }
 
   public saveNotes(): void {
     this.childModal.show();
   }
   public hideChildModal(): void {
     this.childModal.hide();
-    window.location.reload();
   }
   startCall() {
     this.startLoad = true;
@@ -88,6 +117,7 @@ export class InboundCallComponent implements OnInit {
   endCall() {
     this.endLoad = true;
     this.endCallTime = Date.now();
+    // window.location.reload();
   }
   // getCallDuration(callDuration) {
   //     let callDuration = Math.abs(this.endCallTime - this.startCallTime) / 36e5;
