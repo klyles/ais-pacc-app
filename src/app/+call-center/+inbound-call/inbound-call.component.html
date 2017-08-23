@@ -150,9 +150,63 @@
             <h2> Patient Details </h2>
           </header>
           <div class="row">
-            <div class="col-sm-6 mb-md">
+            <form class="form-horizontal" #PatientDataForm="ngForm" (ngSubmit)="onSavePatientData()">
+              <div class="col-sm-6 mb-md">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">First Name:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="focusedInput" type="text" value="{{patientName.given}}" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Last Name:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="focusedInput" type="text" value="{{patientName.family}}" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Birthdate:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="focusedInput" type="text" value="{{patientData.birthDate}} &nbsp;&nbsp;&nbsp;&nbsp;(YYYY-MM-DD)" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Gender:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="focusedInput" type="text" value="{{patientData.gender}}" readonly>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Phone Number:</label>
+                  <div class="col-sm-8">
+                    <div class="input-group">
+                      <input class="form-control" type="text"
+                      #phoneNumber="ngModel" id="phoneNumber"
+                      [(ngModel)]="form.phoneNumber"
+                      name="phoneNumber"
+                      placeholder="{{patientTelecom.value}}"
+                      >
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                    </div>
+                    <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)"
+                    class="alert alert-danger animated shake">
+                    Please enter phone number
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-4 control-label">Preferred Contact:</label>
+                    <div class="col-sm-8">
+                        <select class="col-sm-12">
+                            <option>Phone ({{patientTelecom.value}})</option>
+                            <option>Email ({{patientEmail.value}}) </option>
+                            <option>Mail</option>
+                        </select>  
+                    </div>
+                  </div>
+              
               <!-- <strong>First Name: </strong> {{value.text}}  <br> -->
-              <strong>First Name: </strong> {{patientName.given}}  <br>
+              <!-- <strong>First Name: </strong> {{patientName.given}}  <br>
               <strong>Last Name: </strong> {{patientName.family}} <br>
               <strong>Birthdate: </strong> {{patientData.birthDate}} <strong> &nbsp; Age: </strong>98 <br>
               <strong>Gender: </strong> {{patientData.gender}} <br>
@@ -164,14 +218,60 @@
                   <option>Mail</option>
                 </select>   
               <br>
-              <strong>Preferred Phone: </strong> Preferred Phone <br>
-            </div>
-            <div class="col-sm-6 mb-md">
-              <strong>Address 1:</strong> {{patientAddress.line}} <br>
-              <!-- <strong>Address 2: </strong> Address 2 <br> -->
-              <strong>City/St/Zip: </strong> {{patientAddress.city}} {{patientAddress.state}} {{patientAddress.postalCode}}, {{patientAddress.country}}<br>
-              <strong>Provider Name: </strong> Frierson-Stroud, Lenor B MD <br>
-            </div>
+              <strong>Preferred Phone: </strong> Preferred Phone <br> -->
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Address 1:</label>
+                  <div class="col-sm-8">
+                    <div class="input-group">
+                      <input class="form-control" id="focusedInput" type="text" placeholder="{{patientAddress.line}}">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                    </div>
+                  </div>
+                </div>  
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">City/St:</label>
+                  <div class="col-sm-8">
+                    <div class="input-group">
+                      <input class="form-control" id="focusedInput" type="text" placeholder="{{patientAddress.city}}, {{patientAddress.state}}">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="form-group">
+                    <label class="col-sm-4 control-label">City/State:</label>
+                    <div class="col-sm-4">
+                      <div class="input-group">
+                        <input class="form-control" id="focusedInput" type="text" placeholder="{{patientAddress.city}}">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                          <input class="form-control" id="focusedInput" type="text" placeholder="{{patientAddress.state}}">
+                        </div>
+                      </div>
+                  </div> -->
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Zip:</label>
+                  <div class="col-sm-8">
+                    <div class="input-group">
+                      <input class="form-control" id="focusedInput" type="text" placeholder="{{patientAddress.postalCode}}, {{patientAddress.country}}">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-4"></div>
+                  <div class="col-sm-8">
+                    <button class="btn btn-primary col-sm-12" type="submit"> Save </button>
+                  </div>
+                </div>
+                <!-- <strong>Address 1:</strong> {{patientAddress.line}} <br>
+                <strong>City/St/Zip: </strong> {{patientAddress.city}} {{patientAddress.state}} {{patientAddress.postalCode}}, {{patientAddress.country}}<br>
+                <strong>Provider Name: </strong> Frierson-Stroud, Lenor B MD <br> -->
+              </div>
+            </form>
           </div>
         </sa-widget>
       </article>
@@ -179,7 +279,7 @@
         <div class="well well-sm">
             <h3 class="asc-text-primary">Notes: </h3>
             <div class="bs-example">
-                <textarea style="min-height: 200px; width: 100%; padding: 10px" placeholder="Patient details can be updated and save the data "></textarea>
+                <textarea style="min-height: 110px; width: 100%; padding: 10px"></textarea>
                 <button type="submit" class="col-md-2 btn btn-success pull-right" (click)="saveNotes()">Save</button>
             </div>
         </div>

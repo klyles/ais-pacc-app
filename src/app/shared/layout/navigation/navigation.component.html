@@ -12,8 +12,11 @@
 
     <ul saSmartMenu>
       <li>
-        <a title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span
-          class="menu-item-parent">{{'Dashboard' | i18n}}</span></a>
+        <a title="Dashboard"> 
+          <span class="menu-item-parent">
+            <i class="fa fa-2x fa-fw fa-home"></i>{{'Dashboard' | i18n}}
+          </span>
+        </a>
         <ul>
           <li routerLinkActive="active">
             <a routerLink="/dashboard/analytics">{{'Analytics Dashboard' | i18n}}</a>
@@ -25,8 +28,11 @@
       </li>
 
       <li>
-        <a title="Call Center"><i class="fa fa-lg fa-fw fa-headphones"></i> <span
-          class="menu-item-parent">{{'Call Center' | i18n}}</span></a>
+        <a title="Call Center"> 
+          <span class="menu-item-parent">
+            <i class="fa fa-2x fa-fw fa-headphones"></i>{{'Call Center' | i18n}}
+          </span>
+        </a>
         <ul>
           <li routerLinkActive="active">
             <a routerLink="/call-center/inbound-call">{{'Inbound Calls' | i18n}}</a>
@@ -37,7 +43,7 @@
         </ul>
       </li>
 
-      <li class="top-menu-invisible">
+      <!-- <li class="top-menu-invisible">
         <a href="#"><i class="fa fa-lg fa-fw fa-cube txt-color-blue"></i> <span class="menu-item-parent">{{'SmartAdmin Intel' | i18n}}</span></a>
         <ul>
           <li routerLinkActive="active">
@@ -49,15 +55,15 @@
               {{'Prebuilt Skins' | i18n}}</a>
           </li>
         </ul>
-      </li>
+      </li> -->
 
-      <li routerLinkActive="active">
+      <!-- <li routerLinkActive="active">
         <a routerLink="/outlook" title="Outlook">
           <i class="fa fa-lg fa-fw fa-inbox"></i> <span class="menu-item-parent">{{'Outlook' | i18n}}</span><span
           class="badge pull-right inbox-badge margin-right-13">14</span></a>
-      </li>
+      </li> -->
 
-      <li>
+      <!-- <li>
         <a href="#"><i class="fa fa-lg fa-fw fa-bar-chart-o"></i> <span
           class="menu-item-parent">{{'Graphs' | i18n}}</span></a>
         <ul>
@@ -84,11 +90,14 @@
               class="badge pull-right inbox-badge bg-color-yellow">new</span></a>
           </li>
         </ul>
-      </li>
+      </li> -->
 
       <li>
-        <a href="#"><i class="fa fa-lg fa-fw fa-table"></i> <span
-          class="menu-item-parent">{{'Tables' | i18n}}</span></a>
+        <a href="#"> 
+          <span class="menu-item-parent"> 
+            <i class="fa fa-2x fa-fw fa-table"></i>{{'Tables' | i18n}} 
+          </span>
+        </a>
         <ul>
           <li routerLinkActive="active">
             <a routerLink="/tables/normal">{{'Normal Tables' | i18n}}</a>
@@ -101,8 +110,11 @@
       </li>
 
       <li>
-        <a href="#"><i class="fa fa-lg fa-fw fa-pencil-square-o"></i> <span
-          class="menu-item-parent">{{'Forms' | i18n}}</span></a>
+        <a href="#"> 
+          <span class="menu-item-parent">
+            <i class="fa fa-2x fa-fw fa-pencil-square-o"></i>{{'Forms' | i18n}}
+          </span>
+        </a>
         <ul>
           <li routerLinkActive="active">
             <a routerLink="/forms/elements">{{'Smart Form Elements' | i18n}}</a>
@@ -138,7 +150,7 @@
         </ul>
       </li>
 
-      <li>
+      <!-- <li>
         <a href="#"><i class="fa fa-lg fa-fw fa-desktop"></i> <span
           class="menu-item-parent">{{'UI Elements' | i18n}}</span></a>
         <ul>
@@ -230,14 +242,14 @@
             </ul>
           </li>
         </ul>
-      </li>
+      </li> -->
 
-      <li routerLinkActive="active">
+      <!-- <li routerLinkActive="active">
         <a routerLink="/widgets" title="Widgets"><i class="fa fa-lg fa-fw fa-list-alt"></i><span
           class="menu-item-parent">{{'Widgets' | i18n}}</span></a>
-      </li>
+      </li> -->
 
-      <li>
+      <!-- <li>
         <a href="#">
           <i class="fa fa-lg fa-fw fa-cloud"><em>3</em></i> <span
           class="menu-item-parent">{{'Cool Features' | i18n}}</span></a>
@@ -252,9 +264,9 @@
               class="badge bg-color-greenLight pull-right inbox-badge">9</span></a>
           </li>
         </ul>
-      </li>
+      </li> -->
 
-      <li>
+      <!-- <li>
         <a href="#">
           <i class="fa fa-lg fa-fw fa-puzzle-piece"></i> <span
           class="menu-item-parent">{{'App Views' | i18n}}</span></a>
@@ -297,9 +309,9 @@
               {{'Timeline' | i18n}}</a>
           </li>
         </ul>
-      </li>
+      </li> -->
 
-      <li>
+      <!-- <li>
         <a href="#">
           <i class="fa fa-lg fa-fw fa-shopping-cart"></i> <span
           class="menu-item-parent">{{'E-Commerce' | i18n}}</span></a>
@@ -314,9 +326,9 @@
             <a routerLink="/e-commerce/product-details" title="Products Detail"> {{'Products Detail' | i18n}}</a>
           </li>
         </ul>
-      </li>
+      </li> -->
 
-      <li>
+      <!-- <li>
         <a href="#"><i class="fa fa-lg fa-fw fa-windows"></i> <span
           class="menu-item-parent">{{'Miscellaneous' | i18n}}</span></a>
         <ul>
@@ -361,7 +373,7 @@
             <a routerLink="/miscellaneous/ckeditor">{{'CK Editor' | i18n}}</a>
           </li>
         </ul>
-      </li>
+      </li> -->
 
     </ul>
     <aside-chat></aside-chat>

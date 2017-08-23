@@ -17,7 +17,15 @@
  * - BODY
  * - CUSTOM STYLES
  */
-
+ body {
+   font-size: 14px !important;
+ }
+ .form-control {
+   color: #000000;
+ }
+ label {
+   font-weight: 700;
+ }
  .asc-primary {
     background: #1d4499;
  }
@@ -38,6 +46,7 @@
  }
  #ribbon {
    background: #ddd;
+   padding: 0 22px;
  }
  #ribbon .breadcrumb {
    color: #1d4499 !important;
@@ -51,6 +60,7 @@
  }
  .menu-on-top nav>ul>li>a:after {
    color: #fff !important;
+   line-height: 0;
  }
  .menu-on-top nav>ul>li>a:hover {
     background: #fff;
@@ -75,7 +85,12 @@
    background: #4e8aeb !important;
    border: none;
    color: #fff !important;
-
+ }
+ .menu-on-top aside#left-panel nav>ul>li>a {
+   line-height: 3.5;
+ }
+ .menu-on-top .menu-item-parent {
+   max-width: none;
  }
  .mb-md {
   margin-bottom: 1em;
@@ -88,6 +103,9 @@
  }
  .mar-md {
   margin: 1em;
+ }
+ .fa-2x {
+  vertical-align: -15%;
  }
   /* loader CSS */
 .loader,
