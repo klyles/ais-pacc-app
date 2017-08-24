@@ -19,6 +19,73 @@
         </article>
       </div>
     </sa-widget>
+    <sa-widget>
+      <div class="row">
+        <article class="col-sm-12">
+          <div class="fa fa-3x fa-spinner fa-spin col-md-offset-6" style="margin-bottom: 1em" *ngIf="isLoading">
+          </div>
+          <div class="table-responsive animated fadeInUp" *ngIf="!isLoading">
+              <table class="table table-bordered" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="20">
+                  <thead>
+                  <tr>
+                      <th>
+                          <mfDefaultSorter by="first_name">First Name</mfDefaultSorter>
+                      </th>
+                      <th>
+                          <mfDefaultSorter by="last_name">Last Name</mfDefaultSorter>
+                      </th>
+                      <th>
+                          <mfDefaultSorter by="dob">Birthdate (MM/DD/YYYY)</mfDefaultSorter>
+                      </th>
+                      <th>
+                          <mfDefaultSorter by="gender">Gender</mfDefaultSorter>
+                      </th>
+                      <th>
+                          <mfDefaultSorter by="home_phone">Phone number</mfDefaultSorter>
+                      </th>
+                      <th>
+                          <mfDefaultSorter by="address1">Address1</mfDefaultSorter>
+                      </th>
+                      <th>
+                          <mfDefaultSorter by="city">City</mfDefaultSorter>
+                      </th>
+                      <th>
+                          <mfDefaultSorter by="state">State</mfDefaultSorter>
+                      </th>
+                      <th>
+                          <mfDefaultSorter by="zip">Zip</mfDefaultSorter>
+                      </th>
+                      <th>
+                          <mfDefaultSorter by="employer_name">Employer Name</mfDefaultSorter>
+                      </th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr *ngFor="let item of mf.data">
+                      <td>{{item.first_name}}</td>
+                      <td>{{item.last_name}}</td>
+                      <td>{{item.dob | date:'shortDate'}}</td>
+                      <td>{{item.gender}}</td>
+                      <td>{{item.home_phone}} {{item.mobile_phone}}</td>
+                      <td>{{item.address1}}</td>
+                      <td>{{item.city}}</td>
+                      <td>{{item.state}}</td>
+                      <td>{{item.zip}}</td>
+                      <td>{{item.employer_name}}</td>
+                  </tr>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                      <td colspan="12">
+                          <mfBootstrapPaginator [rowsOnPageSet]="[20, 50, 100, 500]"></mfBootstrapPaginator>
+                      </td>
+                  </tr>
+                  </tfoot>
+              </table>
+          </div>
+        </article>
+      </div>
+    </sa-widget>
     <div class="row">
       <article class="col-sm-6">
         <!-- <onCall-wizard></onCall-wizard> -->
@@ -195,15 +262,15 @@
                   </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-4 control-label">Preferred Contact:</label>
-                    <div class="col-sm-8">
-                        <select class="col-sm-12">
-                            <option>Phone ({{patientTelecom.value}})</option>
-                            <option>Email ({{patientEmail.value}}) </option>
-                            <option>Mail</option>
-                        </select>  
-                    </div>
+                  <label class="col-sm-4 control-label">Preferred Contact:</label>
+                  <div class="col-sm-8">
+                      <select class="col-sm-12">
+                          <option>Phone ({{patientTelecom.value}})</option>
+                          <option>Email ({{patientEmail.value}}) </option>
+                          <option>Mail</option>
+                      </select>  
                   </div>
+                </div>
               
               <!-- <strong>First Name: </strong> {{value.text}}  <br> -->
               <!-- <strong>First Name: </strong> {{patientName.given}}  <br>
@@ -279,7 +346,7 @@
         <div class="well well-sm">
             <h3 class="asc-text-primary">Notes: </h3>
             <div class="bs-example">
-                <textarea style="min-height: 110px; width: 100%; padding: 10px"></textarea>
+                <textarea style="width: 100%; padding: 10px" rows="4"></textarea>
                 <button type="submit" class="col-md-2 btn btn-success pull-right" (click)="saveNotes()">Save</button>
             </div>
         </div>

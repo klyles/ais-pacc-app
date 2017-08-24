@@ -23,6 +23,17 @@
  .form-control {
    color: #000000;
  }
+ .table-bordered th a{
+   color: #000000;
+   font-weight: bold;
+   font-size: 14px;
+ }
+ .table-bordered th {
+  text-transform: uppercase;
+ }
+ .table-bordered tbody td {
+  text-transform: capitalize;
+ }
  label {
    font-weight: 700;
  }
