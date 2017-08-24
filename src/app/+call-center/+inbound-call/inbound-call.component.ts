@@ -6,7 +6,7 @@ import { InboundService } from './inbound-call.service';
 
 @FadeInTop()
 @Component({
-  selector: 'sa-inbound-call',
+  selector: 'app-inbound-call',
   templateUrl: './inbound-call.component.html',
   styles: [`
     .step2 li {
@@ -45,7 +45,7 @@ import { InboundService } from './inbound-call.service';
     input:-moz-placeholder { /* Firefox 18- */
       color: #000000;
     }
-    `]
+  `]
 })
 export class InboundCallComponent implements OnInit {
   @ViewChild('childModal') public childModal: ModalDirective;
@@ -74,6 +74,11 @@ export class InboundCallComponent implements OnInit {
   patientEmail: any;
   patientAddress: any;
 
+  listOfPatients: any;
+  patientList: any;
+  data: any;
+  isLoading: boolean;
+
   form: any = {
   };
 
@@ -82,14 +87,16 @@ export class InboundCallComponent implements OnInit {
   ) {
     this.startLoad = false;
     this.endLoad = false;
+    this.isLoading = true;
   }
 
   ngOnInit() {
     this.employeeName = 'Seton';
     this.getPatientData();
+    this.getPatientsList()
   }
 
-  getPatientData() {
+  public getPatientData() {
     this.patientDetails = this._InboundService.getInboundData()
       .subscribe((response: any) => {
         this.patientData = response;
@@ -100,7 +107,16 @@ export class InboundCallComponent implements OnInit {
         console.log(this.patientData);
       })
   }
-  onSavePatientData() {
+  /** this is all patient data */
+  public getPatientsList() {
+    this.patientList = this._InboundService.getPatientsList()
+      .subscribe((response: any) => {
+        this.data = response;
+        this.isLoading = false;
+        console.log(this.data);
+      })
+  }
+  public onSavePatientData() {
     alert('updated');
   }
 
@@ -110,11 +126,11 @@ export class InboundCallComponent implements OnInit {
   public hideChildModal(): void {
     this.childModal.hide();
   }
-  startCall() {
+  public startCall() {
     this.startLoad = true;
     this.startCallTime = Date.now();
   }
-  endCall() {
+  public endCall() {
     this.endLoad = true;
     this.endCallTime = Date.now();
     // window.location.reload();
