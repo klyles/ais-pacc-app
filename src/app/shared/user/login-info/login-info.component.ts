@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../user.service";
-import {LayoutService} from "../../layout/layout.service";
+import {UserService} from '../user.service';
+import {LayoutService} from '../../layout/layout.service';
 
 @Component({
 
@@ -9,7 +9,7 @@ import {LayoutService} from "../../layout/layout.service";
 })
 export class LoginInfoComponent implements OnInit {
 
-  user:any;
+  user: any;
 
   constructor(
     private userService: UserService,
