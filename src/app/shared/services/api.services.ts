@@ -16,7 +16,7 @@ export class APIServices {
     (<any> _http)._backend._browserXHR.build = () => {
       const _xhr = _build();
       _xhr.withCredentials = false;
-			/* set _xhr.withCredentials = true; when needed to include cookies in CORS */
+			/* set _xhr.withCredentials = true; when needed cookies to include in CORS */
       return _xhr;
     };
     this.baseUrl = BaseUrl;
