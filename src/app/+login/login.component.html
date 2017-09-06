@@ -27,7 +27,6 @@
                     #username="ngModel" id="username"
                     name="username" placeholder="Username"
                     required="required" 
-                    autocomplete="off"
                     [(ngModel)]="form.username" autofocus>
                     <br>
                     <div *ngIf="username.errors && (username.dirty || username.touched)"
@@ -49,8 +48,7 @@
                     <input type="password" name="password" 
                     #password="ngModel" id="password"
                     placeholder="Password" 
-                    required="required" 
-                    autocomplete="off" 
+                    required="required"  
                     [(ngModel)]="form.password"> 
                     <br>
                     <div *ngIf="password.errors && (password.dirty || password.touched)"

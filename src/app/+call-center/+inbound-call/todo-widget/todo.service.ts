@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {Subject} from "rxjs/Rx";
-import {Todo} from "./todo";
+import {Subject} from 'rxjs/Rx';
+import {Todo} from './todo';
 
 
 @Injectable()
 export class TodoService {
 
-  public subject:Subject<any>;
+  public subject: Subject<any>;
 
   public todos: Array<Todo> = [
     new Todo('Release', 'Critical'),
@@ -15,19 +15,19 @@ export class TodoService {
   ];
 
   states = [
-    {name: "Critical", title: "Critical Tasks", icon: "warning"},
-    {name: "Important", title: "Important Tasks", icon: "exclamation"},
-    {name: "Completed", title: "Completed Tasks", icon: "check"}
+    {name: 'Critical', title: 'Critical Tasks', icon: 'warning'},
+    {name: 'Important', title: 'Important Tasks', icon: 'exclamation'},
+    {name: 'Completed', title: 'Completed Tasks', icon: 'check'}
   ];
 
   constructor() {
     this.subject = new Subject();
   }
 
-  createTodo(todo:Todo) {
+  createTodo(todo: Todo) {
     todo.createdAt = new Date();
 
-    if(todo.state = 'Completed'){
+    if (todo.state = 'Completed') {
       todo.completedAt = new Date();
     }
 
@@ -35,7 +35,7 @@ export class TodoService {
     this.subject.next(this.todos)
   }
 
-  toggleTodo(todo:Todo) {
+  toggleTodo(todo: Todo) {
     if (todo.completedAt) {
       todo.state = 'Important';
       todo.completedAt = null
@@ -49,12 +49,12 @@ export class TodoService {
   }
 
 
-  updateTodo(id, state){
-    this.todos.find(it => it.id == id).state = state.name;
+  updateTodo(id, state ) {
+    this.todos.find(it => it.id === id).state = state.name;
     this.subject.next(this.todos)
   }
 
-  deleteTodo(todo:Todo) {
+  deleteTodo(todo: Todo) {
     this.todos.splice(this.todos.indexOf(todo), 1)
     this.subject.next(this.todos)
   }

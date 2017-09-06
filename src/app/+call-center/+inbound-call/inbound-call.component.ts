@@ -49,45 +49,48 @@ import { InboundService } from './inbound-call.service';
 })
 export class InboundCallComponent implements OnInit {
   @ViewChild('childModal') public childModal: ModalDirective;
-  callStatus: string;
+  private callStatus: string;
 
-  startCallTime: number;
-  endCallTime: number;
-  callDuration: any;
-  totalMinutes: any;
-  totalSeconds: any;
-  totalCallTime: any;
+  private startCallTime: any;
+  private endCallTime: any;
+  private hours: any;
+  private minutes: any;
+  private seconds: any;
 
-  startLoad: boolean;
-  endLoad: boolean;
+  private startRecording: boolean;
+  private endRecording: boolean;
+  private _endCall: boolean;
 
 
-  employeeName: string;
+  private employeeName: string;
   private value: any = {};
   private _disabledV: string = '0';
   private disabled: boolean = false;
 
-  patientDetails: any;
-  patientData: any;
-  patientName: any;
-  patientTelecom: any;
-  patientEmail: any;
-  patientAddress: any;
+  private patientDetails: any;
+  private patientData: any;
+  private patientName: any;
+  private patientTelecom: any;
+  private patientEmail: any;
+  private patientAddress: any;
 
-  listOfPatients: any;
-  patientList: any;
-  data: any;
-  isLoading: boolean;
+  private listOfPatients: any;
+  private patientList: any;
+  private data: any;
+  private isPatDataLoading: boolean;
 
   form: any = {
   };
+  public items: Array<string> = ['Seton', 'Providence', 'Daughters of Charity', 'Centro', 'Nazareth',
+  'John Matthew', 'Sean Paul', 'John Paul', 'John Sena', 'Kyle', 'Justin TimberLake', 'Eminem'];
 
   constructor(
     private _InboundService: InboundService
   ) {
-    this.startLoad = false;
-    this.endLoad = false;
-    this.isLoading = true;
+    this.startRecording = false;
+    this.endRecording = false;
+    this._endCall = true;
+    this.isPatDataLoading = true;
   }
 
   ngOnInit() {
@@ -112,43 +115,35 @@ export class InboundCallComponent implements OnInit {
     this.patientList = this._InboundService.getPatientsList()
       .subscribe((response: any) => {
         this.data = response;
-        this.isLoading = false;
+        this.isPatDataLoading = false;
         console.log(this.data);
       })
   }
   public onSavePatientData() {
-    alert('updated');
+    this.childModal.show();
   }
-
   public saveNotes(): void {
     this.childModal.show();
   }
   public hideChildModal(): void {
     this.childModal.hide();
   }
-  public startCall() {
-    this.startLoad = true;
-    this.startCallTime = Date.now();
+  public startCall(event$) {
+    const startTime = new Date();
+    this.startCallTime = startTime.getTime()
+    this.startRecording = true;
+    this._endCall = false;
   }
   public endCall() {
-    this.endLoad = true;
-    this.endCallTime = Date.now();
-    // window.location.reload();
+    this.endRecording = true;
+    const endTime = new Date();
+    this.endCallTime = endTime.getTime();
+
+    const diff = this.endCallTime - this.startCallTime;
+    this.minutes = Math.floor(diff  / 60000);
+    this.seconds = Math.floor(diff / 1000) % 60;
+    this._endCall = true;
   }
-  // getCallDuration(callDuration) {
-  //     let callDuration = Math.abs(this.endCallTime - this.startCallTime) / 36e5;
-  //     return callDuration;
-  //     // this.totalMinutes = Math.floor(this.callDuration/60000);
-  //     // this.totalSeconds = ((this.callDuration % 60000) / 1000).toFixed(0);
-  //     // this.totalCallTime = this.totalMinutes + ":" + (this.totalSeconds < 10 ? '0': '') + this.totalSeconds;
-  //     this.totalMinutes = (callDuration / 60000);
-  //     // this.totalSeconds = (this.callDuration/1000) % 60;
-  //     console.log(this.totalMinutes);
-  // }
-
-  public items: Array<string> = ['Seton', 'Providence', 'Daughters of Charity', 'Centro', 'Nazareth',
-    'John Matthew', 'Seal Paul', 'John Paul', 'John Sena', 'Kyle', 'Justin TimberLake', 'Eminem'];
-
   onWizardComplete(data) {
     alert('oncall loaded!!');
   }

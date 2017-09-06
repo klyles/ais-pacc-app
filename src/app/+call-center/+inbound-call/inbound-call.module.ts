@@ -22,7 +22,7 @@ import { SmartadminWizardsModule } from '../../shared/forms/wizards/smartadmin-w
 
 import { SelectModule } from 'ng2-select';
 
-import { ModalModule } from 'ngx-bootstrap';
+import { ModalModule, TooltipModule } from 'ngx-bootstrap';
 import { InboundService } from './inbound-call.service';
 import { DataTableModule } from 'angular2-datatable';
 
@@ -38,6 +38,7 @@ import { DataTableModule } from 'angular2-datatable';
     SmartadminWizardsModule,
     SelectModule,
     DataTableModule,
+    TooltipModule.forRoot(),
     ModalModule.forRoot()
   ],
   declarations: [
