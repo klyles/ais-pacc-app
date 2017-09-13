@@ -4,18 +4,18 @@
       <div class="row">
         <article class="mb-md">
           <button (click)="startCall($event)" [disabled]="!_endCall" class="btn btn-success btn-lg">
-            <i class="fa fa-phone" aria-hidden="true"></i>
+            <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;
             <span *ngIf="_endCall"> Answer </span>
-             <span *ngIf="!_endCall" tooltip="Hold or Hangup to Answer another call"> Call in Progress </span>
+             <span *ngIf="!_endCall" tooltip="Hold or Hangup to Answer another call"> Call in Progress <i class="fa fa-refresh fa-spin"></i> </span>
           </button>
           <button (click)="(null)" class="btn btn-primary btn-lg">
             <i class="fa fa-pause-circle-o" aria-hidden="true"></i>
               Hold
           </button>
           <button (click)="endCall($event)" [disabled]="_endCall" class="btn btn-danger btn-lg">Hang up</button>
-            <span *ngIf="startRecording == true" class="animated fadeInDownBig mar-md"> <strong> Call Started : <span class="text-success"> {{startCallTime | date:'medium'}} </span> </strong> </span>
-            <span *ngIf="endRecording == true" class="animated fadeInUpBig mar-md"> <strong> Call Ended : <span class="text-danger"> {{endCallTime | date:'medium'}} </span> </strong> </span>
-            <span *ngIf="endRecording == true" class="animated fadeInDownBig mar-md"> <strong> Call Duration : <span class="text-info"> {{minutes}}&nbsp;Mins&nbsp;{{seconds}}&nbsp;Sec </span> </strong> </span>
+          <span *ngIf="startRecording == true" class="animated fadeInDownBig mar-md"> <strong> Call Started : <span class="text-success"> {{startCallTime | date:'medium'}} </span> </strong> </span>
+          <span *ngIf="endRecording == true" class="animated fadeInUpBig mar-md"> <strong> Call Ended : <span class="text-danger"> {{endCallTime | date:'medium'}} </span> </strong> </span>
+          <span *ngIf="endRecording == true" class="animated fadeInDownBig mar-md"> <strong> Call Duration : <span class="text-info"> {{minutes}}&nbsp;Mins&nbsp;{{seconds}}&nbsp;Sec </span> </strong> </span>
         </article>
       </div>
     </sa-widget>
@@ -499,6 +499,26 @@
           </div>
         </sa-widget>
       </article>
+      <article class="col-sm-6">
+          <div class="well well-sm">
+              <h3 class="asc-text-primary">Call Status </h3>
+              <div class="bs-example">
+                  <div class="btn-grp" dropdown>
+                    <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
+                      {{selectedItem}} <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li role="menuitem" *ngFor='let obj of callStatusData'>
+                        <a class="dropdown-item" (click)="showStatus(obj.status)">
+                          {{obj.status}}
+                        </a>  
+                      </li>  
+                    </ul>    
+                  </div>
+                  <button type="submit" class="col-md-2 btn btn-success pull-right" (click)="saveNotes()">Save</button>
+              </div>
+          </div>
+        </article>
     </div>
   </sa-widgets-grid>
 </div>
