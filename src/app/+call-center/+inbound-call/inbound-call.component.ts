@@ -80,8 +80,9 @@ export class InboundCallComponent implements OnInit {
   private callStatusData: any;
   public selectedItem: '';
 
-  form: any = {
-  };
+  form: any = {searchStr: '', searchObjects: [], display: 'none'};
+
+
   public items: Array<string> = ['Seton', 'Providence', 'Daughters of Charity', 'Centro', 'Nazareth',
   'John Matthew', 'Sean Paul', 'John Paul', 'John Sena', 'Kyle', 'Justin TimberLake', 'Eminem'];
 
@@ -132,6 +133,21 @@ export class InboundCallComponent implements OnInit {
           console.log(this.selectedItem);
       })
   }
+  public displayResults() {
+    if (this.form.searchStr.length > 0) {
+      this._InboundService.getSearchData(this.form.searchStr)
+      .subscribe(
+        (response: any) => {
+          console.log(this.form.searchStr);
+          this.form.searchObjects = response.data;
+          this.form.display = 'block';
+        }
+
+      )
+    } else {
+      this.form.searchObjects = [];
+    }
+  }
   public showStatus(item: any) {
     this.selectedItem = item;
   }
@@ -165,6 +181,15 @@ export class InboundCallComponent implements OnInit {
     alert('oncall loaded!!');
   }
 
+  public removed(value: any): void {
+    console.log('Removed value is: ', value);
+  }
+  public typed(value: any): void {
+    console.log('New search input: ', value);
+  }
+  public refreshValue(value: any): void {
+    this.value = value;
+  }
   private get disabledV(): string {
     return this._disabledV;
   }
@@ -177,18 +202,5 @@ export class InboundCallComponent implements OnInit {
   public selected(value: any): void {
     console.log('Selected value is: ', value);
   }
-
-  public removed(value: any): void {
-    console.log('Removed value is: ', value);
-  }
-
-  public typed(value: any): void {
-    console.log('New search input: ', value);
-  }
-
-  public refreshValue(value: any): void {
-    this.value = value;
-  }
-
 
 }

@@ -19,73 +19,6 @@
         </article>
       </div>
     </sa-widget>
-    <!-- <sa-widget>
-      <div class="row">
-        <article class="col-sm-12">
-          <div class="fa fa-3x fa-spinner fa-spin col-md-offset-6" style="margin-bottom: 1em" *ngIf="isPatDataLoading">
-          </div>
-          <div class="table-responsive animated fadeInUp" *ngIf="!isPatDataLoading">
-              <table class="table table-bordered" [mfData]="data" #mf="mfDataTable" [mfRowsOnPage]="20">
-                  <thead>
-                  <tr>
-                      <th>
-                          <mfDefaultSorter by="first_name">First Name</mfDefaultSorter>
-                      </th>
-                      <th>
-                          <mfDefaultSorter by="last_name">Last Name</mfDefaultSorter>
-                      </th>
-                      <th>
-                          <mfDefaultSorter by="dob">Birthdate (MM/DD/YYYY)</mfDefaultSorter>
-                      </th>
-                      <th>
-                          <mfDefaultSorter by="gender">Gender</mfDefaultSorter>
-                      </th>
-                      <th>
-                          <mfDefaultSorter by="home_phone">Phone number</mfDefaultSorter>
-                      </th>
-                      <th>
-                          <mfDefaultSorter by="address1">Address1</mfDefaultSorter>
-                      </th>
-                      <th>
-                          <mfDefaultSorter by="city">City</mfDefaultSorter>
-                      </th>
-                      <th>
-                          <mfDefaultSorter by="state">State</mfDefaultSorter>
-                      </th>
-                      <th>
-                          <mfDefaultSorter by="zip">Zip</mfDefaultSorter>
-                      </th>
-                      <th>
-                          <mfDefaultSorter by="employer_name">Employer Name</mfDefaultSorter>
-                      </th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr *ngFor="let item of mf.data">
-                      <td>{{item.first_name}}</td>
-                      <td>{{item.last_name}}</td>
-                      <td>{{item.dob | date:'shortDate'}}</td>
-                      <td>{{item.gender}}</td>
-                      <td>{{item.home_phone}} {{item.mobile_phone}}</td>
-                      <td>{{item.address1}}</td>
-                      <td>{{item.city}}</td>
-                      <td>{{item.state}}</td>
-                      <td>{{item.zip}}</td>
-                      <td>{{item.employer_name}}</td>
-                  </tr>
-                  </tbody>
-                  <tfoot>
-                  <tr>
-                      <td colspan="12">
-                          <mfBootstrapPaginator [rowsOnPageSet]="[20, 50, 100, 500]"></mfBootstrapPaginator>
-                      </td>
-                  </tr>
-                  </tfoot>
-              </table>
-          </div>
-        </article>
-      </div>
-    </sa-widget> -->
     <div class="row">
       <article class="col-sm-6">
         <!-- <onCall-wizard></onCall-wizard> -->
@@ -135,7 +68,7 @@
 
                     <div class="step-pane active" data-step="1">
                       <h3><strong>Step 1 </strong> - Search Patients</h3>
-
+                        
                       <!-- wizard form starts here -->
                       <ng-select
                           [items]="items"
@@ -144,6 +77,19 @@
                           (typed)="typed($event)"
                           placeholder="Start typing name">
                       </ng-select><br><br>
+
+                      <input type="text" class="form-control" placeholder="search (e.g Firstname)" [(ngModel)]="form.searchStr"
+                      (keyup)="displayResults()" (blur)="showsearchResults = false" name="searchStr">
+                      <ul [ngStyle]="{'display' : form.display}" *ngIf="form.searchObjects.length > 0">
+                        <li *ngFor="let obj of form.searchObjects">
+                          <a href="javascript:void(0)" (click)="loadMetrics(obj)">
+                            <div>
+                                {{obj.xyz}}
+                            </div>
+                          </a>
+                        </li>
+                      </ul> 
+                      <br> <br>
                    
                       <article class="col-sm-12">
                         <div class="fa fa-3x fa-spinner fa-spin col-md-offset-6" style="margin-bottom: 1em" *ngIf="isPatDataLoading">
@@ -164,27 +110,6 @@
                                     <th class="text-center">
                                         <mfDefaultSorter by="dob">Birthdate</mfDefaultSorter>
                                     </th>
-                                    <!-- <th>
-                                        <mfDefaultSorter by="gender">Gender</mfDefaultSorter>
-                                    </th>
-                                    <th>
-                                        <mfDefaultSorter by="home_phone">Phone number</mfDefaultSorter>
-                                    </th>
-                                    <th>
-                                        <mfDefaultSorter by="address1">Address1</mfDefaultSorter>
-                                    </th>
-                                    <th>
-                                        <mfDefaultSorter by="city">City</mfDefaultSorter>
-                                    </th>
-                                    <th>
-                                        <mfDefaultSorter by="state">State</mfDefaultSorter>
-                                    </th>
-                                    <th>
-                                        <mfDefaultSorter by="zip">Zip</mfDefaultSorter>
-                                    </th>
-                                    <th>
-                                        <mfDefaultSorter by="employer_name">Employer Name</mfDefaultSorter>
-                                    </th> -->
                                 </tr>
                                 </thead>
                                 <tbody class="text-center">
@@ -193,13 +118,6 @@
                                     <td>{{item.first_name}}</td>
                                     <td>{{item.last_name}}</td>
                                     <td>{{item.dob | date:'shortDate'}}</td>
-                                    <!-- <td>{{item.gender}}</td>
-                                    <td>{{item.home_phone}} {{item.mobile_phone}}</td>
-                                    <td>{{item.address1}}</td>
-                                    <td>{{item.city}}</td>
-                                    <td>{{item.state}}</td>
-                                    <td>{{item.zip}}</td>
-                                    <td>{{item.employer_name}}</td> -->
                                   </tr>
                                 </tbody>
                                 <tfoot>
