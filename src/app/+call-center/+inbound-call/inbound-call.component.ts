@@ -60,8 +60,6 @@ export class InboundCallComponent implements OnInit {
   private startRecording: boolean;
   private endRecording: boolean;
   private _endCall: boolean;
-
-
   private employeeName: string;
   private value: any = {};
   private _disabledV: string = '0';
@@ -78,6 +76,9 @@ export class InboundCallComponent implements OnInit {
   private patientList: any;
   private data: any;
   private isPatDataLoading: boolean;
+
+  private callStatusData: any;
+  public selectedItem: '';
 
   form: any = {
   };
@@ -96,7 +97,8 @@ export class InboundCallComponent implements OnInit {
   ngOnInit() {
     this.employeeName = 'Seton';
     this.getPatientData();
-    this.getPatientsList()
+    this.getPatientsList();
+    this.getCallStatus();
   }
 
   public getPatientData() {
@@ -114,10 +116,24 @@ export class InboundCallComponent implements OnInit {
   public getPatientsList() {
     this.patientList = this._InboundService.getPatientsList()
       .subscribe((response: any) => {
-        this.data = response;
-        this.isPatDataLoading = false;
-        console.log(this.data);
+          this.data = response;
+          this.isPatDataLoading = false;
+          console.log(this.data);
       })
+  }
+  public getCallStatus() {
+    this.patientList = this._InboundService.getCallStatus()
+      .subscribe((response: any) => {
+          this.callStatusData = response;
+          if (this.callStatusData.length > 0) {
+              this.selectedItem = this.callStatusData[0]['status'];
+          }
+          console.log(this.callStatusData);
+          console.log(this.selectedItem);
+      })
+  }
+  public showStatus(item: any) {
+    this.selectedItem = item;
   }
   public onSavePatientData() {
     this.childModal.show();
@@ -129,9 +145,10 @@ export class InboundCallComponent implements OnInit {
     this.childModal.hide();
   }
   public startCall(event$) {
-    const startTime = new Date();
-    this.startCallTime = startTime.getTime()
     this.startRecording = true;
+    const startTime = new Date();
+    this.startCallTime = startTime.getTime();
+    this.endRecording = false;
     this._endCall = false;
   }
   public endCall() {

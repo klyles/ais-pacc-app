@@ -2,6 +2,7 @@ import { APIServices } from './../../shared/services/api.services';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs/Rx';
+import { barChartDemoOptions } from '../../+graphs/+flot-charts/flot-examples';
 
 
 @Injectable()
@@ -13,10 +14,14 @@ export class InboundService extends APIServices {
     return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
   }
   getPatientsList(): Observable<any> {
-    const url = this.baseUrl + '/patients';
+    const url = this.baseUrl + '/Patients';
     console.log(url);
     return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
     // return this._http.get('assets/api/json/patientsList.json');
   }
+  getCallStatus(): Observable<any> {
+    const url = this.baseUrl + '/call_statuses';
+    console.log(url);
+    return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
+  }
 }
-

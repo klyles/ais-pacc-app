@@ -1,7 +1,8 @@
 export const BaseHeader = {
       'Content-Type': 'text/plain'
 };
-export const BaseUrl = ' http://ahwacotxpladbt:5000/api';
+
+export const BaseUrl = 'http://ahwacotxpladbt:3000/api';
 
 /* Use this for PROD environment:
    export const REST_API_URL = 'https://sb-fhir-dstu2.smarthealthit.org'; */

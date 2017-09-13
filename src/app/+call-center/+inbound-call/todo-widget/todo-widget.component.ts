@@ -6,8 +6,7 @@ import {Todo} from './todo';
   selector: 'todo-widget',
   templateUrl: './todo-widget.component.html',
   styles: [``],
-  providers: [TodoService],
-
+  providers: [TodoService]
 })
 export class TodoWidgetComponent implements OnInit {
 
