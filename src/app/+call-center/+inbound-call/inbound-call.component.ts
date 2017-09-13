@@ -181,6 +181,15 @@ export class InboundCallComponent implements OnInit {
     alert('oncall loaded!!');
   }
 
+  public removed(value: any): void {
+    console.log('Removed value is: ', value);
+  }
+  public typed(value: any): void {
+    console.log('New search input: ', value);
+  }
+  public refreshValue(value: any): void {
+    this.value = value;
+  }
   private get disabledV(): string {
     return this._disabledV;
   }
