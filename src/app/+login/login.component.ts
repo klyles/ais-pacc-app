@@ -1,3 +1,4 @@
+import { LoginService } from './login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   form: any = {};
   returnUrl: string;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private LoginService: LoginService) { }
 
   ngOnInit() {
   // retrive the previousUrl from route params or default to '/'
@@ -17,7 +18,9 @@ export class LoginComponent implements OnInit {
     this.returnUrl = prevUrl ? prevUrl : '/dashboard/analytics';
   }
   onSubmit() {
-    alert('login successful! and navigating to ' + this.returnUrl + ' ');
+    this.LoginService.onsubmit(this.form);
+    console.log(this.form);
+    // alert('login successful! and navigating to ' + this.returnUrl + ' ');
     this.router.navigate([this.returnUrl]);
   }
 }

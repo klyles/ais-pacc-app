@@ -79,6 +79,8 @@ export class InboundCallComponent implements OnInit {
 
   private callStatusData: any;
   public selectedItem: '';
+  private callOutComesData: any;
+  public selectedOutCome: '';
 
   form: any = {searchStr: '', searchObjects: [], display: 'none'};
 
@@ -100,6 +102,7 @@ export class InboundCallComponent implements OnInit {
     this.getPatientData();
     this.getPatientsList();
     this.getCallStatus();
+    this.getCallOutComes();
   }
 
   public getPatientData() {
@@ -133,6 +136,18 @@ export class InboundCallComponent implements OnInit {
           console.log(this.selectedItem);
       })
   }
+
+  public getCallOutComes() {
+    this.patientList = this._InboundService.getCallOutComes()
+      .subscribe((response: any) => {
+          this.callOutComesData = response;
+          if (this.callOutComesData.length > 0) {
+              this.selectedOutCome = this.callOutComesData[0]['outcome_desc'];
+          }
+          console.log(this.callOutComesData);
+          console.log(this.selectedOutCome);
+      })
+  }
   public displayResults() {
     if (this.form.searchStr.length > 0) {
       this._InboundService.getSearchData(this.form.searchStr)
@@ -151,6 +166,9 @@ export class InboundCallComponent implements OnInit {
   public showStatus(item: any) {
     this.selectedItem = item;
   }
+  public showOutCome(item: any) {
+    this.selectedOutCome = item;
+  }
   public onSavePatientData() {
     this.childModal.show();
   }
@@ -160,7 +178,7 @@ export class InboundCallComponent implements OnInit {
   public hideChildModal(): void {
     this.childModal.hide();
   }
-  public startCall(event$) {
+  public startCall() {
     this.startRecording = true;
     const startTime = new Date();
     this.startCallTime = startTime.getTime();

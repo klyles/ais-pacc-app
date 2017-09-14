@@ -419,9 +419,9 @@
       </article>
       <article class="col-sm-6">
           <div class="well well-sm">
-              <h3 class="asc-text-primary">Call Status </h3>
               <div class="bs-example">
-                  <div class="btn-grp" dropdown>
+                  <span class="asc-text-primary">Call Status </span>
+                  <span class="btn-grp" dropdown>
                     <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
                       {{selectedItem}} <span class="caret"></span>
                     </button>
@@ -432,7 +432,20 @@
                         </a>  
                       </li>  
                     </ul>    
-                  </div>
+                  </span>
+                  <span class="asc-text-primary">Call Outcomes </span>
+                  <span class="btn-grp" dropdown>
+                    <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
+                      {{selectedOutCome}} <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu scroll_bar" role="menu">
+                      <li role="menuitem" *ngFor='let item of callOutComesData'>
+                        <a class="dropdown-item" (click)="showOutCome(item.outcome_desc)">
+                          {{item.outcome_desc}}
+                        </a>  
+                      </li>  
+                    </ul>    
+                  </span>
                   <button type="submit" class="col-md-2 btn btn-success pull-right" (click)="saveNotes()">Save</button>
               </div>
           </div>

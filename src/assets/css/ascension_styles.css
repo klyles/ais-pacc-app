@@ -106,6 +106,9 @@
  .mb-md {
   margin-bottom: 1em;
  }
+ .mt-md {
+  margin-top: 1em;
+ }
  .sep_grey_rt {
   border-right: 1px solid #ddd;
  }
@@ -117,6 +120,10 @@
  }
  .fa-2x {
   vertical-align: -15%;
+ }
+ .scroll_bar {
+  max-height: 220px;
+  overflow-y: scroll;
  }
   /* loader CSS */
 .loader,
