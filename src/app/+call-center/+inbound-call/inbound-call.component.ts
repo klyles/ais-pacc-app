@@ -71,10 +71,11 @@ export class InboundCallComponent implements OnInit {
   private patientTelecom: any;
   private patientEmail: any;
   private patientAddress: any;
+  private loadmetrics: boolean;
 
   private listOfPatients: any;
   private patientList: any;
-  private data: any;
+  public data: any;
   private isPatDataLoading: boolean;
 
   private callStatusData: any;
@@ -83,6 +84,7 @@ export class InboundCallComponent implements OnInit {
   public selectedOutCome: '';
 
   form: any = {searchStr: '', searchObjects: [], display: 'none'};
+  private showsearchResults: boolean;
 
 
   public items: Array<string> = ['Seton', 'Providence', 'Daughters of Charity', 'Centro', 'Nazareth',
@@ -95,11 +97,12 @@ export class InboundCallComponent implements OnInit {
     this.endRecording = false;
     this._endCall = true;
     this.isPatDataLoading = true;
+    this.showsearchResults = false;
+    this.loadmetrics = false;
   }
 
   ngOnInit() {
     this.employeeName = 'Seton';
-    this.getPatientData();
     this.getPatientsList();
     this.getCallStatus();
     this.getCallOutComes();
@@ -114,6 +117,7 @@ export class InboundCallComponent implements OnInit {
         this.patientEmail = response.telecom[1];
         this.patientAddress = response.address[0];
         console.log(this.patientData);
+        this.loadmetrics = true;
       })
   }
   /** this is all patient data */
@@ -154,7 +158,9 @@ export class InboundCallComponent implements OnInit {
       .subscribe(
         (response: any) => {
           console.log(this.form.searchStr);
-          this.form.searchObjects = response.data;
+          this.form.searchObjects = response.filter;
+          this.showsearchResults = true;
+          console.log(this.form.searchObjects);
           this.form.display = 'block';
         }
 
@@ -162,6 +168,9 @@ export class InboundCallComponent implements OnInit {
     } else {
       this.form.searchObjects = [];
     }
+  }
+  public loadMetrics() {
+    this.getPatientData();
   }
   public showStatus(item: any) {
     this.selectedItem = item;

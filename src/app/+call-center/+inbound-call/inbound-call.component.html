@@ -70,28 +70,77 @@
                       <h3><strong>Step 1 </strong> - Search Patients</h3>
                         
                       <!-- wizard form starts here -->
-                      <ng-select
+                      <!-- [multiple]="true" -->
+                      <!-- <ng-select
                           [items]="items"
                           (data)="refreshValue($event)"
                           (selected)="selected($event)"
                           (typed)="typed($event)"
                           placeholder="Start typing name">
-                      </ng-select><br><br>
+                      </ng-select><br><br> -->
 
                       <input type="text" class="form-control" placeholder="search (e.g Firstname)" [(ngModel)]="form.searchStr"
                       (keyup)="displayResults()" (blur)="showsearchResults = false" name="searchStr">
-                      <ul [ngStyle]="{'display' : form.display}" *ngIf="form.searchObjects.length > 0">
-                        <li *ngFor="let obj of form.searchObjects">
-                          <a href="javascript:void(0)" (click)="loadMetrics(obj)">
-                            <div>
-                                {{obj.xyz}}
-                            </div>
-                          </a>
-                        </li>
-                      </ul> 
+                      <!-- <table class="table table-striped table-hover" 
+                          [ngStyle]="{'display' : form.display}" 
+                          *ngIf="form.searchObjects.length > 0">
+                        <thead>
+                          <tr>
+                            <th> First Name </th>
+                            <th> Last Name </th>
+                            <th> Birthdate </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let obj of form.searchObjects">
+                            <td>{{obj.first_name}}</td>
+                            <td>{{obj.last_name}}</td>
+                            <td>{{obj.dob}}</td>
+                          </tr>
+                        </tbody>
+                      </table> -->
                       <br> <br>
-                   
                       <article class="col-sm-12">
+                        <div class="fa fa-3x fa-spinner fa-spin col-md-offset-6" style="margin-bottom: 1em" *ngIf="isPatDataLoading">
+                        </div>
+                        <div class="table-responsive" [ngStyle]="{'display': form.display}" 
+                        *ngIf="form.searchObjects.length > 0">
+                            <table class="table table-striped table-hover" [mfData]="form.searchObjects" #mf="mfDataTable" [mfRowsOnPage]="10">
+                                <thead>
+                                <tr>
+                                    <th>
+                                        <mfDefaultSorter by="first_name"> </mfDefaultSorter>
+                                    </th>
+                                    <th class="text-center">
+                                        <mfDefaultSorter by="first_name">First Name</mfDefaultSorter>
+                                    </th>
+                                    <th class="text-center">
+                                        <mfDefaultSorter by="last_name">Last Name</mfDefaultSorter>
+                                    </th>
+                                    <th class="text-center">
+                                        <mfDefaultSorter by="dob">Birthdate</mfDefaultSorter>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody class="text-center">
+                                  <tr *ngFor="let item of mf.data" (click)="loadMetrics()">
+                                    <td><span><i class="fa fa-database" aria-hidden="true"></i></span></td>
+                                    <td>{{item.first_name}}</td>
+                                    <td>{{item.last_name}}</td>
+                                    <td>{{item.dob | date:'shortDate'}}</td>
+                                  </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="6">
+                                        <mfBootstrapPaginator [rowsOnPageSet]="[10, 50, 100, 500]"></mfBootstrapPaginator>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                      </article>
+                      <!-- <article class="col-sm-12">
                         <div class="fa fa-3x fa-spinner fa-spin col-md-offset-6" style="margin-bottom: 1em" *ngIf="isPatDataLoading">
                         </div>
                         <div class="table-responsive animated fadeInUp" *ngIf="!isPatDataLoading">
@@ -129,7 +178,7 @@
                                 </tfoot>
                             </table>
                         </div>
-                      </article>
+                      </article> -->
                     </div>
                     <div class="step-pane" data-step="2">
                       <h3><strong>Step 2 </strong> - Applications</h3>
@@ -196,7 +245,8 @@
         </sa-widget>
 
       </article>
-      <article class="col-sm-6 animated fadeInUp" *ngIf="value.text">
+      <!-- <article class="col-sm-6 animated fadeInUp" *ngIf="value.text"> -->
+      <article class="col-sm-6 animated fadeInUp" *ngIf="loadmetrics">
         <sa-widget [editbutton]="false" [deletebutton]="false">
           <header>
             <h2> Patient Details </h2>

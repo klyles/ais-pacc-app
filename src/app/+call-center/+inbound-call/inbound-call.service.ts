@@ -30,7 +30,7 @@ export class InboundService extends APIServices {
     return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
   }
   getSearchData(param: string): Observable<any> {
-    const url = this.baseUrl + '/details?' + param;
+    const url = this.baseUrl + '/Patients/search?filter=' + param;
     console.log(param);
     console.log(url);
     return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
