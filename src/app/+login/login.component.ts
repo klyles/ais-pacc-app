@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.LoginService.onsubmit(this.form);
     console.log(this.form);
-    // alert('login successful! and navigating to ' + this.returnUrl + ' ');
+    alert('login successful! and navigating to ' + this.returnUrl + ' ');
     this.router.navigate([this.returnUrl]);
   }
 }
