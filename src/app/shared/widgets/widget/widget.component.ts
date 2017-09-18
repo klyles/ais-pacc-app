@@ -16,18 +16,21 @@ export class WidgetComponent implements OnInit, AfterViewInit {
   public widgetId: string;
 
   @Input() public name: string;
-  @Input() public colorbutton: boolean = true;
-  @Input() public editbutton: boolean = true;
-  @Input() public togglebutton: boolean = true;
-  @Input() public deletebutton: boolean = true;
-  @Input() public fullscreenbutton: boolean = true;
+  @Input() public colorbutton: boolean = false;
+  @Input() public editbutton: boolean = false;
+  @Input() public togglebutton: boolean = false;
+  @Input() public deletebutton: boolean = false;
+  @Input() public fullscreenbutton: boolean = false;
   @Input() public custombutton: boolean = false;
   @Input() public collapsed: boolean = false;
-  @Input() public sortable: boolean = true;
+  @Input() public sortable: boolean = false;
   @Input() public hidden: boolean = false;
   @Input() public color: string;
   @Input() public load: boolean = false;
   @Input() public refresh: boolean = false;
+
+
+  // make the above boolean true when need to show the edit/full screen icons in sa-widget
 
 
   static counter: number = 0;
