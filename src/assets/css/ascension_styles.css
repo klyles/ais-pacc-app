@@ -23,16 +23,36 @@
  .form-control {
    color: #000000;
  }
+ .dropdown-menu {
+   top: 15% !important;
+ }
+ .well {
+  margin: 0 0 34px;
+ }
+ .pagination {
+   display: block;
+ }
  .table th a {
    color: #000000;
    font-weight: bold;
    font-size: 14px;
+ }
+ .pontr_crsr {
+   cursor: pointer;
  }
  .table th {
   text-transform: uppercase;
  }
  .table-hover {
    cursor: pointer;
+ }
+ .source_img {
+    height: 30px;
+    width: 30px;
+    border-radius: 20px;
+ }
+ .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+   vertical-align: middle;
  }
  label {
    font-weight: 700;
