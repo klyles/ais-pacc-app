@@ -25,7 +25,6 @@
         <sa-widget [editbutton]="false" [deletebutton]="false">
           <header>
             <h2> Search Patients </h2>
-
           </header>
 
           <!-- widget div-->
@@ -65,13 +64,12 @@
                 </div>
                 <div class="step-content">
                   <form class="form-horizontal">
-
-                    <div class="step-pane active" data-step="1">
-                      <h3><strong>Step 1 </strong> - Search Patients</h3>
-                        
+                    <div class="step-pane active" data-step="1" style="min-height: 254px;">
+                      <h3><strong>Step 1 </strong> - Search Patients </h3>
                       <!-- wizard form starts here -->
                       <!-- [multiple]="true" -->
                       <!-- <ng-select
+                          [multiple]="true"
                           [items]="items"
                           (data)="refreshValue($event)"
                           (selected)="selected($event)"
@@ -81,6 +79,10 @@
 
                       <input type="text" class="form-control" placeholder="search (e.g Firstname)" [(ngModel)]="form.searchStr"
                       (keyup)="displayResults()" (blur)="showsearchResults = false" name="searchStr">
+                      <br>
+                      <label class="btn btn-primary pull-right" (click)="addPatientsList()"><i class="fa fa-plus"></i> Add New Patient
+                      </label>
+                      <br><br> 
                       <!-- <table class="table table-striped table-hover" 
                           [ngStyle]="{'display' : form.display}" 
                           *ngIf="form.searchObjects.length > 0">
@@ -99,11 +101,9 @@
                           </tr>
                         </tbody>
                       </table> -->
-                      <br> <br>
-                      <article class="col-sm-12">
-                        <div class="fa fa-3x fa-spinner fa-spin col-md-offset-6" style="margin-bottom: 1em" *ngIf="isPatDataLoading">
-                        </div>
-                        <div class="table-responsive" [ngStyle]="{'display': form.display}" 
+                      
+                      <article class="col-sm-12 no-padding">
+                        <div class="table-responsive mt-md" [ngStyle]="{'display': form.display}" 
                         *ngIf="form.searchObjects.length > 0">
                             <table class="table table-striped table-hover" [mfData]="form.searchObjects" #mf="mfDataTable" [mfRowsOnPage]="10">
                                 <thead>
@@ -111,10 +111,10 @@
                                     <th>
                                         <mfDefaultSorter by="first_name"> </mfDefaultSorter>
                                     </th>
-                                    <th class="text-center">
+                                    <th>
                                         <mfDefaultSorter by="first_name">First Name</mfDefaultSorter>
                                     </th>
-                                    <th class="text-center">
+                                    <th>
                                         <mfDefaultSorter by="last_name">Last Name</mfDefaultSorter>
                                     </th>
                                     <th class="text-center">
@@ -122,20 +122,20 @@
                                     </th>
                                 </tr>
                                 </thead>
-                                <tbody class="text-center">
-                                  <tr *ngFor="let item of mf.data" (click)="loadMetrics()">
-                                    <td><span><i class="fa fa-database" aria-hidden="true"></i></span></td>
+                                <tbody>
+                                  <tr *ngFor="let item of mf.data" (click)="loadMetrics(item.home_phone)">
+                                    <td><img src="{{item.img_url}}" class="source_img"></td>
                                     <td>{{item.first_name}}</td>
                                     <td>{{item.last_name}}</td>
-                                    <td>{{item.dob | date:'shortDate'}}</td>
+                                    <td class="text-center">{{item.dob | date:'shortDate'}}</td>
                                   </tr>
                                 </tbody>
                                 <tfoot>
-                                <tr>
-                                    <td colspan="6">
-                                        <mfBootstrapPaginator [rowsOnPageSet]="[10, 50, 100, 500]"></mfBootstrapPaginator>
-                                    </td>
-                                </tr>
+                                  <tr>
+                                      <td colspan="6">
+                                          <mfBootstrapPaginator [rowsOnPageSet]="[10, 25, 50, 100]"></mfBootstrapPaginator>
+                                      </td>
+                                  </tr>
                                 </tfoot>
                             </table>
                         </div>
@@ -189,8 +189,6 @@
                           <li>Application 3 </li>
                           <li>Application 4 </li>
                           <li>Application 5 </li>
-                          <li>Application 6 </li>
-                          <li>Application 7 </li>
                         </ul>
                     </div>
 
@@ -245,8 +243,117 @@
         </sa-widget>
 
       </article>
-      <!-- <article class="col-sm-6 animated fadeInUp" *ngIf="value.text"> -->
-      <article class="col-sm-6 animated fadeInUp" *ngIf="loadmetrics">
+      <article class="col-sm-6" *ngIf="!loadmetrics && !addPatients">
+        <sa-widget>
+          <header>
+            <h2> Patient Details </h2>
+          </header>
+          <div class="row">
+              <form class="form-horizontal">
+                <div class="col-sm-6 mb-md">
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label">First Name:</label>
+                    <div class="col-sm-8">
+                      <input class="form-control" type="text" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label">Address 1:</label>
+                    <div class="col-sm-8">
+                      <div class="input-group">
+                        <input class="form-control" type="text">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                      </div>
+                    </div>
+                  </div>  
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label">Address 2:</label>
+                    <div class="col-sm-8">
+                      <div class="input-group">
+                        <input class="form-control" type="text">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                      </div>
+                    </div>
+                </div>
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label">Gender:</label>
+                    <div class="col-sm-8">
+                      <input class="form-control" type="text" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label">Phone Number:</label>
+                    <div class="col-sm-8">
+                      <div class="input-group">
+                        <input class="form-control" type="number">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group">
+                      <label class="col-sm-4 control-label">Email:</label>
+                      <div class="col-sm-8">
+                        <div class="input-group">
+                          <input class="form-control" type="text">
+                          <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                        </div>
+                      </div>
+                    </div>
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label">Preferred Contact:</label>
+                    <div class="col-sm-8">
+                        <select class="col-sm-12">
+                            <option>Phone</option>
+                            <option>Email</option>
+                            <option>Mail</option>
+                        </select>  
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label">Last Name:</label>
+                    <div class="col-sm-8">
+                      <input class="form-control" type="text" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label">Birthdate:</label>
+                    <div class="col-sm-8">
+                      <input class="form-control" type="text" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label">City/St:</label>
+                    <div class="col-sm-8">
+                      <div class="input-group">
+                        <input class="form-control" type="text">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-4 control-label">Zip:</label>
+                    <div class="col-sm-8">
+                      <div class="input-group">
+                        <input class="form-control" type="text">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-8">
+                      <button class="btn btn-primary col-sm-12" type="submit"> Save </button>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+        </sa-widget>
+      </article>
+      <article class="col-sm-6" *ngIf="loadmetrics && !addPatients">
         <sa-widget [editbutton]="false" [deletebutton]="false">
           <header>
             <h2> Patient Details </h2>
@@ -257,25 +364,31 @@
                 <div class="form-group">
                   <label class="col-sm-4 control-label">First Name:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="focusedInput" type="text" value="{{patientName.given}}" readonly>
+                    <input class="form-control" id="focusedInput" type="text" value="{{resultArray.first_name}}" readonly>
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-4 control-label">Last Name:</label>
+                  <label class="col-sm-4 control-label">Address 1:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="focusedInput" type="text" value="{{patientName.family}}" readonly>
+                    <div class="input-group">
+                      <input class="form-control" id="focusedInput" type="text" placeholder="{{resultArray.address1}}">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                    </div>
                   </div>
-                </div>
+                </div>  
                 <div class="form-group">
-                  <label class="col-sm-4 control-label">Birthdate:</label>
+                  <label class="col-sm-4 control-label">Address 2:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="focusedInput" type="text" value="{{patientData.birthDate}}" readonly>
+                    <div class="input-group">
+                      <input class="form-control" id="focusedInput" type="text" placeholder="{{resultArray.address2}}">
+                      <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                    </div>
                   </div>
-                </div>
+              </div>
                 <div class="form-group">
                   <label class="col-sm-4 control-label">Gender:</label>
                   <div class="col-sm-8">
-                    <input class="form-control" id="focusedInput" type="text" value="{{patientData.gender}}" readonly>
+                    <input class="form-control" id="focusedInput" type="text" value="{{resultArray.gender}}" readonly>
                   </div>
                 </div>
                 <div class="form-group">
@@ -286,9 +399,9 @@
                       #phoneNumber="ngModel" id="phoneNumber"
                       [(ngModel)]="form.phoneNumber"
                       name="phoneNumber"
-                      placeholder="{{patientTelecom.value}}"
+                      placeholder="{{resultArray.home_phone}}"
                       >
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                      <span class="input-group-addon pontr_crsr" (click)="showPhoneFields()"><i class="glyphicon glyphicon-plus"></i></span>
                     </div>
                     <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)"
                     class="alert alert-danger animated shake">
@@ -296,6 +409,33 @@
                     </div>
                   </div>
                 </div>
+                  <div class="form-group" *ngIf="phoneFields == true">
+                    <label class="col-sm-4 control-label">Home Phone:</label>
+                    <div class="col-sm-8">
+                      <div class="input-group">
+                        <input class="form-control" type="number">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group" *ngIf="phoneFields == true">
+                    <label class="col-sm-4 control-label">Mobile Phone:</label>
+                    <div class="col-sm-8">
+                      <div class="input-group">
+                        <input class="form-control" type="number">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group" *ngIf="phoneFields == true">
+                    <label class="col-sm-4 control-label">Work Phone:</label>
+                    <div class="col-sm-8">
+                      <div class="input-group">
+                        <input class="form-control" type="number">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                      </div>
+                    </div>
+                  </div>
                 <div class="form-group">
                     <label class="col-sm-4 control-label">Email:</label>
                     <div class="col-sm-8">
@@ -304,7 +444,7 @@
                         #email="ngModel" id="email"
                         [(ngModel)]="form.email"
                         name="email"
-                        placeholder="{{patientEmail.value}}"
+                        placeholder="{{resultArray.email}}"
                         >
                         <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
                       </div>
@@ -318,65 +458,40 @@
                   <label class="col-sm-4 control-label">Preferred Contact:</label>
                   <div class="col-sm-8">
                       <select class="col-sm-12">
-                          <option>Phone ({{patientTelecom.value}})</option>
-                          <option>Email ({{patientEmail.value}}) </option>
+                          <option>Phone ({{resultArray.home_phone}})</option>
+                          <option>Email ({{resultArray.email}}) </option>
                           <option>Mail</option>
                       </select>  
                   </div>
                 </div>
-              
-              <!-- <strong>First Name: </strong> {{value.text}}  <br> -->
-              <!-- <strong>First Name: </strong> {{patientName.given}}  <br>
-              <strong>Last Name: </strong> {{patientName.family}} <br>
-              <strong>Birthdate: </strong> {{patientData.birthDate}} <strong> &nbsp; Age: </strong>98 <br>
-              <strong>Gender: </strong> {{patientData.gender}} <br>
-              <strong>Phone Number: </strong>{{patientTelecom.value}} <br>
-              <strong>Preferred Contact: </strong> 
-                <select>
-                  <option>Phone ({{patientTelecom.value}})</option>
-                  <option>Email ({{patientEmail.value}}) </option>
-                  <option>Mail</option>
-                </select>   
-              <br>
-              <strong>Preferred Phone: </strong> Preferred Phone <br> -->
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label class="col-sm-4 control-label">Address 1:</label>
+                  <label class="col-sm-4 control-label">Last Name:</label>
                   <div class="col-sm-8">
-                    <div class="input-group">
-                      <input class="form-control" id="focusedInput" type="text" placeholder="{{patientAddress.line}}">
-                      <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-                    </div>
+                    <input class="form-control" id="focusedInput" type="text" value="{{resultArray.last_name}}" readonly>
                   </div>
-                </div>  
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-4 control-label">Birthdate:</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" id="focusedInput" type="text" value="{{resultArray.dob}}" readonly>
+                  </div>
+                </div>
                 <div class="form-group">
                   <label class="col-sm-4 control-label">City/St:</label>
                   <div class="col-sm-8">
                     <div class="input-group">
-                      <input class="form-control" id="focusedInput" type="text" placeholder="{{patientAddress.city}}, {{patientAddress.state}}">
+                      <input class="form-control" id="focusedInput" type="text" placeholder="{{resultArray.city}}, {{resultArray.state}}">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
                     </div>
                   </div>
                 </div>
-                <!-- <div class="form-group">
-                    <label class="col-sm-4 control-label">City/State:</label>
-                    <div class="col-sm-4">
-                      <div class="input-group">
-                        <input class="form-control" id="focusedInput" type="text" placeholder="{{patientAddress.city}}">
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                        <div class="input-group">
-                          <input class="form-control" id="focusedInput" type="text" placeholder="{{patientAddress.state}}">
-                        </div>
-                      </div>
-                  </div> -->
                 <div class="form-group">
                   <label class="col-sm-4 control-label">Zip:</label>
                   <div class="col-sm-8">
                     <div class="input-group">
-                      <input class="form-control" id="focusedInput" type="text" placeholder="{{patientAddress.postalCode}}, {{patientAddress.country}}">
+                      <input class="form-control" id="focusedInput" type="text" placeholder="{{resultArray.zip}}">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
                     </div>
                   </div>
@@ -387,11 +502,190 @@
                     <button class="btn btn-primary col-sm-12" type="submit"> Save </button>
                   </div>
                 </div>
-                <!-- <strong>Address 1:</strong> {{patientAddress.line}} <br>
-                <strong>City/St/Zip: </strong> {{patientAddress.city}} {{patientAddress.state}} {{patientAddress.postalCode}}, {{patientAddress.country}}<br>
-                <strong>Provider Name: </strong> Frierson-Stroud, Lenor B MD <br> -->
               </div>
             </form>
+          </div>
+        </sa-widget>
+      </article>
+      <article class="col-sm-6 animated fadeInUp" *ngIf="addPatients && !loadmetrics">
+          <sa-widget>
+            <header>
+              <h2> Add New Patient </h2>
+            </header>
+            <div class="row">
+                <form class="form-horizontal">
+                  <div class="col-sm-6 mb-md">
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label">First Name:</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label">Address 1:</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text">
+                      </div>
+                    </div>  
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label">Address 2:</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text">
+                      </div>
+                  </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label">Gender:</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label">Phone Number:</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="number">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">Email:</label>
+                        <div class="col-sm-8">
+                          <input class="form-control" type="text">
+                        </div>
+                      </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label">Preferred Contact:</label>
+                      <div class="col-sm-8">
+                          <select class="col-sm-12">
+                              <option>Phone</option>
+                              <option>Email</option>
+                              <option>Mail</option>
+                          </select>  
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label">Last Name:</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label">Birthdate:</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label">City/St:</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-sm-4 control-label">Zip:</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-4"></div>
+                      <div class="col-sm-8">
+                        <button class="btn btn-primary col-sm-12" type="submit"> Save </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+          </sa-widget>
+        </article>
+      
+      <article class="col-sm-6">
+        <sa-widget [editbutton]="false" [deletebutton]="false">
+          <!-- <header>
+            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
+            <h2>Call History</h2>
+          </header> -->
+          <div class="btn-group">
+            <label class="btn btn-secondary" (click)="getCallStatus()" [ngClass]="{active: tab == 'callDisposition'}"> Call Disposition </label>
+            <label class="btn btn-secondary" (click)="getCallHistory()" [ngClass]="{active: tab == 'callHistory'}"> Call History </label>
+          </div>
+          <div *ngIf="tab == 'callDisposition'" class="widget-body" style="min-height: 273px">
+              <span class="asc-text-primary">Call Status </span>
+              <span class="btn-grp" dropdown>
+                <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
+                  {{selectedItem}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li role="menuitem" *ngFor='let obj of callStatusData'>
+                    <a class="dropdown-item" (click)="showStatus(obj.status)">
+                      {{obj.status}}
+                    </a>  
+                  </li>  
+                </ul>    
+              </span>
+              <span class="asc-text-primary">Call Outcomes </span>
+              <span class="btn-grp" dropdown>
+                <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
+                  {{selectedOutCome}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu scroll_bar" role="menu">
+                  <li role="menuitem" *ngFor='let item of callOutComesData'>
+                    <a class="dropdown-item" (click)="showOutCome(item.outcome_desc)">
+                      {{item.outcome_desc}}
+                    </a>  
+                  </li>  
+                </ul>    
+              </span>
+              <button type="submit" class="col-md-2 btn btn-success pull-right" (click)="saveNotes()">Save</button>
+          </div>
+          <div *ngIf="tab == 'callHistory'">
+            <p class="lead">Name: <strong> Ascension </strong> | Age: <strong> 20 years </strong></p>
+            <div class="table-responsive">
+              <table class="table table-bordered">
+                <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Call Start</th>
+                  <th>Call End</th>
+                  <th>Duration</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <td>Aug 16, 2017</td>
+                  <td>11:30:05 AM</td>
+                  <td>11:45:05 AM</td>
+                  <td>15 Mins</td>
+                </tr>
+                <tr>
+                  <td>Aug 11, 2017</td>
+                  <td>3:00:00 PM</td>
+                  <td>3:17:00 PM</td>
+                  <td>17 Mins</td>
+                </tr>
+                <tr>
+                  <td>July 29, 2017</td>
+                  <td>9:30:45 AM</td>
+                  <td>10:00:05 AM</td>
+                  <td>30 Mins</td>
+                </tr>
+                <tr>
+                  <td>July 17, 2017</td>
+                  <td>4:45:51 PM</td>
+                  <td>5:05:12 PM</td>
+                  <td>20 Mins</td>
+                </tr>
+                <tr>
+                  <td>June 16, 2017</td>
+                  <td>2:30:05 PM</td>
+                  <td>3:15:05 AM</td>
+                  <td>45 Mins</td>
+                </tr>
+                </tbody>
+              </table>
+
+            </div>
+
           </div>
         </sa-widget>
       </article>
@@ -399,107 +693,11 @@
         <div class="well well-sm">
             <h3 class="asc-text-primary">Notes: </h3>
             <div class="bs-example">
-                <textarea style="width: 100%; padding: 10px" rows="4"></textarea>
+                <textarea style="width: 100%; padding: 10px" rows="8"></textarea>
                 <button type="submit" class="col-md-2 btn btn-success pull-right" (click)="saveNotes()">Save</button>
             </div>
         </div>
       </article>
-
-      <article class="col-sm-6">
-        <sa-widget>
-          <header>
-            <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-
-            <h2>Call History</h2>
-          </header>
-          <div>
-            <div class="widget-body">
-              <p class="lead">Name: <strong> Ascension </strong> | Age: <strong> 20 years </strong></p>
-
-              <div class="table-responsive">
-
-                <table class="table table-bordered">
-                  <thead>
-                  <tr>
-                    <th>Date</th>
-                    <th>Call Start</th>
-                    <th>Call End</th>
-                    <th>Duration</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <tr>
-                    <td>Aug 16, 2017</td>
-                    <td>11:30:05 AM</td>
-                    <td>11:45:05 AM</td>
-                    <td>15 Mins</td>
-                  </tr>
-                  <tr>
-                    <td>Aug 11, 2017</td>
-                    <td>3:00:00 PM</td>
-                    <td>3:17:00 PM</td>
-                    <td>17 Mins</td>
-                  </tr>
-                  <tr>
-                    <td>July 29, 2017</td>
-                    <td>9:30:45 AM</td>
-                    <td>10:00:05 AM</td>
-                    <td>30 Mins</td>
-                  </tr>
-                  <tr>
-                    <td>July 17, 2017</td>
-                    <td>4:45:51 PM</td>
-                    <td>5:05:12 PM</td>
-                    <td>20 Mins</td>
-                  </tr>
-                  <tr>
-                    <td>June 16, 2017</td>
-                    <td>2:30:05 PM</td>
-                    <td>3:15:05 AM</td>
-                    <td>45 Mins</td>
-                  </tr>
-                  </tbody>
-                </table>
-
-              </div>
-
-            </div>
-          </div>
-        </sa-widget>
-      </article>
-      <article class="col-sm-6">
-          <div class="well well-sm">
-              <div class="bs-example">
-                  <span class="asc-text-primary">Call Status </span>
-                  <span class="btn-grp" dropdown>
-                    <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
-                      {{selectedItem}} <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                      <li role="menuitem" *ngFor='let obj of callStatusData'>
-                        <a class="dropdown-item" (click)="showStatus(obj.status)">
-                          {{obj.status}}
-                        </a>  
-                      </li>  
-                    </ul>    
-                  </span>
-                  <span class="asc-text-primary">Call Outcomes </span>
-                  <span class="btn-grp" dropdown>
-                    <button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
-                      {{selectedOutCome}} <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu scroll_bar" role="menu">
-                      <li role="menuitem" *ngFor='let item of callOutComesData'>
-                        <a class="dropdown-item" (click)="showOutCome(item.outcome_desc)">
-                          {{item.outcome_desc}}
-                        </a>  
-                      </li>  
-                    </ul>    
-                  </span>
-                  <button type="submit" class="col-md-2 btn btn-success pull-right" (click)="saveNotes()">Save</button>
-              </div>
-          </div>
-        </article>
     </div>
   </sa-widgets-grid>
 </div>

@@ -49,21 +49,20 @@ import { InboundService } from './inbound-call.service';
 })
 export class InboundCallComponent implements OnInit {
   @ViewChild('childModal') public childModal: ModalDirective;
-  private callStatus: string;
+  // private callStatus: string;
 
   private startCallTime: any;
   private endCallTime: any;
-  private hours: any;
   private minutes: any;
   private seconds: any;
 
   private startRecording: boolean;
   private endRecording: boolean;
   private _endCall: boolean;
-  private employeeName: string;
-  private value: any = {};
-  private _disabledV: string = '0';
-  private disabled: boolean = false;
+
+  // private value: any = {};
+  // private _disabledV: string = '0';
+  // private disabled: boolean = false;
 
   private patientDetails: any;
   private patientData: any;
@@ -73,22 +72,27 @@ export class InboundCallComponent implements OnInit {
   private patientAddress: any;
   private loadmetrics: boolean;
 
-  private listOfPatients: any;
   private patientList: any;
-  public data: any;
+  // public data: any;
   private isPatDataLoading: boolean;
+  private addPatients: boolean;
 
   private callStatusData: any;
   public selectedItem: '';
   private callOutComesData: any;
   public selectedOutCome: '';
+  private individualDetails: any;
+
+  public phoneFields: boolean;
+
+  public tab: string = 'callHistory';
 
   form: any = {searchStr: '', searchObjects: [], display: 'none'};
   private showsearchResults: boolean;
 
 
-  public items: Array<string> = ['Seton', 'Providence', 'Daughters of Charity', 'Centro', 'Nazareth',
-  'John Matthew', 'Sean Paul', 'John Paul', 'John Sena', 'Kyle', 'Justin TimberLake', 'Eminem'];
+  // public items: Array<string> = ['Seton', 'Providence', 'Daughters of Charity', 'Centro', 'Nazareth',
+  // 'John Matthew', 'Sean Paul', 'John Paul', 'John Sena', 'Kyle', 'Justin TimberLake', 'Eminem'];
 
   constructor(
     private _InboundService: InboundService
@@ -99,93 +103,20 @@ export class InboundCallComponent implements OnInit {
     this.isPatDataLoading = true;
     this.showsearchResults = false;
     this.loadmetrics = false;
+    this.addPatients = false;
+    this.phoneFields = false;
   }
 
   ngOnInit() {
-    this.employeeName = 'Seton';
-    this.getPatientsList();
+   // this.getPatientsList();
     this.getCallStatus();
     this.getCallOutComes();
   }
-
-  public getPatientData() {
-    this.patientDetails = this._InboundService.getInboundData()
-      .subscribe((response: any) => {
-        this.patientData = response;
-        this.patientName = response.name[0];
-        this.patientTelecom = response.telecom[0];
-        this.patientEmail = response.telecom[1];
-        this.patientAddress = response.address[0];
-        console.log(this.patientData);
-        this.loadmetrics = true;
-      })
+  public getCallHistory() {
+    this.tab = 'callHistory';
   }
-  /** this is all patient data */
-  public getPatientsList() {
-    this.patientList = this._InboundService.getPatientsList()
-      .subscribe((response: any) => {
-          this.data = response;
-          this.isPatDataLoading = false;
-          console.log(this.data);
-      })
-  }
-  public getCallStatus() {
-    this.patientList = this._InboundService.getCallStatus()
-      .subscribe((response: any) => {
-          this.callStatusData = response;
-          if (this.callStatusData.length > 0) {
-              this.selectedItem = this.callStatusData[0]['status'];
-          }
-          console.log(this.callStatusData);
-          console.log(this.selectedItem);
-      })
-  }
-
-  public getCallOutComes() {
-    this.patientList = this._InboundService.getCallOutComes()
-      .subscribe((response: any) => {
-          this.callOutComesData = response;
-          if (this.callOutComesData.length > 0) {
-              this.selectedOutCome = this.callOutComesData[0]['outcome_desc'];
-          }
-          console.log(this.callOutComesData);
-          console.log(this.selectedOutCome);
-      })
-  }
-  public displayResults() {
-    if (this.form.searchStr.length > 0) {
-      this._InboundService.getSearchData(this.form.searchStr)
-      .subscribe(
-        (response: any) => {
-          console.log(this.form.searchStr);
-          this.form.searchObjects = response.filter;
-          this.showsearchResults = true;
-          console.log(this.form.searchObjects);
-          this.form.display = 'block';
-        }
-
-      )
-    } else {
-      this.form.searchObjects = [];
-    }
-  }
-  public loadMetrics() {
-    this.getPatientData();
-  }
-  public showStatus(item: any) {
-    this.selectedItem = item;
-  }
-  public showOutCome(item: any) {
-    this.selectedOutCome = item;
-  }
-  public onSavePatientData() {
-    this.childModal.show();
-  }
-  public saveNotes(): void {
-    this.childModal.show();
-  }
-  public hideChildModal(): void {
-    this.childModal.hide();
+  public showPhoneFields() {
+    this.phoneFields = true;
   }
   public startCall() {
     this.startRecording = true;
@@ -204,30 +135,124 @@ export class InboundCallComponent implements OnInit {
     this.seconds = Math.floor(diff / 1000) % 60;
     this._endCall = true;
   }
+  /** this is all patient data */
+  // public getPatientsList() {
+  //   this.patientList = this._InboundService.getPatientsList()
+  //     .subscribe((response: any) => {
+  //         this.data = response;
+  //         this.isPatDataLoading = false;
+  //         console.log(this.data);
+  //     })
+  // }
+  public getCallStatus() {
+    this.patientList = this._InboundService.getCallStatus()
+      .subscribe((response: any) => {
+          this.callStatusData = response;
+          if (this.callStatusData.length > 0) {
+              this.selectedItem = this.callStatusData[0]['status'];
+          }
+          console.log(this.callStatusData);
+          console.log(this.selectedItem);
+          this.tab = 'callDisposition';
+      })
+  }
+  public getPatientData() {
+    this.patientDetails = this._InboundService.getInboundData()
+      .subscribe((response: any) => {
+        this.patientData = response;
+        this.patientName = response.name[0];
+        this.patientTelecom = response.telecom[0];
+        this.patientEmail = response.telecom[1];
+        this.patientAddress = response.address[0];
+        console.log(this.patientData);
+        this.loadmetrics = true;
+      })
+  }
+  public displayResults() {
+    if (this.form.searchStr.length > 0) {
+      this._InboundService.getSearchData(this.form.searchStr)
+      .subscribe(
+        (response: any) => {
+          console.log(this.form.searchStr);
+          this.form.searchObjects = response.filter;
+          this.showsearchResults = true;
+          console.log(this.form.searchObjects);
+          this.form.display = 'block';
+          this.addPatients = false;
+        }
+      )
+    } else {
+      this.form.searchObjects = [];
+    }
+  }
+  public loadMetrics(lastName: any) {
+    // this.getPatientData();
+    this._InboundService.getSearchData(lastName.toLowerCase())
+    .subscribe(
+      (response: any) => {
+        this.individualDetails = response.filter;
+        const resultArray = this.individualDetails.map(function (obj) {
+          return response.filter[0];
+        })
+        console.log(resultArray);
+      });
+  }
+  public getCallOutComes() {
+    this.patientList = this._InboundService.getCallOutComes()
+      .subscribe((response: any) => {
+          this.callOutComesData = response;
+          if (this.callOutComesData.length > 0) {
+              this.selectedOutCome = this.callOutComesData[0]['outcome_desc'];
+          }
+          console.log(this.callOutComesData);
+          console.log(this.selectedOutCome);
+      })
+  }
+  public addPatientsList() {
+    this.addPatients = true;
+    this.loadmetrics = false;
+    this.form.display = 'none';
+  }
+
+  public showStatus(item: any) {
+    this.selectedItem = item;
+  }
+  public showOutCome(item: any) {
+    this.selectedOutCome = item;
+  }
+  public onSavePatientData() {
+    this.childModal.show();
+  }
+  public saveNotes(): void {
+    this.childModal.show();
+  }
+  public hideChildModal(): void {
+    this.childModal.hide();
+  }
   onWizardComplete(data) {
     alert('oncall loaded!!');
   }
 
-  public removed(value: any): void {
-    console.log('Removed value is: ', value);
-  }
-  public typed(value: any): void {
-    console.log('New search input: ', value);
-  }
-  public refreshValue(value: any): void {
-    this.value = value;
-  }
-  private get disabledV(): string {
-    return this._disabledV;
-  }
+  // public removed(value: any): void {
+  //   console.log('Removed value is: ', value);
+  // }
+  // public typed(value: any): void {
+  //   console.log('New search input: ', value);
+  // }
+  // public refreshValue(value: any): void {
+  //   this.value = value;
+  // }
+  // private get disabledV(): string {
+  //   return this._disabledV;
+  // }
 
-  private set disabledV(value: string) {
-    this._disabledV = value;
-    this.disabled = this._disabledV === '1';
-  }
+  // private set disabledV(value: string) {
+  //   this._disabledV = value;
+  //   this.disabled = this._disabledV === '1';
+  // }
 
-  public selected(value: any): void {
-    console.log('Selected value is: ', value);
-  }
+  // public selected(value: any): void {
+  //   console.log('Selected value is: ', value);
+  // }
 
 }
