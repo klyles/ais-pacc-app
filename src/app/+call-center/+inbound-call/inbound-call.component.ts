@@ -185,11 +185,11 @@ export class InboundCallComponent implements OnInit {
     }
   }
   public loadMetrics(lastName: any) {
-    this._InboundService.getSearchData(lastName.toLowerCase())
+    this._InboundService.getPatientDetail(lastName)
     .subscribe(
       (response: any) => {
         this.loadmetrics = true;
-        this.individualDetails = response.filter[0];
+        this.individualDetails = response;
         // const resultArray = this.individualDetails.map(function (obj) {
         //   return response.filter[0];
         // })

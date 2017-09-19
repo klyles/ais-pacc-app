@@ -35,4 +35,10 @@ export class InboundService extends APIServices {
     console.log(url);
     return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
   }
+  getPatientDetail(param: string) {
+    const url = this.baseUrl + '/Patients/' + param;
+    console.log(param);
+    console.log(url);
+    return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
+  }
 }

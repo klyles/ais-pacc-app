@@ -51,9 +51,6 @@
 											<li data-step="4">
 												<span class="badge">4</span>Step 4<span class="chevron"></span>
 											</li>
-											<li data-step="5">
-												<span class="badge">5</span>Step 5<span class="chevron"></span>
-											</li>
 										</ul>
 									</div>
 									<div class="actions">
@@ -67,8 +64,16 @@
 								</div>
 								<div class="step-content">
 									<form class="form-horizontal">
-										<div class="step-pane active" data-step="1" style="min-height: 254px;">
-											<h3><strong>Step 1 </strong> - Search Patients </h3>
+										<div class="step-pane active" data-step="1" style="min-height: 274px;">
+											<div class="row">
+												<div class="col-md-6">
+													<h3><strong>Step 1 </strong> - Search Patients </h3>
+												</div>
+												<div class="col-md-6 mt-md">
+													<label class="btn btn-primary pull-right" (click)="addPatientsList()"><i class="fa fa-plus"></i> Add New Patient
+													</label>
+												</div>
+											</div>
 											<!-- wizard form starts here -->
 											<!-- [multiple]="true" -->
 											<!-- <ng-select
@@ -82,9 +87,6 @@
 
 											<input type="text" class="form-control" placeholder="search (e.g Firstname)" [(ngModel)]="form.searchStr" (keyup)="displayResults()"
 											 (blur)="showsearchResults = false" name="searchStr">
-											<br>
-											<label class="btn btn-primary pull-right" (click)="addPatientsList()"><i class="fa fa-plus"></i> Add New Patient
-											</label>
 											<br><br>
 											<article class="col-sm-12 no-padding">
 												<div class="table-responsive mt-md" [ngStyle]="{'display': form.display}" *ngIf="form.searchObjects.length > 0">
@@ -103,14 +105,18 @@
 																<th class="text-center">
 																	<mfDefaultSorter by="dob">Birthdate</mfDefaultSorter>
 																</th>
+																<th class="text-center">
+																		<mfDefaultSorter by="gender">Gender</mfDefaultSorter>
+																	</th>
 															</tr>
 														</thead>
 														<tbody>
-															<tr *ngFor="let item of mf.data" (click)="loadMetrics(item.home_phone)">
+															<tr *ngFor="let item of mf.data" (click)="loadMetrics(item.id)">
 																<td><img src="{{item.img_url}}" class="source_img"></td>
 																<td>{{item.first_name}}</td>
 																<td>{{item.last_name}}</td>
-																<td class="text-center">{{item.dob | date:'shortDate'}}</td>
+																<td>{{item.dob | date: 'MM/dd/yyyy'}}</td>
+																<td>{{item.gender}} </td>
 															</tr>
 														</tbody>
 														<tfoot>
@@ -147,34 +153,21 @@
 											<br>
 											<br>
 										</div>
-
+										
 										<div class="step-pane" data-step="4">
-											<h3><strong>Step 4 </strong> - Wizard continued...</h3>
-											<br>
-											<br>
-
-											<h1 class="text-center text-danger"> This will be your Step 4 </h1>
-											<br>
-											<br>
-											<br>
-											<br>
-										</div>
-
-										<div class="step-pane" data-step="5">
-											<h3><strong>Step 5 </strong> - Finished!</h3>
-											<br>
-											<br>
-
-											<h1 class="text-center text-success"><i class="fa fa-check"></i> Congratulations!
+												<h3><strong>Step 4 </strong> - Finished!</h3>
 												<br>
-												<small>Click finish to end wizard</small>
-											</h1>
-											<br>
-											<br>
-											<br>
-											<br>
+												<br>
+	
+												<h1 class="text-center text-success"><i class="fa fa-check"></i> Congratulations!
+													<br>
+													<small>Click finish to end wizard</small>
+												</h1>
+												<br>
+												<br>
+												<br>
+												<br>
 										</div>
-
 									</form>
 								</div>
 							</fuel-ux-wizard>
@@ -243,10 +236,10 @@
 									<label class="col-sm-4 control-label">Preferred Contact:</label>
 									<div class="col-sm-8">
 										<select class="col-sm-12">
-														<option>Phone</option>
-														<option>Email</option>
-														<option>Mail</option>
-												</select>
+											<option>Phone</option>
+											<option>Email</option>
+											<option>Mail</option>
+										</select>
 									</div>
 								</div>
 							</div>
@@ -299,138 +292,136 @@
 					</header>
 					<div class="row">
 						<form class="form-horizontal" #PatientDataForm="ngForm" (ngSubmit)="onSavePatientData()">
-							<div class="col-sm-6 mb-md">
-								<div class="form-group">
-									<label class="col-sm-4 control-label">First Name:</label>
-									<div class="col-sm-8">
-										<input class="form-control" id="focusedInput" type="text" value="{{individualDetails.first_name}}" readonly>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Address 1:</label>
-									<div class="col-sm-8">
-										<div class="input-group">
-											<input class="form-control" id="focusedInput" type="text" placeholder="{{individualDetails.address1}}">
-											<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+									<div class="col-sm-6 padding-10">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">First Name:</label>
+											<div class="col-sm-8">
+												<input class="form-control" id="focusedInput" type="text" value="{{individualDetails.first_name}}" readonly>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Address 1:</label>
+											<div class="col-sm-8">
+												<div class="input-group">
+													<input class="form-control" id="focusedInput" type="text" placeholder="{{individualDetails.address1}}">
+													<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Address 2:</label>
+											<div class="col-sm-8">
+												<div class="input-group">
+													<input class="form-control" id="focusedInput" type="text" placeholder="{{individualDetails.address2}}">
+													<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Gender:</label>
+											<div class="col-sm-8">
+												<input class="form-control" id="focusedInput" type="text" value="{{individualDetails.gender}}" readonly>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Phone Number:</label>
+											<div class="col-sm-8">
+												<div class="input-group">
+													<input class="form-control" type="number" max="10" #phoneNumber="ngModel" id="phoneNumber" [(ngModel)]="form.phoneNumber"
+													name="phoneNumber" placeholder="{{individualDetails.home_phone}}">
+													<span class="input-group-addon pontr_crsr" (click)="showPhoneFields()"><i class="glyphicon glyphicon-plus"></i></span>
+												</div>
+												<div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger animated shake">
+													Please enter phone number
+												</div>
+											</div>
+										</div>
+										<div class="form-group" *ngIf="phoneFields == true">
+											<label class="col-sm-4 control-label">Home Phone:</label>
+											<div class="col-sm-8">
+												<div class="input-group">
+													<input class="form-control" type="number">
+													<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+												</div>
+											</div>
+										</div>
+										<div class="form-group" *ngIf="phoneFields == true">
+											<label class="col-sm-4 control-label">Mobile Phone:</label>
+											<div class="col-sm-8">
+												<div class="input-group">
+													<input class="form-control" type="number">
+													<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+												</div>
+											</div>
+										</div>
+										<div class="form-group" *ngIf="phoneFields == true">
+											<label class="col-sm-4 control-label">Work Phone:</label>
+											<div class="col-sm-8">
+												<div class="input-group">
+													<input class="form-control" type="number">
+													<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Email:</label>
+											<div class="col-sm-8">
+												<div class="input-group">
+													<input class="form-control" type="text" #email="ngModel" id="email" [(ngModel)]="form.email" name="email" placeholder="{{individualDetails.email}}">
+													<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+												</div>
+												<div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger animated shake">
+													Please enter email id
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Preferred Contact:</label>
+											<div class="col-sm-8">
+												<select class="col-sm-12">
+															<option>Phone ({{individualDetails.home_phone}})</option>
+															<option>Email ({{individualDetails.email}}) </option>
+															<option>Mail</option>
+													</select>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Address 2:</label>
-									<div class="col-sm-8">
-										<div class="input-group">
-											<input class="form-control" id="focusedInput" type="text" placeholder="{{individualDetails.address2}}">
-											<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+									<div class="col-sm-6 padding-10">
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Last Name:</label>
+											<div class="col-sm-8">
+												<input class="form-control" id="focusedInput" type="text" value="{{individualDetails.last_name}}" readonly>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Birthdate:</label>
+											<div class="col-sm-8">
+												<input class="form-control" id="focusedInput" type="text" value="{{individualDetails.dob | date: 'MM/dd/yyyy'}}" readonly>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">City/St:</label>
+											<div class="col-sm-8">
+												<div class="input-group">
+													<input class="form-control" id="focusedInput" type="text" placeholder="{{individualDetails.city}}, {{individualDetails.state}}">
+													<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label class="col-sm-4 control-label">Zip:</label>
+											<div class="col-sm-8">
+												<div class="input-group">
+													<input class="form-control" id="focusedInput" type="text" placeholder="{{individualDetails.zip}}">
+													<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+												</div>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Gender:</label>
-									<div class="col-sm-8">
-										<input class="form-control" id="focusedInput" type="text" value="{{individualDetails.gender}}" readonly>
+									<div class="widget">
+											<button type="submit" class="col-md-2 btn btn-primary pull-right">Save</button>
 									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Phone Number:</label>
-									<div class="col-sm-8">
-										<div class="input-group">
-											<input class="form-control" type="number" max="10" #phoneNumber="ngModel" id="phoneNumber" [(ngModel)]="form.phoneNumber"
-											 name="phoneNumber" placeholder="{{individualDetails.home_phone}}">
-											<span class="input-group-addon pontr_crsr" (click)="showPhoneFields()"><i class="glyphicon glyphicon-plus"></i></span>
-										</div>
-										<div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)" class="alert alert-danger animated shake">
-											Please enter phone number
-										</div>
-									</div>
-								</div>
-								<div class="form-group" *ngIf="phoneFields == true">
-									<label class="col-sm-4 control-label">Home Phone:</label>
-									<div class="col-sm-8">
-										<div class="input-group">
-											<input class="form-control" type="number">
-											<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-										</div>
-									</div>
-								</div>
-								<div class="form-group" *ngIf="phoneFields == true">
-									<label class="col-sm-4 control-label">Mobile Phone:</label>
-									<div class="col-sm-8">
-										<div class="input-group">
-											<input class="form-control" type="number">
-											<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-										</div>
-									</div>
-								</div>
-								<div class="form-group" *ngIf="phoneFields == true">
-									<label class="col-sm-4 control-label">Work Phone:</label>
-									<div class="col-sm-8">
-										<div class="input-group">
-											<input class="form-control" type="number">
-											<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Email:</label>
-									<div class="col-sm-8">
-										<div class="input-group">
-											<input class="form-control" type="text" #email="ngModel" id="email" [(ngModel)]="form.email" name="email" placeholder="{{individualDetails.email}}">
-											<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-										</div>
-										<div *ngIf="email.errors && (email.dirty || email.touched)" class="alert alert-danger animated shake">
-											Please enter email id
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Preferred Contact:</label>
-									<div class="col-sm-8">
-										<select class="col-sm-12">
-													<option>Phone ({{individualDetails.home_phone}})</option>
-													<option>Email ({{individualDetails.email}}) </option>
-													<option>Mail</option>
-											</select>
-									</div>
-								</div>
-							</div>
-							<div class="col-sm-6">
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Last Name:</label>
-									<div class="col-sm-8">
-										<input class="form-control" id="focusedInput" type="text" value="{{individualDetails.last_name}}" readonly>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Birthdate:</label>
-									<div class="col-sm-8">
-										<input class="form-control" id="focusedInput" type="text" value="{{individualDetails.dob | date: 'dd/MM/yyyy'}}" readonly>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 control-label">City/St:</label>
-									<div class="col-sm-8">
-										<div class="input-group">
-											<input class="form-control" id="focusedInput" type="text" placeholder="{{individualDetails.city}}, {{individualDetails.state}}">
-											<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="col-sm-4 control-label">Zip:</label>
-									<div class="col-sm-8">
-										<div class="input-group">
-											<input class="form-control" id="focusedInput" type="text" placeholder="{{individualDetails.zip}}">
-											<span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-										</div>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="col-sm-4"></div>
-									<div class="col-sm-8">
-										<button class="btn btn-primary col-sm-12" type="submit"> Save </button>
-									</div>
-								</div>
-							</div>
+								
 						</form>
 					</div>
 				</sa-widget>
@@ -526,6 +517,9 @@
 					</div>
 				</sa-widget>
 			</article>
+
+			
+			
 
 			<article class="col-sm-6">
 				<sa-widget>
