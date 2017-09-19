@@ -24,10 +24,11 @@
    color: #000000;
  }
  .dropdown-menu {
-   top: 15% !important;
+   top: 39% !important;
+   left: 6%;
  }
  .well {
-  margin: 0 0 34px;
+   margin: 0 0 34px;
  }
  .pagination {
    display: block;
@@ -37,8 +38,14 @@
    font-weight: bold;
    font-size: 14px;
  }
+ .widget-footer {
+   min-height: 43px;
+ }
  .pontr_crsr {
    cursor: pointer;
+ }
+ .nav-tabs>li>a {
+  line-height: 1.3599 !important;
  }
  .table th {
   text-transform: uppercase;

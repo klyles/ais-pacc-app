@@ -165,7 +165,6 @@ export class InboundCallComponent implements OnInit {
         this.patientEmail = response.telecom[1];
         this.patientAddress = response.address[0];
         console.log(this.patientData);
-        this.loadmetrics = true;
       })
   }
   public displayResults() {
@@ -186,15 +185,15 @@ export class InboundCallComponent implements OnInit {
     }
   }
   public loadMetrics(lastName: any) {
-    // this.getPatientData();
     this._InboundService.getSearchData(lastName.toLowerCase())
     .subscribe(
       (response: any) => {
-        this.individualDetails = response.filter;
-        const resultArray = this.individualDetails.map(function (obj) {
-          return response.filter[0];
-        })
-        console.log(resultArray);
+        this.loadmetrics = true;
+        this.individualDetails = response.filter[0];
+        // const resultArray = this.individualDetails.map(function (obj) {
+        //   return response.filter[0];
+        // })
+        console.log(this.individualDetails.first_name);
       });
   }
   public getCallOutComes() {
@@ -220,10 +219,10 @@ export class InboundCallComponent implements OnInit {
   public showOutCome(item: any) {
     this.selectedOutCome = item;
   }
-  public onSavePatientData() {
+  public saveNotes() {
     this.childModal.show();
   }
-  public saveNotes(): void {
+  public onSavePatientData() {
     this.childModal.show();
   }
   public hideChildModal(): void {
