@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {fadeInTop} from "../shared/animations/router.animations";
+import {fadeInTop} from '../shared/animations/router.animations';
 
 @Component({
   selector: 'sa-widgets-showcase',
