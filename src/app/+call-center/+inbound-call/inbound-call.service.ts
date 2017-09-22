@@ -8,17 +8,6 @@ import { barChartDemoOptions } from '../../+graphs/+flot-charts/flot-examples';
 @Injectable()
 export class InboundService extends APIServices {
 
-  getInboundData(): Observable<any> {
-    const url = 'https://sb-fhir-dstu2.smarthealthit.org/api/smartdstu2/open/Patient/SMART-1551992';
-    console.log(url);
-    return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
-  }
-  getPatientsList(): Observable<any> {
-    const url = this.baseUrl + '/Patients';
-    console.log(url);
-    return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
-    // return this._http.get('assets/api/json/patientsList.json');
-  }
   getCallStatus(): Observable<any> {
     const url = this.baseUrl + '/call_statuses';
     console.log(url);
@@ -35,4 +24,19 @@ export class InboundService extends APIServices {
     console.log(url);
     return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
   }
+  getPatientDetail(param: string) {
+    const url = this.baseUrl + '/Patients/' + param;
+    console.log(param);
+    console.log(url);
+    return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
+  }
+  postNewPatient(newData: any) {
+    const url = this.baseUrl + '/Patients/create?';
+    console.log(url);
+    console.log(newData);
+    // let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
+    // const headers = new Headers({ 'Content-Type': 'application/json'});
+    // const options = new RequestOptions({headers: headers});
+  return this._http.post(url, newData, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
+   }
 }

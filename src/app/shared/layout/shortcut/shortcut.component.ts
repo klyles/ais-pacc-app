@@ -1,11 +1,11 @@
-import {Subscription} from "rxjs/Rx";
+import {Subscription} from 'rxjs/Rx';
 import {
   Component, OnInit, OnDestroy, ElementRef,
   Renderer, AfterViewInit, AfterContentInit
 } from '@angular/core';
-import { Router} from "@angular/router";
+import { Router} from '@angular/router';
 
-import {LayoutService} from "../layout.service";
+import {LayoutService} from '../layout.service';
 
 import { trigger,
   state,
@@ -32,15 +32,15 @@ import { trigger,
 export class ShortcutComponent implements OnInit, AfterViewInit, AfterContentInit, OnDestroy {
 
 
-  public state:string = 'out';
+  public state: string = 'out';
 
-  private layoutSub:Subscription;
-  private documentSub:any;
+  private layoutSub: Subscription;
+  private documentSub: any;
 
-  constructor(private layoutService:LayoutService,
-              private router:Router,
-              private renderer:Renderer,
-              private el:ElementRef) {
+  constructor(private layoutService: LayoutService,
+              private router: Router,
+              private renderer: Renderer,
+              private el: ElementRef) {
   }
 
   shortcutTo(route) {
@@ -53,7 +53,7 @@ export class ShortcutComponent implements OnInit, AfterViewInit, AfterContentIni
   }
 
   listen() {
-    this.layoutSub = this.layoutService.subscribe((store)=> {
+    this.layoutSub = this.layoutService.subscribe((store) => {
       this.state = store.shortcutOpen ? 'in' : 'out'
 
       if (store.shortcutOpen) {

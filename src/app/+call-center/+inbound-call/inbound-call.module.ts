@@ -1,6 +1,8 @@
 import {NgModule} from '@angular/core';
 
-import {SmartadminModule} from '../../shared/smartadmin.module'
+import {SmartadminModule} from '../../shared/smartadmin.module';
+
+import { FormsModule } from '@angular/forms';
 
 import {InboundCallRoutingModule} from './inbound-call-routing.module';
 import {InboundCallComponent} from './inbound-call.component';
@@ -26,10 +28,15 @@ import { ModalModule, TooltipModule } from 'ngx-bootstrap';
 import { InboundService } from './inbound-call.service';
 import { DataTableModule } from 'angular2-datatable';
 
+import 'bootstrap-daterangepicker';
+
+
+
 
 @NgModule({
   imports: [
     SmartadminModule,
+    FormsModule,
     InboundCallRoutingModule,
     CalendarModule,
     FlotChartModule,
