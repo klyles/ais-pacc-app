@@ -95,7 +95,7 @@
                           </thead>
                           <tbody>
                             <tr *ngFor="let item of mf.data" (click)="loadMetrics(item.id)">
-                              <td><img src="{{item.img_url}}" class="source_img"></td>
+                              <td><img src="{{item.img_url}}" class="source_img" alt="AS"></td>
                               <td>{{item.first_name}}</td>
                               <td>{{item.last_name}}</td>
                               <td>{{item.dob | date: 'MM/dd/yyyy'}}</td>
@@ -494,90 +494,6 @@
           <header>
             <h2> Add New Patient </h2>
           </header>
-          <!-- <div class="row">
-            <form class="form-horizontal">
-              <div class="col-sm-6 mb-md">
-                <div class="form-group">
-                  <label class="col-sm-4 control-label">First Name:</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-4 control-label">Address 1:</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-4 control-label">Address 2:</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-4 control-label">Gender:</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-4 control-label">Phone Number:</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="number">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-4 control-label">Email:</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-4 control-label">Preferred Contact:</label>
-                  <div class="col-sm-8">
-                    <select class="col-sm-12">
-											<option>Phone</option>
-											<option>Email</option>
-											<option>Mail</option>
-										</select>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="form-group">
-                  <label class="col-sm-4 control-label">Last Name:</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-4 control-label">Birthdate:</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-4 control-label">City/St:</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-4 control-label">Zip:</label>
-                  <div class="col-sm-8">
-                    <input class="form-control" type="text">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-4"></div>
-                  <div class="col-sm-8">
-                    <button class="btn btn-primary col-sm-12" type="submit"> Save </button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div> -->
           <div class="row">
             <form class="form-horizontal" #addPatientForm="ngForm" novalidate="novalidate" (ngSubmit)="onAddNewPatient()">
               <div class="col-sm-6 mb-md">
@@ -586,7 +502,7 @@
                   <div class="col-sm-8">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                      <input class="form-control" type="text" #firstname="ngModel" id="firstname" name="firstname" required="required" [(ngModel)]="addPatient.firstname"
+                      <input class="form-control" type="text" #firstname="ngModel" id="firstname" name="firstname" required="required" [(ngModel)]="addPatient.first_name"
                         autofocus>
                     </div>
                   </div>
@@ -596,7 +512,7 @@
                   <div class="col-sm-8">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-                      <input class="form-control" type="text" #middlename="ngModel" id="middlename" name="middlename" [(ngModel)]="addPatient.middlename">
+                      <input class="form-control" type="text" #middlename="ngModel" id="middlename" name="middlename" [(ngModel)]="addPatient.middle_name">
                     </div>
                   </div>
                 </div>
@@ -605,7 +521,7 @@
                   <div class="col-sm-8">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-                      <input class="form-control" type="text" #lastname="ngModel" id="lastname" name="lastname" required="required" [(ngModel)]="addPatient.lastname">
+                      <input class="form-control" type="text" #lastname="ngModel" id="lastname" name="lastname" required="required" [(ngModel)]="addPatient.last_name">
                     </div>
                   </div>
                 </div>
@@ -614,7 +530,8 @@
                   <div class="col-sm-8">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                      <input class="form-control" type="text" name="birthdate" required="required">
+                      <!-- <input class="form-control" type="text" id="birthdate"> -->
+                      <input type="text" class="form-control" name="date" bsDatepicker [(ngModel)]="datepickerModel" />
                     </div>
                   </div>
                 </div>
@@ -638,7 +555,7 @@
                   <div class="col-sm-8">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
-                      <input class="form-control" type="text" #homephone="ngModel" id="homephone" name="homephone" required="required" [(ngModel)]="addPatient.homephone">
+                      <input class="form-control" type="text" #homephone="ngModel" id="homephone" name="homephone" required="required" [(ngModel)]="addPatient.home_phone">
                     </div>
                   </div>
                 </div>
@@ -647,7 +564,7 @@
                   <div class="col-sm-8">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                      <input class="form-control" type="text" #workphone="ngModel" id="workphone" name="workphone" required="required" [(ngModel)]="addPatient.workphone">
+                      <input class="form-control" type="text" #workphone="ngModel" id="workphone" name="workphone" required="required" [(ngModel)]="addPatient.work_phone">
                     </div>
                   </div>
                 </div>
@@ -656,7 +573,7 @@
                   <div class="col-sm-8">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                      <input class="form-control" type="text" #mobilephone="ngModel" id="mobilephone" name="mobilephone" required="required" [(ngModel)]="addPatient.mobilephone">
+                      <input class="form-control" type="text" #mobilephone="ngModel" id="mobilephone" name="mobilephone" required="required" [(ngModel)]="addPatient.mobile_phone">
                     </div>
                   </div>
                 </div>
@@ -727,7 +644,8 @@
                 <div class="form-group">
                   <div class="col-sm-4"></div>
                   <div class="col-sm-8">
-                    <button class="btn btn-primary col-sm-12" type="submit" [disabled]="!addPatientForm.form.valid"> 
+                    <!-- <button class="btn btn-primary col-sm-12" type="submit" [disabled]="!addPatientForm.form.valid">  -->
+                        <button class="btn btn-primary col-sm-12" type="submit"> 
                           <i class="glyphicon glyphicon-floppy-save"></i> Save 
                       </button>
                   </div>

@@ -28,6 +28,8 @@ import { ModalModule, TooltipModule } from 'ngx-bootstrap';
 import { InboundService } from './inbound-call.service';
 import { DataTableModule } from 'angular2-datatable';
 
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 import 'bootstrap-daterangepicker';
 
 
@@ -46,7 +48,8 @@ import 'bootstrap-daterangepicker';
     SelectModule,
     DataTableModule,
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    BsDatepickerModule.forRoot()
   ],
   declarations: [
     InboundCallComponent,
