@@ -31,12 +31,13 @@ export class InboundService extends APIServices {
     return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
   }
   postNewPatient(newData: any) {
-    const url = this.baseUrl + '/Patients/create?';
+    const url = this.baseUrl + '/Patients';
     console.log(url);
     console.log(newData);
-    // let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
-    // const headers = new Headers({ 'Content-Type': 'application/json'});
-    // const options = new RequestOptions({headers: headers});
-  return this._http.post(url, newData, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
+    // const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
+    const headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
+    const options = new RequestOptions({headers: headers});
+    // return this._http.post(url, newData, options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
+    return this._http.post(url, newData, options).map(res => res.json()).subscribe();
    }
 }

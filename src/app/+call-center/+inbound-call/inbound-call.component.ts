@@ -76,11 +76,16 @@ export class InboundCallComponent implements OnInit {
   private _showsearchResults: boolean;
   private _loadmetrics: boolean;
 
+  datepickerModel: Date;
+
   start = moment().subtract(1, 'days');
   end = moment();
-  date: any;
+  date: Date;
   form: any = { $searchStr: '', searchObjects: [], display: 'none' };
+
   addPatient: any = {};
+
+  newData: string;
 
   constructor(
     private _InboundService: InboundService
@@ -97,21 +102,22 @@ export class InboundCallComponent implements OnInit {
     this.getCallStatus();
     this.getCallOutComes();
   }
-  public datePicker() {
-    $(function () {
-      $('input[name="birthdate"]').daterangepicker({
-        singleDatePicker: true,
-        showDropdowns: true,
-        locale: {
-          format: 'MM/DD/YYYY'
-        }
-      },
-        function (start, end, label) {
-          this.date = start.format('MM/DD/YYYY');
-          console.log(this.date);
-        });
-    });
-  }
+  // public datePicker() {
+  //   $(function () {
+  //     $('input[id="birthdate"]').daterangepicker({
+  //       singleDatePicker: true,
+  //       showDropdowns: true,
+  //       startDate: this.start,
+  //       endDate: this.end,
+  //       locale: {
+  //         format: 'MM/DD/YYYY'
+  //       }
+  //     },
+  //       function (start, end, label) {
+  //         this.date = start.format('MM/DD/YYYY');
+  //       });
+  //   });
+  // }
   public startCall() {
     this._startRecording = true;
     const startTime = new Date();
@@ -182,22 +188,25 @@ export class InboundCallComponent implements OnInit {
     this.form.display = 'none',
     this.selectedGender = 'Select Gender',
     this.selectedContactType = 'Select Preferred Contact';
-    this.datePicker();
+    // this.datePicker();
   }
   onAddNewPatient() {
-    let newData = 'first_name=' + this.addPatient['firstname']
-      + '&middle_name=' + this.addPatient['middlename']
-      + '&last_name=' + this.addPatient['lastname']
-      + '&dob=' + this.date
-      + '&gender=' + this.selectedGender
-      + '&home_phone=' + this.addPatient['homephone']
-      + '&work_phone=' + this.addPatient['workphone']
-      + '&mobile_phone=' + this.addPatient['mobilephone']
-      + '&email=' + this.addPatient['email']
-      + '&address1=' + this.addPatient['address1']
-      + '&address2=' + this.addPatient['address2']
-      + '&zip=' + this.addPatient['zip']
-      + '&preferred_contact_method=' + this.selectedContactType
+  const newData =
+    [{'first_name' : this.addPatient['first_name'],
+      'middle_name' :  this.addPatient['middle_name'],
+      'last_name' : this.addPatient['last_name'],
+      'dob': this.datepickerModel,
+      'gender' : this.selectedGender,
+      'home_phone' : this.addPatient['home_phone'],
+      'work_phone' : this.addPatient['work_phone'],
+      'mobile_phone' : this.addPatient['mobile_phone'],
+      'email' : this.addPatient['email'],
+      'address1' : this.addPatient['address1'],
+      'address2' : this.addPatient['address2'],
+      'zip' : this.addPatient['zip'],
+      'preferred_contact_method' : this.selectedContactType,
+    }]
+    // console.log(this.datepickerModel);
     this._InboundService.postNewPatient(newData);
   }
   public showContactType(contactMethod: any) {
