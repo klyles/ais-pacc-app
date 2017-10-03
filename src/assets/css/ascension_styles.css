@@ -21,6 +21,12 @@
  .pagination {
    display: block;
  }
+ .bs-datepicker-head, .bs-datepicker-body table td span.selected {
+   background-color: #1C4399 !important;
+ }
+ .bs-datepicker-body table td.week span {
+    color: #1d4499 !important;
+ }
  .table th a {
    color: #000000;
    font-weight: bold;
@@ -136,6 +142,9 @@
  .mar-md {
   margin: 1em;
  }
+ .mar-sm {
+  margin: 0.5em;
+}
  .fa-2x {
   vertical-align: -15%;
  }
