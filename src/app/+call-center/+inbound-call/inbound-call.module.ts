@@ -32,6 +32,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import 'bootstrap-daterangepicker';
 
+import { LowerCasePipe } from '@angular/common';
+
 
 
 
