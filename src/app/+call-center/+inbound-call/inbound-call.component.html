@@ -63,7 +63,7 @@
                     <input type="text" class="form-control" placeholder="search (e.g Lastname)" [(ngModel)]="form.$searchStr" (keyup)="displayResults()"
                       (blur)="_showsearchResults = false" name="$searchStr">
                     <br><br>
-                    <article class="col-sm-12 no-padding">
+                    <article class="col-sm-12 no-padding" style="margin-top: -3em;">
                       <div class="table-responsive mt-md" [ngStyle]="{'display': form.display}" *ngIf="form.searchObjects.length > 0">
                         <table class="table table-striped table-hover" [mfData]="form.searchObjects" #mf="mfDataTable" [mfRowsOnPage]="10">
                           <thead>
@@ -168,7 +168,6 @@
                     <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-user"></i></span>
                       <input class="form-control" type="text" readonly>
-                      <input *ngIf="individualDetails" class="form-control" type="text" value="{{individualDetails.first_name}}" readonly>
                     </div>
                   </div>
                 </div>

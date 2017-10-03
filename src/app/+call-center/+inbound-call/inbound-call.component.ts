@@ -254,6 +254,8 @@ export class InboundCallComponent implements OnInit {
         'preferred_contact_method': this.selectedContactType
       }
     this._InboundService.putPatientDetails(editData, this._id);
+    this._addPatients = false;
+    this.saveNotes();
     } else {
     const newData = {
       'first_name' : this.first_name,
@@ -273,6 +275,8 @@ export class InboundCallComponent implements OnInit {
       'preferred_contact_method': this.selectedContactType
     }
     this._InboundService.postNewPatient(newData);
+    this._addPatients = false;
+    this.saveNotes();
     }
   }
   public showContactType(contactMethod: any) {
