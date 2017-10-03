@@ -30,14 +30,38 @@ export class InboundService extends APIServices {
     console.log(url);
     return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
   }
+  getStates(): Observable<any> {
+    const url = this.baseUrl + '/States';
+    console.log(url);
+    return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
+  }
+  getCalls(id: number): Observable<any> {
+    const url = this.baseUrl + '/Patients/' + id  + '/calls';
+    console.log(url);
+    return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
+  }
+  postCallsData(callsData: any, id: number) {
+    const url = this.baseUrl + '/Patients/' + id + '/calls';
+    console.log(url);
+    console.log(callsData);
+    const headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
+    const options = new RequestOptions({headers: headers});
+    return this._http.post(url, callsData, options).map(res => res.json()).subscribe();
+  }
   postNewPatient(newData: any) {
     const url = this.baseUrl + '/Patients';
     console.log(url);
     console.log(newData);
-    // const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded'});
     const headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
     const options = new RequestOptions({headers: headers});
-    // return this._http.post(url, newData, options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
     return this._http.post(url, newData, options).map(res => res.json()).subscribe();
-   }
+  }
+  putPatientDetails(editData: any, id: number) {
+    const url = this.baseUrl + '/Patients/' + id;
+    console.log(url);
+    console.log(editData);
+    const headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
+    const options = new RequestOptions({headers: headers});
+    return this._http.put(url, editData, options).map(res => res.json()).subscribe();
+  }
 }
