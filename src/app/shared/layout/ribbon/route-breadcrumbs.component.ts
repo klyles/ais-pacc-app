@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Router, NavigationEnd} from "@angular/router";
+import {ActivatedRoute, Router, NavigationEnd} from '@angular/router';
 
 @Component({
   selector: 'sa-route-breadcrumbs',
@@ -30,13 +30,13 @@ export class RouteBreadcrumbsComponent implements OnInit {
 
   }
 
-  extract(route){
-    let pageTitle = route.data.value['pageTitle'];
-    if(pageTitle && this.items.indexOf(pageTitle) == -1){
+  extract(route) {
+    const pageTitle = route.data.value['pageTitle'];
+    if (pageTitle && this.items.indexOf(pageTitle) === -1) {
       this.items.push(route.data.value['pageTitle'])
     }
-    if(route.children){
-      route.children.forEach(it=>{
+    if (route.children) {
+      route.children.forEach(it => {
         this.extract(it)
       })
     }

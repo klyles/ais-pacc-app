@@ -5,7 +5,7 @@ import {InboundCallComponent} from './inbound-call.component';
 const routes: Routes = [{
   path: '',
   component: InboundCallComponent,
-  data: {pageTitle: 'Inbound Calls'}
+  data: {pageTitle: 'Inbound'}
 }];
 
 @NgModule({

@@ -1,11 +1,11 @@
 import {Component, OnInit, Injectable} from '@angular/core';
 
 import {config} from '../smartadmin.config';
-import {Observable, Subject, Subscription} from "rxjs/Rx";
+import {Observable, Subject, Subscription} from 'rxjs/Rx';
 
 
 import 'rxjs/add/operator/debounceTime';
-import {NotificationService} from "../utils/notification.service";
+import {NotificationService} from '../utils/notification.service';
 
 declare var $:any;
 
@@ -37,12 +37,12 @@ const store = {
 
 @Injectable()
 export class LayoutService {
-  isActivated:boolean;
-  smartSkin:string;
+  isActivated: boolean;
+  smartSkin: string;
 
-  store:any;
+  store: any;
 
-  private subject:Subject<any>;
+  private subject: Subject<any>;
 
   trigger() {
     this.processBody(this.store);
@@ -58,7 +58,7 @@ export class LayoutService {
     this.store = store;
     this.trigger();
 
-    Observable.fromEvent(window, 'resize').debounceTime(100).map(()=>{
+    Observable.fromEvent(window, 'resize').debounceTime(100).map(() => {
       this.trigger()
     }).subscribe()
   }
@@ -74,7 +74,7 @@ export class LayoutService {
 
   onFixedHeader() {
     this.store.fixedHeader = !this.store.fixedHeader;
-    if (this.store.fixedHeader == false) {
+    if (this.store.fixedHeader === false) {
       this.store.fixedRibbon = false;
       this.store.fixedNavigation = false;
     }
@@ -147,8 +147,8 @@ export class LayoutService {
     this.trigger()
   }
 
-  onCollapseMenu(value?){
-    if(typeof value !== 'undefined'){
+  onCollapseMenu(value?) {
+    if (typeof value !== 'undefined') {
       this.store.menuCollapsed = value
     } else {
       this.store.menuCollapsed = !this.store.menuCollapsed;
@@ -158,13 +158,13 @@ export class LayoutService {
   }
 
 
-  onMinifyMenu(){
+  onMinifyMenu() {
     this.store.menuMinified = !this.store.menuMinified;
     this.trigger();
   }
 
-  onShortcutToggle(condition?: any){
-    if(condition == null){
+  onShortcutToggle(condition?: any) {
+    if (condition == null) {
       this.store.shortcutOpen = !this.store.shortcutOpen;
     } else {
       this.store.shortcutOpen = !!condition;
@@ -188,25 +188,25 @@ export class LayoutService {
 
   factoryReset() {
     this.notificationService.smartMessageBox({
-      title: "<i class='fa fa-refresh' style='color:green'></i> Clear Local Storage",
-      content: "Would you like to RESET all your saved widgets and clear LocalStorage?",
+      title: '<i class="fa fa-refresh" style="color:green"></i> Clear Local Storage',
+      content: 'Would you like to RESET all your saved widgets and clear LocalStorage?',
       buttons: '[No][Yes]'
     }, (ButtonPressed) => {
-      if (ButtonPressed == "Yes" && localStorage) {
+      if (ButtonPressed === 'Yes' && localStorage) {
         localStorage.clear();
         location.reload()
       }
     });
   }
 
-
   processBody(state) {
     let $body = $('body');
-    $body.removeClass(state.skins.map((it)=>(it.name)).join(' '));
+    $body.removeClass(state.skins.map((it) => (it.name)).join(' '));
     $body.addClass(state.skin.name);
     $body.addClass('menu-on-top');
     $body.addClass('fixed-page-footer');
-    $("#logo img").attr('src', state.skin.logo);
+    // $body.toggleClass('full')
+    $('#logo img').attr('src', state.skin.logo);
 
     $body.toggleClass('fixed-header', state.fixedHeader);
     $body.toggleClass('fixed-navigation', state.fixedNavigation);
@@ -225,29 +225,29 @@ export class LayoutService {
       $body.removeClass('minified');
     }
 
-    if(state.isMobile){
-      $body.addClass("mobile-detected");
+    if (state.isMobile) {
+      $body.addClass('mobile-detected');
     } else {
-      $body.addClass("desktop-detected");
+      $body.addClass('desktop-detected');
     }
 
     if (state.menuOnTop) $body.removeClass('minified');
 
 
     if (!state.menuOnTop) {
-      $body.toggleClass("hidden-menu-mobile-lock", state.menuCollapsed);
-      $body.toggleClass("hidden-menu", state.menuCollapsed);
-      $body.removeClass("minified");
+      $body.toggleClass('hidden-menu-mobile-lock', state.menuCollapsed);
+      $body.toggleClass('hidden-menu', state.menuCollapsed);
+      $body.removeClass('minified');
     } else if (state.menuOnTop && state.mobileViewActivated) {
-      $body.toggleClass("hidden-menu-mobile-lock", state.menuCollapsed);
-      $body.toggleClass("hidden-menu", state.menuCollapsed);
-      $body.removeClass("minified");
+      $body.toggleClass('hidden-menu-mobile-lock', state.menuCollapsed);
+      $body.toggleClass('hidden-menu', state.menuCollapsed);
+      $body.removeClass('minified');
     }
 
-    if(state.menuMinified && !state.menuOnTop && !state.mobileViewActivated){
-       $body.addClass("minified");
-       $body.removeClass("hidden-menu");
-       $body.removeClass("hidden-menu-mobile-lock");
+    if (state.menuMinified && !state.menuOnTop && !state.mobileViewActivated) {
+       $body.addClass('minified');
+       $body.removeClass('hidden-menu');
+       $body.removeClass('hidden-menu-mobile-lock');
     }
   }
 }
