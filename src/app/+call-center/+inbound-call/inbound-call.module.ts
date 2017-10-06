@@ -31,8 +31,7 @@ import { DataTableModule } from 'angular2-datatable';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import 'bootstrap-daterangepicker';
-
-import { LowerCasePipe } from '@angular/common';
+import { MaskedInput } from '../../shared/forms/input/masked-input.directive';
 
 
 

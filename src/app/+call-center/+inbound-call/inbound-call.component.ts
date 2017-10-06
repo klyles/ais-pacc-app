@@ -3,7 +3,7 @@ import { FadeInTop } from '../../shared/animations/fade-in-top.decorator';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { InboundService } from './inbound-call.service';
 import * as moment from 'moment';
-declare var $: any;
+// declare var $: any;
 
 @FadeInTop()
 @Component({
@@ -50,7 +50,7 @@ export class InboundCallComponent implements OnInit {
   public newData: any;
   public selectedItem: '';
   public selectedOutCome: '';
-
+  public patID: number;
   private last_name: string;
   private first_name: string;
   private middle_name: string;
@@ -66,10 +66,6 @@ export class InboundCallComponent implements OnInit {
   private city: string;
   private state: string;
   private preferred_contact_method: string;
-
-
-  public patID: number;
-
   private _startRecording: boolean;
   private _endRecording: boolean;
   private _endCall: boolean;
@@ -77,6 +73,8 @@ export class InboundCallComponent implements OnInit {
   private _showsearchResults: boolean;
   private _loadmetrics: boolean;
   private callsListLength: boolean;
+
+  phoneNumber: any;
 
   birthdate: Date;
   form: any = { $searchStr: '', searchObjects: [], display: 'none' };
@@ -128,6 +126,13 @@ export class InboundCallComponent implements OnInit {
         this.selectedGender = this.individualDetails['gender'];
         this.birthdate = this.individualDetails['dob'];
         this.patientAge = this.getPatAge(this.individualDetails['dob']);
+        this.phoneNumber = this.individualDetails['home_phone'];
+        if (this.phoneNumber != null) {
+          this.home_phone = this.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+        } else {
+          this.home_phone = this.phoneNumber;
+        }
+        console.log(this.home_phone);
         this.getCalls();
       });
   }
@@ -183,12 +188,12 @@ export class InboundCallComponent implements OnInit {
   public postCalls() {
     this._id = this.patID;
     const postCallData = {
-      'call_start_date_time':  moment(this.$startCallTime).format('MM/DD/YYYY, hh:mm:ss a'),
-      'call_stop_date_time':  moment(this.$endCallTime).format('MM/DD/YYYY, hh:mm:ss a'),
+      'call_start_date_time': moment(this.$startCallTime).format('MM/DD/YYYY, hh:mm:ss a'),
+      'call_stop_date_time': moment(this.$endCallTime).format('MM/DD/YYYY, hh:mm:ss a'),
     }
     console.log(postCallData);
     this._InboundService.postCallsData(postCallData, this._id);
-    this.getCalls();
+    // this.getCalls();
   }
   public addPatientList() {
     this.context = null;
@@ -207,8 +212,8 @@ export class InboundCallComponent implements OnInit {
     this.preferred_contact_method = '';
 
     this.form.display = 'none',
-    this.selectedGender = 'Select Gender',
-    this.selectedContactType = 'Select Preferred Contact';
+      this.selectedGender = 'Select Gender',
+      this.selectedContactType = 'Select Preferred Contact';
     this.selectedState = 'Select State';
     this._addPatients = true;
     this._loadmetrics = false;
@@ -237,9 +242,9 @@ export class InboundCallComponent implements OnInit {
     this._id = this.patID;
     if (this.context != null) {
       const editData = {
-        'last_name': this.last_name,
-        'first_name' : this.first_name,
-        'middle_name' : this.middle_name,
+        'last_name': this.last_name.toUpperCase(),
+        'first_name': this.first_name.toUpperCase(),
+        'middle_name': this.middle_name,
         'dob': moment(this.birthdate).format('MM/DD/YYYY'),
         'gender': this.selectedGender,
         'home_phone': this.home_phone,
@@ -253,37 +258,35 @@ export class InboundCallComponent implements OnInit {
         'state': this.selectedState,
         'preferred_contact_method': this.selectedContactType
       }
-    this._InboundService.putPatientDetails(editData, this._id);
-    this._addPatients = false;
-    this.saveNotes();
+      this._InboundService.putPatientDetails(editData, this._id);
     } else {
-    const newData = {
-      'first_name' : this.first_name,
-      'middle_name' : this.middle_name,
-      'last_name': this.last_name,
-      'dob': moment(this.birthdate).format('MM/DD/YYYY'),
-      'gender': this.selectedGender,
-      'home_phone': this.home_phone,
-      'work_phone': this.work_phone,
-      'mobile_phone': this.mobile_phone,
-      'email': this.email,
-      'address1': this.address1,
-      'address2': this.address2,
-      'zip': this.zip,
-      'city' : this.city,
-      'state': this.selectedState,
-      'preferred_contact_method': this.selectedContactType
+      const newData = {
+        'first_name': this.first_name.toUpperCase(),
+        'middle_name': this.middle_name,
+        'last_name': this.last_name.toUpperCase(),
+        'dob': moment(this.birthdate).format('MM/DD/YYYY'),
+        'gender': this.selectedGender,
+        'home_phone': this.home_phone,
+        'work_phone': this.work_phone,
+        'mobile_phone': this.mobile_phone,
+        'email': this.email,
+        'address1': this.address1,
+        'address2': this.address2,
+        'zip': this.zip,
+        'city': this.city,
+        'state': this.selectedState,
+        'preferred_contact_method': this.selectedContactType
+      }
+      this._InboundService.postNewPatient(newData);
     }
-    this._InboundService.postNewPatient(newData);
     this._addPatients = false;
     this.saveNotes();
-    }
   }
   public showContactType(contactMethod: any) {
     this.selectedContactType = contactMethod;
   }
-  public showGender(popGender: any) {
-    this.selectedGender = popGender;
+  public showGender(gender: any) {
+    this.selectedGender = gender;
   }
   public showStatus(status: any) {
     this.selectedItem = status;

@@ -292,7 +292,7 @@
                   <div class="col-sm-8">
                     <div class="input-group-btn no-padding">
                       <button type="button" class="btn btn-default dropdown-toggle col-md-12" data-toggle="dropdown" [disabled]="true">
-                        {{selectedContactType}} <span class="caret"> </span>
+                         Preferred Contact <span class="caret"> </span>
                       </button>
                     </div>
                   </div>
@@ -376,7 +376,7 @@
                   <div class="col-sm-8">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
-                      <input class="form-control" type="number" value="{{individualDetails.home_phone}}" readonly>
+                      <input class="form-control" type="text" value="{{home_phone}}" readonly>
                     </div>
                   </div>
                 </div>
@@ -544,7 +544,8 @@
                   <div class="col-sm-8">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
-                      <input class="form-control" type="text" id="homephone" name="homephone" required="required" [(ngModel)]="home_phone">
+                      <input class="form-control" type="tel" id="homephone" name="homephone" required="required" 
+                      data-smart-masked-input="(999) 999-9999" [(ngModel)]="home_phone">
                     </div>
                   </div>
                 </div>
