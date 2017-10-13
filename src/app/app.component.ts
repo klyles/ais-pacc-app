@@ -28,7 +28,7 @@ export class AppComponent {
     public appState: AppState, private router: Router
   ) {
     /**
-    * Implementing localStorage to set previous Url based on router NavigationStart and NavigationEnd events;
+    * Implementing localStorage to set previous Url, based on router NavigationStart and NavigationEnd events;
     * (e) is the parameter in the below snippet;
     * [0] and [1] are the properties for router events;
     */
