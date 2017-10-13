@@ -113,6 +113,8 @@ export class InboundCallComponent implements OnInit {
     this.$minutes = Math.floor(diff / 60000);
     this.$seconds = Math.floor(diff / 1000) % 60;
     this._endCall = true;
+    this.postCalls();
+    this.reloadTimeOut()
   }
   public loadMetrics($id: any) {
     this._InboundService.getPatientDetail($id)
@@ -132,6 +134,7 @@ export class InboundCallComponent implements OnInit {
         } else {
           this.home_phone = this.phoneNumber;
         }
+        this._addPatients = false;
         console.log(this.home_phone);
         this.getCalls();
       });
@@ -153,7 +156,7 @@ export class InboundCallComponent implements OnInit {
           this.form.searchObjects = response.filter;
           this._showsearchResults = true;
           this.form.display = 'block';
-          this._addPatients = false;
+         // this._addPatients = false;
         }
         )
     } else {
@@ -193,7 +196,7 @@ export class InboundCallComponent implements OnInit {
     }
     console.log(postCallData);
     this._InboundService.postCallsData(postCallData, this._id);
-    // this.getCalls();
+    this.callBackTimeOut();
   }
   public addPatientList() {
     this.context = null;
@@ -212,8 +215,8 @@ export class InboundCallComponent implements OnInit {
     this.preferred_contact_method = '';
 
     this.form.display = 'none',
-      this.selectedGender = 'Select Gender',
-      this.selectedContactType = 'Select Preferred Contact';
+    this.selectedGender = 'Select Gender',
+    this.selectedContactType = 'Select Preferred Contact';
     this.selectedState = 'Select State';
     this._addPatients = true;
     this._loadmetrics = false;
@@ -258,7 +261,7 @@ export class InboundCallComponent implements OnInit {
         'state': this.selectedState,
         'preferred_contact_method': this.selectedContactType
       }
-      this._InboundService.putPatientDetails(editData, this._id);
+      this._InboundService.putPatientDetails(editData, this._id)
     } else {
       const newData = {
         'first_name': this.first_name.toUpperCase(),
@@ -280,7 +283,9 @@ export class InboundCallComponent implements OnInit {
       this._InboundService.postNewPatient(newData);
     }
     this._addPatients = false;
+    this.displayResults();
     this.saveNotes();
+    this.loadMetrics(this.patID);
   }
   public showContactType(contactMethod: any) {
     this.selectedContactType = contactMethod;
@@ -306,6 +311,12 @@ export class InboundCallComponent implements OnInit {
   public getPatAge(d: any) {
     const age = moment().diff(d, 'years');
     return age;
+  }
+  public callBackTimeOut() {
+    setTimeout(() => this.getCalls(), 1000);
+  }
+  public reloadTimeOut() {
+    setTimeout(() => window.location.reload(), 5000)
   }
   onWizardComplete(data) {
     alert('oncall loaded!!');
