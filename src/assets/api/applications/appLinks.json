@@ -1,0 +1,32 @@
+{
+    "applications": [
+        {
+            "name": "REDCap",
+            "link": "https://redcap.seton.org/redcap/index.php"
+        },
+        {
+            "name": "Compass",
+            "link": "http://compass.seton.org/Citrix/ProdWeb/"
+        },
+        {
+            "name": "OptiLink",
+            "link": "http://intranet.seton.org/v2/optilink/application-logon-links/"
+        },
+        {
+            "name": "MAP/ CUC sliding scale verification",
+            "link": "https://www.medicaider.com/medicaid/manager/login.asp?Section=TCHD"
+        },
+        {
+            "name": "Medicaid check",
+            "link": "http://www.tmhp.com/pages/default.aspx"
+        },
+        {
+            "name": "Navicure",
+            "link": "https://www.meddatahealth.com/Navicure/default.aspx"
+        },
+        {
+            "name": "NextGen (CUC schedule and EMR)",
+            "link": "https://citrix.communitycaretx.org/vpn/index.html"
+        }
+    ]
+}
