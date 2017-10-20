@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 
 import {LayoutService} from '../layout.service';
 
-declare var $:any;
+declare var $: any;
 
 @Component({
   selector: 'sa-minify-menu',

@@ -1,40 +1,40 @@
-import {Directive, ElementRef, OnInit, Input} from '@angular/core';
+import { Directive, ElementRef, OnInit, Input } from '@angular/core';
 
-declare var $:any;
+declare var $: any;
 
 @Directive({
   selector: '[saUiDatepicker]'
 })
 export class UiDatepickerDirective implements OnInit {
 
-  @Input() saUiDatepicker:any;
+  @Input() saUiDatepicker: any;
 
-  constructor(private el:ElementRef) {
+  constructor(private el: ElementRef) {
   }
 
   ngOnInit() {
-    let onSelectCallbacks = [];
-    let saUiDatepicker = this.saUiDatepicker || {};
-    let element = $(this.el.nativeElement);
+    const onSelectCallbacks = [];
+    const saUiDatepicker = this.saUiDatepicker || {};
+    const element = $(this.el.nativeElement);
 
     if (saUiDatepicker.minRestrict) {
-      onSelectCallbacks.push((selectedDate)=> {
+      onSelectCallbacks.push((selectedDate) => {
         $(saUiDatepicker.minRestrict).datepicker('option', 'minDate', selectedDate);
       });
     }
     if (saUiDatepicker.maxRestrict) {
-      onSelectCallbacks.push((selectedDate)=> {
+      onSelectCallbacks.push((selectedDate) => {
         $(saUiDatepicker.maxRestrict).datepicker('option', 'maxDate', selectedDate);
       });
     }
 
-    //Let others know about changes to the data field
+    // Let others know about changes to the data field
     onSelectCallbacks.push((selectedDate) => {
-      element.triggerHandler("change");
+      element.triggerHandler('change');
 
-      let form = element.closest('form');
+      const form = element.closest('form');
 
-      if (typeof form.bootstrapValidator == 'function') {
+      if (typeof form.bootstrapValidator === 'function') {
         try {
           form.bootstrapValidator('revalidateField', element);
         } catch (e) {
@@ -43,11 +43,11 @@ export class UiDatepickerDirective implements OnInit {
       }
     });
 
-    let options = $.extend(saUiDatepicker, {
+    const options = $.extend(saUiDatepicker, {
       prevText: '<i class="fa fa-chevron-left"></i>',
       nextText: '<i class="fa fa-chevron-right"></i>',
-      onSelect: (selectedDate) =>{
-        onSelectCallbacks.forEach((callback) =>{
+      onSelect: (selectedDate) => {
+        onSelectCallbacks.forEach((callback) => {
           callback.call(callback, selectedDate)
         })
       }

@@ -1,4 +1,4 @@
-import {Directive, Input, HostListener} from '@angular/core';
+import { Directive, Input, HostListener } from '@angular/core';
 
 declare var $: any;
 
@@ -8,11 +8,11 @@ declare var $: any;
 export class SummernoteDetachDirective {
 
   @Input() summernoteDetach: any;
-  @HostListener('click') render(){
+  @HostListener('click') render() {
     $(this.summernoteDetach).summernote('destroy');
   }
 
-  constructor() {  }
+  constructor() { }
 }
 
 

@@ -1,6 +1,6 @@
 export const presets = {
   line: {
-    dataset:{
+    dataset: {
       pointBorderColor: '#fff',
       pointRadius: 4,
       borderColor: 'rgba(0,0,0,0.15)',
@@ -18,7 +18,7 @@ export const presets = {
         display: false
       },
       scales: {
-        gridLines:{
+        gridLines: {
           color: 'rgba(192,192,192,0.1)'
         },
         xAxes: [{
@@ -42,19 +42,17 @@ export const presets = {
       }
     }
   },
-  
-  
+
   radar: {
-    dataset:{},
+    dataset: {},
     options:   {
       legend: {
         display: false
       },
-      
       scale: {
         reverse: false,
         lineWidth: 0,
-        gridLines:{
+        gridLines: {
           color: 'rgba(192,192,192,0.1)'
         },
         ticks: {
@@ -63,20 +61,19 @@ export const presets = {
       }
     }
   },
-  
-  
+
   polarArea: {
-    dataset:{},
+    dataset: {},
     options: {
       responsive: true,
       legend: {
         display: false
       },
       title: {
-        display: false        
+        display: false
       },
       scale: {
-        gridLines:{
+        gridLines: {
           color: 'rgba(192,192,192,0.1)'
         },
         ticks: {
@@ -84,24 +81,23 @@ export const presets = {
         },
         reverse: false
       },
-      animateRotate:false
+      animateRotate: false
     }
   },
-  
-  
-  bar:{
-    dataset:{
+
+  bar: {
+    dataset: {
       borderWifth: 2
     },
-    options:{
+    options: {
       scales: {
         xAxes: [{
-          gridLines:{
+          gridLines: {
             color: 'rgba(192,192,192,0.1)'
           }
         }],
         yAxes: [{
-          gridLines:{
+          gridLines: {
             color: 'rgba(192,192,192,0.1)'
           }
         }]
@@ -112,19 +108,18 @@ export const presets = {
       responsive: true
     }
   },
-  
-  
+
   doughnut: {
-    dataset:{},
+    dataset: {},
     options:  {
       scales: {
         xAxes: [{
-          gridLines:{
+          gridLines: {
             color: 'rgba(192,192,192,0.1)'
           }
         }],
         yAxes: [{
-          gridLines:{
+          gridLines: {
             color: 'rgba(192,192,192,0.1)'
           }
         }]
@@ -135,18 +130,18 @@ export const presets = {
       }
     }
   },
-    
+
   pie: {
-    dataset:{},
+    dataset: {},
     options:  {
       scales: {
         xAxes: [{
-          gridLines:{
+          gridLines: {
             color: 'rgba(192,192,192,0.1)'
           }
         }],
         yAxes: [{
-          gridLines:{
+          gridLines: {
             color: 'rgba(192,192,192,0.1)'
           }
         }]

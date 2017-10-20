@@ -107,10 +107,9 @@
                   </div>
                   <div class="step-pane" data-step="2">
                     <h3><strong>Step 2 </strong> - Applications</h3>
-
-                    <div *ngFor='let app of applications' class="step2 text-center">
-                      <a href="{{app.link}}" target="_blank"> {{app.name}} </a>
-                    </div>
+                      <div *ngFor='let app of applications' class="step2 text-center col-md-4">
+                        <a href="{{app.link}}" target="_blank"> {{app.name}} </a>
+                      </div>
                   </div>
 
                   <div class="step-pane" data-step="3">

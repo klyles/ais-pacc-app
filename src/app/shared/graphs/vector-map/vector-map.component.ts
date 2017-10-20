@@ -2,7 +2,7 @@ import {
   Component, Input, ElementRef, AfterContentInit, OnDestroy,
   ChangeDetectionStrategy, ViewEncapsulation, OnInit
 } from '@angular/core';
-import {WORLD_MILL} from "./world-mill";
+import { WORLD_MILL } from './world-mill';
 
 import 'jquery-mousewheel/jquery.mousewheel.js';
 import 'jvectormap/jquery-jvectormap.min.js';
@@ -28,42 +28,43 @@ export class VectorMapComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // System.import('jvectormap/jquery-jvectormap.min.js').then(()=>{
 
-     this.render()
+    this.render()
     // })
 
   }
 
 
-  render(){
+  render() {
     const data = Object.assign({}, this.data);
     $('.vector-map-pane', this.el.nativeElement).vectorMap({
       map: 'world_mill',
       backgroundColor: 'white',
       zoomOnScroll: false,
       series: {
-       regions: [{
+        regions: [{
           values: data,
           scale: ['#C8EEFF', '#0071A4'],
           normalizeFunction: 'polynomial'
         }]
       },
-      onRegionTipShow: (e, el, code)=>{
-        el.html(el.html()+' (GDP - '+data[code]+')');
+      onRegionTipShow: (e, el, code) => {
+        el.html(el.html() + ' (GDP - ' + data[code] + ')');
         e.preventDefault()
       },
 
-      onRegionOver: (e)=>{e.preventDefault()},
-      onRegionOut: (e)=>{e.preventDefault()},
-      onRegionClick: (e)=>{e.preventDefault()},
-      onRegionSelected: (e)=>{e.preventDefault()},
-      onMarkerTipShow: (e)=>{e.preventDefault()},
-      onMarkerOver: (e)=>{e.preventDefault()},
-      onMarkerOut: (e)=>{e.preventDefault()},
-      onMarkerClick: (e)=>{e.preventDefault()},
-      onMarkerSelected: (e)=>{e.preventDefault()},
-      onViewportChange: (e)=>{
-          console.log(e)
-        e.preventDefault()}
+      onRegionOver: (e) => { e.preventDefault() },
+      onRegionOut: (e) => { e.preventDefault() },
+      onRegionClick: (e) => { e.preventDefault() },
+      onRegionSelected: (e) => { e.preventDefault() },
+      onMarkerTipShow: (e) => { e.preventDefault() },
+      onMarkerOver: (e) => { e.preventDefault() },
+      onMarkerOut: (e) => { e.preventDefault() },
+      onMarkerClick: (e) => { e.preventDefault() },
+      onMarkerSelected: (e) => { e.preventDefault() },
+      onViewportChange: (e) => {
+        console.log(e)
+        e.preventDefault()
+      }
     });
 
 
@@ -78,8 +79,8 @@ export class VectorMapComponent implements OnInit, OnDestroy {
   }
 
 
-  ngOnDestroy(){
-    let mapObject =  $('.vector-map-pane', this.el.nativeElement).vectorMap('get', 'mapObject');
+  ngOnDestroy() {
+    const mapObject = $('.vector-map-pane', this.el.nativeElement).vectorMap('get', 'mapObject');
 
     mapObject && mapObject.remove()
   }

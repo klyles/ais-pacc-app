@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Select2Directive} from "./select2.directive";
+import {Select2Directive} from './select2.directive';
 
 
 @NgModule({

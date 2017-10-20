@@ -1,4 +1,4 @@
-import {Directive, Input, ElementRef} from '@angular/core';
+import { Directive, Input, ElementRef } from '@angular/core';
 
 declare var $: any;
 
@@ -10,12 +10,12 @@ export class KnobDirective {
 
   @Input() saKnob: any;
   constructor(private el: ElementRef) {
-    System.import('jquery-knob').then(()=>{
+    System.import('jquery-knob').then(() => {
       this.render()
     })
   }
 
-  render(){
+  render() {
     $(this.el.nativeElement).knob(this.saKnob || {})
   }
 

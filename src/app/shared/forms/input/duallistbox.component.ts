@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ElementRef, HostListener, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, ElementRef, HostListener, Output, EventEmitter } from '@angular/core';
 
 declare var $: any;
 
@@ -24,18 +24,18 @@ export class DuallistboxComponent implements OnInit {
   @Input() moveOnSelect: boolean = false;
   @Input() size: number = 10;
 
-  @HostListener('click') onClick(){
-    let selected = this.element.find('.smart-duallistbox').val() || [];
+  @HostListener('click') onClick() {
+    const selected = this.element.find('.smart-duallistbox').val() || [];
 
     if (
-      selected.some(it=>this.selected.indexOf(it) == -1)
+      selected.some(it => this.selected.indexOf(it) === -1)
       ||
-      this.selected.some(it=>selected.indexOf(it) == -1)
-    ){
+      this.selected.some(it => selected.indexOf(it) === -1)
+    ) {
       this.selected = selected;
 
-      this.items.forEach((item)=>{
-        if(this.selected.indexOf(item.key) > -1){
+      this.items.forEach((item) => {
+        if (this.selected.indexOf(item.key) > -1) {
           item.selected = true
         } else {
           delete item.selected
@@ -55,16 +55,16 @@ export class DuallistboxComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.selected = this.items.filter((item)=>item.selected).map(item=>item.key);
-    System.import('script-loader!bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.min.js').then(()=>{
+    this.selected = this.items.filter((item) => item.selected).map(item => item.key);
+    System.import('script-loader!bootstrap-duallistbox/dist/jquery.bootstrap-duallistbox.min.js').then(() => {
       this.render()
     })
   }
 
 
-  render(){
+  render() {
 
-    let options = {
+    const options = {
       nonSelectedFilter: this.nonSelectedFilter,
       nonSelectedListLabel: this.nonSelectedListLabel,
       selectedListLabel: this.selectedListLabel,

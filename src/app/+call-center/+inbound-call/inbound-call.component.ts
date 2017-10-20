@@ -12,7 +12,6 @@ import * as moment from 'moment';
   templateUrl: './inbound-call.component.html',
   styles: [`
     .step2 {
-      margin: 0.5em;
       border: 1px solid #fff;
       padding: 0.5em;
       background-color: #739e73;
@@ -104,14 +103,6 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     this.getCallOutComes();
     this.getStates();
     this.getApps();
-    this.getSingleSignOn();
-  }
-  getSingleSignOn() {
-    this._InboundService.singleSignOn()
-    .subscribe(
-    (response: any) => {
-      console.log('single signon');
-    });
   }
   ngOnDestroy() {
     console.clear();

@@ -1,11 +1,11 @@
-import {Directive, ElementRef, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, Output, EventEmitter } from '@angular/core';
 
 declare var $: any;
 
 @Directive({
   selector: '[summernote]'
 })
-export class SummernoteDirective implements OnInit{
+export class SummernoteDirective implements OnInit {
 
   @Input() summernote = {};
   @Output() change = new EventEmitter()
@@ -14,21 +14,21 @@ export class SummernoteDirective implements OnInit{
 
   }
 
-  ngOnInit(){
-    System.import('script-loader!summernote/dist/summernote.min.js').then(()=>{
+  ngOnInit() {
+    System.import('script-loader!summernote/dist/summernote.min.js').then(() => {
       this.render()
     })
   }
 
-  render(){
-      $(this.el.nativeElement).summernote(Object.assign(this.summernote, {
-        tabsize : 2,
-        callbacks: {
-          onChange: (we, contents, $editable) => {
-            this.change.emit(contents)
-          }
+  render() {
+    $(this.el.nativeElement).summernote(Object.assign(this.summernote, {
+      tabsize: 2,
+      callbacks: {
+        onChange: (we, contents, $editable) => {
+          this.change.emit(contents)
         }
-      }))
+      }
+    }))
 
   }
 

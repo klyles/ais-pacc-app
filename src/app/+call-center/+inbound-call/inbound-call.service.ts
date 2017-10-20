@@ -7,13 +7,6 @@ import { barChartDemoOptions } from '../../+graphs/+flot-charts/flot-examples';
 
 @Injectable()
 export class InboundService extends APIServices {
-
-  singleSignOn(): Observable<any> {
-    const url = 'https://ciccrm.ascension.org/api/ahwivrtxpla001.ds.sjhs.com/icws/connection/single-sign-on/response';
-    console.log(url);
-    return this._http.get(url, this.options).map((response: any) => {return response.json(); }).catch(this.handleError.bind(this));
-  }
-
   getCallStatus(): Observable<any> {
     const url = this.baseUrl + '/call_statuses';
     console.log(url);

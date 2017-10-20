@@ -23,14 +23,14 @@ import {Component, OnInit, ElementRef, Input, AfterViewInit, ViewChild} from '@a
 
 export class DygraphComponent implements AfterViewInit, OnInit {
 
-  @Input() options:any = {};
-  @Input() data:any = {};
-  @Input() width:string = '100%';
-  @Input() height:string = '300px';
+  @Input() options: any = {};
+  @Input() data: any = {};
+  @Input() width: string = '100%';
+  @Input() height: string = '300px';
 
   @ViewChild('legend') legend: ElementRef;
 
-  constructor(private el:ElementRef) {
+  constructor(private el: ElementRef) {
   }
 
   ngOnInit() {
@@ -38,7 +38,7 @@ export class DygraphComponent implements AfterViewInit, OnInit {
 
   ngAfterViewInit() {
     // to improve latency for big components smartadmin app we are loading dependency async
-    System.import('dygraphs/dist/dygraph.js').then((Dygraph)=> {
+    System.import('dygraphs/dist/dygraph.js').then((Dygraph) => {
       new Dygraph(this.el.nativeElement.children[0], this.data, Object.assign(this.options, {
         labelsDiv: this.legend.nativeElement
       }))

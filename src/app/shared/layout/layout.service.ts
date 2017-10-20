@@ -1,13 +1,13 @@
-import {Component, OnInit, Injectable} from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 
-import {config} from '../smartadmin.config';
-import {Observable, Subject, Subscription} from 'rxjs/Rx';
+import { config } from '../smartadmin.config';
+import { Observable, Subject, Subscription } from 'rxjs/Rx';
 
 
 import 'rxjs/add/operator/debounceTime';
-import {NotificationService} from '../utils/notification.service';
+import { NotificationService } from '../utils/notification.service';
 
-declare var $:any;
+declare var $: any;
 
 
 const store = {
@@ -16,17 +16,17 @@ const store = {
     return _skin.name == (localStorage.getItem('sm-skin') || config.smartSkin)
   }),
   skins: config.skins,
- fixedHeader: localStorage.getItem('sm-fixed-header') == 'true',
- fixedNavigation: localStorage.getItem('sm-fixed-navigation') == 'true',
- fixedRibbon: localStorage.getItem('sm-fixed-ribbon') == 'true',
- fixedPageFooter: localStorage.getItem('sm-fixed-page-footer') == 'true',
+  fixedHeader: localStorage.getItem('sm-fixed-header') == 'true',
+  fixedNavigation: localStorage.getItem('sm-fixed-navigation') == 'true',
+  fixedRibbon: localStorage.getItem('sm-fixed-ribbon') == 'true',
+  fixedPageFooter: localStorage.getItem('sm-fixed-page-footer') == 'true',
   insideContainer: localStorage.getItem('sm-inside-container') == 'true',
   rtl: localStorage.getItem('sm-rtl') == 'true',
- menuOnTop: localStorage.getItem('sm-menu-on-top') == 'true',
+  menuOnTop: localStorage.getItem('sm-menu-on-top') == 'true',
   colorblindFriendly: localStorage.getItem('sm-colorblind-friendly') == 'true',
 
   shortcutOpen: false,
-  isMobile: 	(/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase())),
+  isMobile: (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase())),
   device: '',
 
   mobileViewActivated: false,
@@ -245,9 +245,9 @@ export class LayoutService {
     }
 
     if (state.menuMinified && !state.menuOnTop && !state.mobileViewActivated) {
-       $body.addClass('minified');
-       $body.removeClass('hidden-menu');
-       $body.removeClass('hidden-menu-mobile-lock');
+      $body.addClass('minified');
+      $body.removeClass('hidden-menu');
+      $body.removeClass('hidden-menu-mobile-lock');
     }
   }
 }

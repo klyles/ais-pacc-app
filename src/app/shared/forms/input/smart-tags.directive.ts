@@ -1,22 +1,22 @@
-import {Directive, ElementRef, OnInit} from '@angular/core';
+import { Directive, ElementRef, OnInit } from '@angular/core';
 
 declare var $: any;
 
 @Directive({
   selector: '[smartTags]'
 })
-export class SmartTagsDirective implements OnInit{
+export class SmartTagsDirective implements OnInit {
 
-  constructor(private el : ElementRef) { }
+  constructor(private el: ElementRef) { }
 
-  ngOnInit(){
-    System.import('script-loader!bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js').then(()=>{
+  ngOnInit() {
+    System.import('script-loader!bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js').then(() => {
       this.render()
     })
   }
 
 
-  render(){
+  render() {
     $(this.el.nativeElement).tagsinput();
   }
 
