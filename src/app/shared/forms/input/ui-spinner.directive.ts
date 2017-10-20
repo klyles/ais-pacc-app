@@ -1,4 +1,4 @@
-import {Directive, OnInit, ElementRef, Input} from '@angular/core';
+import { Directive, OnInit, ElementRef, Input } from '@angular/core';
 
 declare var $: any;
 
@@ -10,26 +10,26 @@ export class UiSpinner implements OnInit {
   @Input() saUiSpinner: any;
   constructor(private el: ElementRef) { }
 
-  ngOnInit(){
+  ngOnInit() {
     let options;
-    
-    if(this.saUiSpinner == 'decimal'){
+
+    if (this.saUiSpinner === 'decimal') {
       options = {
         step: 0.01,
-        numberFormat: "n"
+        numberFormat: 'n'
       };
-    } else if (this.saUiSpinner == 'currency') {
+    } else if (this.saUiSpinner === 'currency') {
       options = {
         min: 5,
         max: 2500,
         step: 25,
         start: 1000,
-        numberFormat: "C"
+        numberFormat: 'C'
       };
     }
 
-    $(this.el.nativeElement).spinner((options || this.saUiSpinner) || {} );
-    
+    $(this.el.nativeElement).spinner((options || this.saUiSpinner) || {});
+
   }
 
 }

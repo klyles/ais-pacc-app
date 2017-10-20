@@ -1,5 +1,5 @@
-import {Component, OnInit, OnDestroy, ContentChild, Input} from '@angular/core';
-import {NgRedux} from "@angular-redux/store";
+import { Component, OnInit, OnDestroy, ContentChild, Input } from '@angular/core';
+import { NgRedux } from '@angular-redux/store';
 
 @Component({
   selector: 'jcrop-preview',
@@ -14,11 +14,11 @@ import {NgRedux} from "@angular-redux/store";
     </div>
   `,
   styles: [`
-  .jcrop-preview-container{          
+  .jcrop-preview-container{
       position: relative;
   }
   .jcrop-preview-container.active{
-      box-shadow: 0 0 1px rgba(111,111,111, .7);       
+      box-shadow: 0 0 1px rgba(111,111,111, .7);
   }
   .jcrop-preview{
       top: 50%;
@@ -52,7 +52,7 @@ export class JcropPreviewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    let self = this;
+    const self = this;
 
     this.optionsSub = this.ngRedux
       .select([this.storeId, 'options'])
@@ -67,7 +67,7 @@ export class JcropPreviewComponent implements OnInit, OnDestroy {
 
 
     this.cropSub = this.ngRedux.select([this.storeId, 'crop', 'change'])
-      .subscribe((crop: any)=> {
+      .subscribe((crop: any) => {
         if (crop && self.active) {
           self.crop = crop
         }
@@ -82,13 +82,13 @@ export class JcropPreviewComponent implements OnInit, OnDestroy {
 
   setContainerStyles(): any {
 
-    let options = this.options;
-    let crop = this.crop;
+    const options = this.options;
+    const crop = this.crop;
     if (crop && crop.w > 0) {
-      let size = options.thumbnailSize;
+      const size = options.thumbnailSize;
 
-      let width = crop.h <= crop.w ? size : crop.w / crop.h * size;
-      let height = crop.h > crop.w ? size : crop.h / crop.w * size;
+      const width = crop.h <= crop.w ? size : crop.w / crop.h * size;
+      const height = crop.h > crop.w ? size : crop.h / crop.w * size;
 
       return {
         width: Math.round(width) + 'px',
@@ -100,17 +100,17 @@ export class JcropPreviewComponent implements OnInit, OnDestroy {
   }
 
   setImgStyles(): any {
-    let crop = this.crop;
-    let options = this.options;
+    const crop = this.crop;
+    const options = this.options;
 
     if (crop && crop.w > 0) {
-      var rx = options.width / crop.w;
-      var ry = options.height / crop.h;
+      const rx = options.width / crop.w;
+      const ry = options.height / crop.h;
 
-      let size = options.thumbnailSize;
+      const size = options.thumbnailSize;
 
-      let width = crop.h <= crop.w ? size : crop.w / crop.h * size;
-      let height = crop.h > crop.w ? size : crop.h / crop.w * size;
+      const width = crop.h <= crop.w ? size : crop.w / crop.h * size;
+      const height = crop.h > crop.w ? size : crop.h / crop.w * size;
 
       return {
         width: Math.round(rx * width) + 'px',

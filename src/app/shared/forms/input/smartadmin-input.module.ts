@@ -15,8 +15,8 @@ import {SmartSliderDirective} from './smart-slider.directive'
 import {SmartTagsDirective} from './smart-tags.directive'
 import {SmartTimepickerDirective} from './smart-timepicker.directive'
 import {SmartClockpickerDirective} from './smart-clockpicker.directive'
-import {Select2Module} from "./select2/select2.module";
-import {OnOffSwitchModule} from "./on-off-switch/on-off-switch.module";
+import {Select2Module} from './select2/select2.module';
+import {OnOffSwitchModule} from './on-off-switch/on-off-switch.module';
 import {UiValidateDirective} from './ui-validate.directive';
 
 @NgModule({

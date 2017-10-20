@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ModalDirective} from "ngx-bootstrap";
-import {NotificationService} from "../../shared/utils/notification.service";
-import {FadeInTop} from "../../shared/animations/fade-in-top.decorator";
+import {ModalDirective} from 'ngx-bootstrap';
+import {NotificationService} from '../../shared/utils/notification.service';
+import {FadeInTop} from '../../shared/animations/fade-in-top.decorator';
 
 
 
@@ -36,7 +36,9 @@ export class GeneralElementsComponent implements OnInit {
         slides: [
           {
             title: 'Title 1',
-            text: 'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.',
+            text: 'Cras justo odio, dapibus ac facilisis in, egestas eget quam.' +
+            'Donec id elit non mi porta gravida at eget metus. Nullam id dolor id' +
+            'nibh ultricies vehicula ut id elit.',
             src: 'assets/img/demo/m3.jpg',
           },
           {
@@ -84,11 +86,11 @@ export class GeneralElementsComponent implements OnInit {
 
   @ViewChild('lgModal') public lgModal:ModalDirective;
 
-  public showChildModal():void {
+  public showChildModal(): void {
     this.lgModal.show();
   }
 
-  public hideChildModal():void {
+  public hideChildModal(): void {
     this.lgModal.hide();
   }
 
@@ -96,12 +98,12 @@ export class GeneralElementsComponent implements OnInit {
   notificationExample1() {
 
     this.notificationService.bigBox({
-      title: "Big Information box",
-      content: "This message will dissapear in 6 seconds!",
-      color: "#C46A69",
+      title: 'Big Information box',
+      content: 'This message will dissapear in 6 seconds!',
+      color: '#C46A69',
       //timeout: 6000,
-      icon: "fa fa-warning shake animated",
-      number: "1",
+      icon: 'fa fa-warning shake animated',
+      number: '1',
       timeout: 6000
     });
   }

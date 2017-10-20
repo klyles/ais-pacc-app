@@ -1,13 +1,13 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {CropActions} from "../actions/crop.actions";
-import {NgRedux} from "@angular-redux/store";
-import {Observable} from "rxjs";
+import { Component, OnInit, Input } from '@angular/core';
+import { CropActions } from '../actions/crop.actions';
+import { NgRedux } from '@angular-redux/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'jcrop-field',
   template: `
     <div>
-        <input type="number" id="{{id}}"                                              
+        <input type="number" id="{{id}}"
                #input
                [value]="value$ | async"
                (change)="actions.cropFieldChange(field, input.value, storeId)"/>
@@ -21,7 +21,7 @@ export class FieldComponent implements OnInit {
 
   value$: Observable<any>
 
-  public id:string;
+  public id: string;
 
   @Input() field: string;
   @Input() storeId: string;

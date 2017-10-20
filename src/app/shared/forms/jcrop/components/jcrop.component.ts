@@ -1,10 +1,10 @@
-import {Component, OnInit, Input, OnDestroy, ViewChild} from '@angular/core';
-import {CropActions} from "../actions/crop.actions";
-import {NgRedux} from "@angular-redux/store";
+import { Component, OnInit, Input, OnDestroy, ViewChild } from '@angular/core';
+import { CropActions } from '../actions/crop.actions';
+import { NgRedux } from '@angular-redux/store';
 
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/skipWhile';
-import {OptionsActions} from "../actions/options.actions";
+import { OptionsActions } from '../actions/options.actions';
 
 
 require('jquery-jcrop/js/jquery.Jcrop.min.js');
@@ -47,13 +47,13 @@ export class JcropComponent implements OnInit, OnDestroy {
   private isActive: boolean = false;
 
   constructor(private ngRedux: NgRedux<any>,
-              private cropActions: CropActions,
-              private optionsActions: OptionsActions,) {
+    private cropActions: CropActions,
+    private optionsActions: OptionsActions, ) {
   }
 
   ngOnInit() {
 
-    let self = this;
+    const self = this;
 
 
     this.optionsSub = this.ngRedux.select([this.storeId, 'options'])
@@ -61,8 +61,8 @@ export class JcropComponent implements OnInit, OnDestroy {
       .subscribe((options: any) => {
         if (!this.api) return;
 
-        let updates = Object.keys(options).reduce((_updates, key)=> {
-          if (this.lastOptions[key] != options[key]) {
+        const updates = Object.keys(options).reduce((_updates, key) => {
+          if (this.lastOptions[key] !== options[key]) {
             _updates[key] = options[key]
           }
           return _updates
@@ -90,12 +90,12 @@ export class JcropComponent implements OnInit, OnDestroy {
 
     this.cropSub = this.ngRedux.select([this.storeId, 'crop', 'selection']).skipWhile(() => {
       return self.isMoving
-    }).subscribe((crop: any)=> {
+    }).subscribe((crop: any) => {
       if (!self.api) return;
 
-      let options = self.ngRedux.getState()[self.storeId].options;
+      const options = self.ngRedux.getState()[self.storeId].options;
 
-      let lc = self.lastCrop;
+      const lc = self.lastCrop;
 
 
       if (
@@ -105,10 +105,10 @@ export class JcropComponent implements OnInit, OnDestroy {
         crop.x2 &&
         crop.y2 && !self.isMoving &&
         (
-          lc.x != crop.x ||
-          lc.y != crop.y ||
-          lc.x2 != crop.x2 ||
-          lc.y2 != crop.y2
+          lc.x !== crop.x ||
+          lc.y !== crop.y ||
+          lc.x2 !== crop.x2 ||
+          lc.y2 !== crop.y2
         )
       ) {
         self.lastCrop = Object.assign({}, crop);
@@ -144,14 +144,14 @@ export class JcropComponent implements OnInit, OnDestroy {
 
 
 
-      let initializingOptions = Object.assign({}, {
+      const initializingOptions = Object.assign({}, {
         width: self.width,
         height: self.height,
         src: self.src,
       }, self.options || {})
 
 
-      if(initializingOptions.setSelect){
+      if (initializingOptions.setSelect) {
         self.cropActions.cropSelect(initializingOptions.setSelect, self.storeId)
       } else {
         self.cropActions.cropRandomSelection(self.storeId)
@@ -165,18 +165,18 @@ export class JcropComponent implements OnInit, OnDestroy {
     });
   }
 
-  onChange = (crop)=> {
+  onChange = (crop) => {
     this.cropActions.cropChange(
       crop, this.storeId
     )
   };
 
-  onSelect = (crop)=> {
+  onSelect = (crop) => {
     this.cropActions.cropSelect(
       crop, this.storeId
     )
   };
-  onRelease = (crop)=> {
+  onRelease = (crop) => {
     this.isActive = false;
   };
 

@@ -1,4 +1,4 @@
-import {Directive, Input, ElementRef} from '@angular/core';
+import { Directive, Input, ElementRef } from '@angular/core';
 
 
 declare var Dropzone: any;
@@ -8,12 +8,12 @@ declare var Dropzone: any;
 })
 export class DropzoneDirective {
 
-  @Input() saDropzone:any;
+  @Input() saDropzone: any;
 
-  private dropzone:any;
+  private dropzone: any;
 
-  constructor(private el:ElementRef) {
-    System.import('dropzone').then((Dropzone)=> {
+  constructor(private el: ElementRef) {
+    System.import('dropzone').then((Dropzone) => {
       this.initDropzone(Dropzone)
     })
   }

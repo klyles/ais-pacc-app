@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'on-off-switch',
@@ -6,12 +6,12 @@ import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 })
 export class OnOffSwitchComponent implements OnInit {
 
-  @Input() title:string;
+  @Input() title: string;
 
-  @Input() model:boolean;
+  @Input() model: boolean;
   @Output() modelChange = new EventEmitter();
 
-  @Input() value:any;
+  @Input() value: any;
 
   public widgetId;
 

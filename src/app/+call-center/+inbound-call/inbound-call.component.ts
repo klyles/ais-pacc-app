@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs/Rx';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FadeInTop } from '../../shared/animations/fade-in-top.decorator';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { InboundService } from './inbound-call.service';
@@ -10,21 +11,24 @@ import * as moment from 'moment';
   selector: 'app-inbound-call',
   templateUrl: './inbound-call.component.html',
   styles: [`
-    .step2 li {
-      margin: 0.5em;
+    .step2 {
       border: 1px solid #fff;
       padding: 0.5em;
       background-color: #739e73;
       border-radius: 5px;
       color: #fff;
+      display: block;
     }
     li {
       list-style: none;
-
+    }
+    .step2 a {
+      color: #fff;
+      font-weight: 700;
     }
   `]
 })
-export class InboundCallComponent implements OnInit {
+export class InboundCallComponent implements OnInit, OnDestroy {
   @ViewChild('childModal') public childModal: ModalDirective;
   // private callStatus: string;
 
@@ -73,6 +77,8 @@ export class InboundCallComponent implements OnInit {
   private _showsearchResults: boolean;
   private _loadmetrics: boolean;
   private callsListLength: boolean;
+  private applications: any;
+  private appLinks: any;
 
   phoneNumber: any;
 
@@ -96,6 +102,11 @@ export class InboundCallComponent implements OnInit {
     this.getCallStatus();
     this.getCallOutComes();
     this.getStates();
+    this.getApps();
+  }
+  ngOnDestroy() {
+    console.clear();
+    console.log('On Destroy');
   }
   public startCall() {
     this._startRecording = true;
@@ -162,6 +173,13 @@ export class InboundCallComponent implements OnInit {
     } else {
       this.form.searchObjects = [];
     }
+  }
+  public getApps() {
+    this.appLinks = this._InboundService.getApps()
+      .subscribe((response: any) => {
+        this.applications = response.applications;
+        console.log(this.applications);
+      })
   }
   public getCallOutComes() {
     this.patientList = this._InboundService.getCallOutComes()

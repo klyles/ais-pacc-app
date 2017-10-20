@@ -1,17 +1,17 @@
-import {Directive, OnInit, ElementRef} from '@angular/core';
+import { Directive, OnInit, ElementRef } from '@angular/core';
 
 import 'script-loader!smartadmin-plugins/bower_components/relayfoods-jquery.sparkline/dist/jquery.sparkline.min.js'
 
-declare var $:any;
+declare var $: any;
 
 @Directive({
   selector: '[saSparklineContainer]'
 })
 export class SparklineContainer implements OnInit {
 
-  container:any;
+  container: any;
 
-  constructor(private el:ElementRef) {
+  constructor(private el: ElementRef) {
     this.container = this.el.nativeElement;
   }
 
@@ -19,13 +19,14 @@ export class SparklineContainer implements OnInit {
     this.drawSparklines();
   }
 
-  barChart($el:any) {
-    let barColor = $el.data('sparkline-bar-color') || $el.css('color') || '#0000f0';
-    let sparklineHeight = $el.data('sparkline-height') || '26px';
-    let sparklineBarWidth = $el.data('sparkline-barwidth') || 5;
-    let sparklineBarSpacing = $el.data('sparkline-barspacing') || 2;
-    let sparklineNegBarColor = $el.data('sparkline-negbar-color') || '#A90329';
-    let sparklineStackedColor = $el.data('sparkline-barstacked-color') || ["#A90329", "#0099c6", "#98AA56", "#da532c", "#4490B1", "#6E9461", "#990099", "#B4CAD3"];
+  barChart($el: any) {
+    const barColor = $el.data('sparkline-bar-color') || $el.css('color') || '#0000f0';
+    const sparklineHeight = $el.data('sparkline-height') || '26px';
+    const sparklineBarWidth = $el.data('sparkline-barwidth') || 5;
+    const sparklineBarSpacing = $el.data('sparkline-barspacing') || 2;
+    const sparklineNegBarColor = $el.data('sparkline-negbar-color') || '#A90329';
+    const sparklineStackedColor = $el.data('sparkline-barstacked-color') ||
+      ['#A90329', '#0099c6', '#98AA56', '#da532c', '#4490B1', '#6E9461', '#990099', '#B4CAD3'];
 
     $el.sparkline('html', {
       barColor: barColor,
@@ -40,27 +41,27 @@ export class SparklineContainer implements OnInit {
     });
   }
 
-  lineChart($el:any) {
+  lineChart($el: any) {
 
-    let sparklineHeight = $el.data('sparkline-height') || '20px';
-    let sparklineWidth = $el.data('sparkline-width') || '90px';
-    let thisLineColor = $el.data('sparkline-line-color') || $el.css('color') || '#0000f0';
-    let thisLineWidth = $el.data('sparkline-line-width') || 1;
-    let thisFill = $el.data('fill-color') || '#c0d0f0';
-    let thisSpotColor = $el.data('sparkline-spot-color') || '#f08000';
-    let thisMinSpotColor = $el.data('sparkline-minspot-color') || '#ed1c24';
-    let thisMaxSpotColor = $el.data('sparkline-maxspot-color') || '#f08000';
-    let thishighlightSpotColor = $el.data('sparkline-highlightspot-color') || '#50f050';
-    let thisHighlightLineColor = $el.data('sparkline-highlightline-color') || 'f02020';
-    let thisSpotRadius = $el.data('sparkline-spotradius') || 1.5;
-    let thisChartMinYRange = $el.data('sparkline-min-y');
-    let thisChartMaxYRange = $el.data('sparkline-max-y');
-    let thisChartMinXRange = $el.data('sparkline-min-x');
-    let thisChartMaxXRange = $el.data('sparkline-max-x');
-    let thisMinNormValue = $el.data('min-val');
-    let thisMaxNormValue = $el.data('max-val');
-    let thisNormColor = $el.data('norm-color') || '#c0c0c0';
-    let thisDrawNormalOnTop = $el.data('draw-normal') || false;
+    const sparklineHeight = $el.data('sparkline-height') || '20px';
+    const sparklineWidth = $el.data('sparkline-width') || '90px';
+    const thisLineColor = $el.data('sparkline-line-color') || $el.css('color') || '#0000f0';
+    const thisLineWidth = $el.data('sparkline-line-width') || 1;
+    const thisFill = $el.data('fill-color') || '#c0d0f0';
+    const thisSpotColor = $el.data('sparkline-spot-color') || '#f08000';
+    const thisMinSpotColor = $el.data('sparkline-minspot-color') || '#ed1c24';
+    const thisMaxSpotColor = $el.data('sparkline-maxspot-color') || '#f08000';
+    const thishighlightSpotColor = $el.data('sparkline-highlightspot-color') || '#50f050';
+    const thisHighlightLineColor = $el.data('sparkline-highlightline-color') || 'f02020';
+    const thisSpotRadius = $el.data('sparkline-spotradius') || 1.5;
+    const thisChartMinYRange = $el.data('sparkline-min-y');
+    const thisChartMaxYRange = $el.data('sparkline-max-y');
+    const thisChartMinXRange = $el.data('sparkline-min-x');
+    const thisChartMaxXRange = $el.data('sparkline-max-x');
+    const thisMinNormValue = $el.data('min-val');
+    const thisMaxNormValue = $el.data('max-val');
+    const thisNormColor = $el.data('norm-color') || '#c0c0c0';
+    const thisDrawNormalOnTop = $el.data('draw-normal') || false;
 
     $el.sparkline('html', {
       type: 'line',
@@ -89,10 +90,11 @@ export class SparklineContainer implements OnInit {
   }
 
   pieChart($el) {
-    let pieColors = $el.data('sparkline-piecolor') || ["#B4CAD3", "#4490B1", "#98AA56", "#da532c", "#6E9461", "#0099c6", "#990099", "#717D8A"];
-    let pieWidthHeight = $el.data('sparkline-piesize') || 90;
-    let pieBorderColor = $el.data('border-color') || '#45494C';
-    let pieOffset = $el.data('sparkline-offset') || 0;
+    const pieColors = $el.data('sparkline-piecolor')
+      || ['#B4CAD3', '#4490B1', '#98AA56', '#da532c', '#6E9461', '#0099c6', '#990099', '#717D8A'];
+    const pieWidthHeight = $el.data('sparkline-piesize') || 90;
+    const pieBorderColor = $el.data('border-color') || '#45494C';
+    const pieOffset = $el.data('sparkline-offset') || 0;
 
     $el.sparkline('html', {
       type: 'pie',
@@ -108,22 +110,22 @@ export class SparklineContainer implements OnInit {
   }
 
   boxChart($el) {
-    let thisBoxWidth = $el.data('sparkline-width') || 'auto';
-    let thisBoxHeight = $el.data('sparkline-height') || 'auto';
-    let thisBoxRaw = $el.data('sparkline-boxraw');
-    let thisBoxTarget = $el.data('sparkline-targetval');
-    let thisBoxMin = $el.data('sparkline-min');
-    let thisBoxMax = $el.data('sparkline-max');
-    let thisShowOutlier = $el.data('sparkline-showoutlier') || true;
-    let thisIQR = $el.data('sparkline-outlier-iqr') || 1.5;
-    let thisBoxSpotRadius = $el.data('sparkline-spotradius') || 1.5;
-    let thisBoxLineColor = $el.css('color') || '#000000';
-    let thisBoxFillColor = $el.data('fill-color') || '#c0d0f0';
-    let thisBoxWhisColor = $el.data('sparkline-whis-color') || '#000000';
-    let thisBoxOutlineColor = $el.data('sparkline-outline-color') || '#303030';
-    let thisBoxOutlineFill = $el.data('sparkline-outlinefill-color') || '#f0f0f0';
-    let thisBoxMedianColor = $el.data('sparkline-outlinemedian-color') || '#f00000';
-    let thisBoxTargetColor = $el.data('sparkline-outlinetarget-color') || '#40a020';
+    const thisBoxWidth = $el.data('sparkline-width') || 'auto';
+    const thisBoxHeight = $el.data('sparkline-height') || 'auto';
+    const thisBoxRaw = $el.data('sparkline-boxraw');
+    const thisBoxTarget = $el.data('sparkline-targetval');
+    const thisBoxMin = $el.data('sparkline-min');
+    const thisBoxMax = $el.data('sparkline-max');
+    const thisShowOutlier = $el.data('sparkline-showoutlier') || true;
+    const thisIQR = $el.data('sparkline-outlier-iqr') || 1.5;
+    const thisBoxSpotRadius = $el.data('sparkline-spotradius') || 1.5;
+    const thisBoxLineColor = $el.css('color') || '#000000';
+    const thisBoxFillColor = $el.data('fill-color') || '#c0d0f0';
+    const thisBoxWhisColor = $el.data('sparkline-whis-color') || '#000000';
+    const thisBoxOutlineColor = $el.data('sparkline-outline-color') || '#303030';
+    const thisBoxOutlineFill = $el.data('sparkline-outlinefill-color') || '#f0f0f0';
+    const thisBoxMedianColor = $el.data('sparkline-outlinemedian-color') || '#f00000';
+    const thisBoxTargetColor = $el.data('sparkline-outlinetarget-color') || '#40a020';
 
     $el.sparkline('html', {
       type: 'box',
@@ -149,11 +151,11 @@ export class SparklineContainer implements OnInit {
   }
 
   bulletChart($el) {
-    let thisBulletHeight = $el.data('sparkline-height') || 'auto';
-    let thisBulletWidth = $el.data('sparkline-width') || 2;
-    let thisBulletColor = $el.data('sparkline-bullet-color') || '#ed1c24';
-    let thisBulletPerformanceColor = $el.data('sparkline-performance-color') || '#3030f0';
-    let thisBulletRangeColors = $el.data('sparkline-bulletrange-color') || ["#d3dafe", "#a8b6ff", "#7f94ff"];
+    const thisBulletHeight = $el.data('sparkline-height') || 'auto';
+    const thisBulletWidth = $el.data('sparkline-width') || 2;
+    const thisBulletColor = $el.data('sparkline-bullet-color') || '#ed1c24';
+    const thisBulletPerformanceColor = $el.data('sparkline-performance-color') || '#3030f0';
+    const thisBulletRangeColors = $el.data('sparkline-bulletrange-color') || ['#d3dafe', '#a8b6ff', '#7f94ff'];
 
     $el.sparkline('html', {
 
@@ -169,12 +171,12 @@ export class SparklineContainer implements OnInit {
   }
 
   discreteChart($el) {
-    let thisDiscreteHeight = $el.data('sparkline-height') || 26;
-    let thisDiscreteWidth = $el.data('sparkline-width') || 50;
-    let thisDiscreteLineColor = $el.css('color');
-    let thisDiscreteLineHeight = $el.data('sparkline-line-height') || 5;
-    let thisDiscreteThrushold = $el.data('sparkline-threshold');
-    let thisDiscreteThrusholdColor = $el.data('sparkline-threshold-color') || '#ed1c24';
+    const thisDiscreteHeight = $el.data('sparkline-height') || 26;
+    const thisDiscreteWidth = $el.data('sparkline-width') || 50;
+    const thisDiscreteLineColor = $el.css('color');
+    const thisDiscreteLineHeight = $el.data('sparkline-line-height') || 5;
+    const thisDiscreteThrushold = $el.data('sparkline-threshold');
+    const thisDiscreteThrusholdColor = $el.data('sparkline-threshold-color') || '#ed1c24';
 
     $el.sparkline('html', {
       type: 'discrete',
@@ -189,13 +191,13 @@ export class SparklineContainer implements OnInit {
   }
 
   tristaneChart($el) {
-    let thisTristateHeight = $el.data('sparkline-height') || 26;
-    let thisTristatePosBarColor = $el.data('sparkline-posbar-color') || '#60f060';
-    let thisTristateNegBarColor = $el.data('sparkline-negbar-color') || '#f04040';
-    let thisTristateZeroBarColor = $el.data('sparkline-zerobar-color') || '#909090';
-    let thisTristateBarWidth = $el.data('sparkline-barwidth') || 5;
-    let thisTristateBarSpacing = $el.data('sparkline-barspacing') || 2;
-    let thisZeroAxis = $el.data('sparkline-zeroaxis');
+    const thisTristateHeight = $el.data('sparkline-height') || 26;
+    const thisTristatePosBarColor = $el.data('sparkline-posbar-color') || '#60f060';
+    const thisTristateNegBarColor = $el.data('sparkline-negbar-color') || '#f04040';
+    const thisTristateZeroBarColor = $el.data('sparkline-zerobar-color') || '#909090';
+    const thisTristateBarWidth = $el.data('sparkline-barwidth') || 5;
+    const thisTristateBarSpacing = $el.data('sparkline-barspacing') || 2;
+    const thisZeroAxis = $el.data('sparkline-zeroaxis');
 
     $el.sparkline('html', {
       type: 'tristate',
@@ -211,12 +213,12 @@ export class SparklineContainer implements OnInit {
   }
 
   compositeBarChart($el) {
-   let sparklineHeight = $el.data('sparkline-height') || '20px';
-    let sparklineWidth = $el.data('sparkline-width') || '100%';
-    let sparklineBarWidth = $el.data('sparkline-barwidth') || 3;
-    let thisLineWidth = $el.data('sparkline-line-width') || 1;
-    let thisLineColor = $el.data('sparkline-color-top') || '#ed1c24';
-    let thisBarColor = $el.data('sparkline-color-bottom') || '#333333';
+    const sparklineHeight = $el.data('sparkline-height') || '20px';
+    const sparklineWidth = $el.data('sparkline-width') || '100%';
+    const sparklineBarWidth = $el.data('sparkline-barwidth') || 3;
+    const thisLineWidth = $el.data('sparkline-line-width') || 1;
+    const thisLineColor = $el.data('sparkline-color-top') || '#ed1c24';
+    const thisBarColor = $el.data('sparkline-color-bottom') || '#333333';
 
     $el.sparkline($el.data('sparkline-bar-val'), {
       type: 'bar',
@@ -225,7 +227,7 @@ export class SparklineContainer implements OnInit {
       barColor: thisBarColor,
       barWidth: sparklineBarWidth,
       tooltipContainer: this.container
-      //barSpacing: 5
+      // barSpacing: 5
     });
 
     $el.sparkline($el.data('sparkline-line-val'), {
@@ -243,28 +245,28 @@ export class SparklineContainer implements OnInit {
 
     // @todo webpack gets stuck on chunk optimization if uncomment defaults
 
-    let sparklineHeight = $el.data('sparkline-height') // || '20px';
-    let sparklineWidth = $el.data('sparkline-width')  // || '90px';
-    let sparklineValue = $el.data('sparkline-bar-val');
-    let sparklineValueSpots1 = $el.data('sparkline-bar-val-spots-top');
-    let sparklineValueSpots2 = $el.data('sparkline-bar-val-spots-bottom');
-    let thisLineWidth1 = $el.data('sparkline-line-width-top') //  || 1;
-    let thisLineWidth2 = $el.data('sparkline-line-width-bottom')  // || 1;
-    let thisLineColor1 = $el.data('sparkline-color-top') //  || '#333333';
-    let thisLineColor2 = $el.data('sparkline-color-bottom') //  || '#ed1c24';
-    let thisSpotRadius1 = $el.data('sparkline-spotradius-top')  // || 1.5;
-    let thisSpotRadius2 = $el.data('sparkline-spotradius-bottom')  // || thisSpotRadius1;
-    let thisSpotColor = $el.data('sparkline-spot-color')  // || '#f08000';
-    let thisMinSpotColor1 = $el.data('sparkline-minspot-color-top')  // || '#ed1c24';
-    let thisMaxSpotColor1 = $el.data('sparkline-maxspot-color-top') //  || '#f08000';
-    let thisMinSpotColor2 = $el.data('sparkline-minspot-color-bottom')  // || thisMinSpotColor1;
-    let thisMaxSpotColor2 = $el.data('sparkline-maxspot-color-bottom') //  || thisMaxSpotColor1;
-    let thishighlightSpotColor1 = $el.data('sparkline-highlightspot-color-top') //  || '#50f050';
-    let thisHighlightLineColor1 = $el.data('sparkline-highlightline-color-top')  // || '#f02020';
-    let thishighlightSpotColor2 = $el.data('sparkline-highlightspot-color-bottom')  // || thishighlightSpotColor1;
-    let thisHighlightLineColor2 = $el.data('sparkline-highlightline-color-bottom')  // || thisHighlightLineColor1;
-    let thisFillColor1 = $el.data('sparkline-fillcolor-top')  // || 'transparent';
-    let thisFillColor2 = $el.data('sparkline-fillcolor-bottom')  // || 'transparent';
+    const sparklineHeight = $el.data('sparkline-height') // || '20px';
+    const sparklineWidth = $el.data('sparkline-width')  // || '90px';
+    const sparklineValue = $el.data('sparkline-bar-val');
+    const sparklineValueSpots1 = $el.data('sparkline-bar-val-spots-top');
+    const sparklineValueSpots2 = $el.data('sparkline-bar-val-spots-bottom');
+    const thisLineWidth1 = $el.data('sparkline-line-width-top') //  || 1;
+    const thisLineWidth2 = $el.data('sparkline-line-width-bottom')  // || 1;
+    const thisLineColor1 = $el.data('sparkline-color-top') //  || '#333333';
+    const thisLineColor2 = $el.data('sparkline-color-bottom') //  || '#ed1c24';
+    const thisSpotRadius1 = $el.data('sparkline-spotradius-top')  // || 1.5;
+    const thisSpotRadius2 = $el.data('sparkline-spotradius-bottom')  // || thisSpotRadius1;
+    const thisSpotColor = $el.data('sparkline-spot-color')  // || '#f08000';
+    const thisMinSpotColor1 = $el.data('sparkline-minspot-color-top')  // || '#ed1c24';
+    const thisMaxSpotColor1 = $el.data('sparkline-maxspot-color-top') //  || '#f08000';
+    const thisMinSpotColor2 = $el.data('sparkline-minspot-color-bottom')  // || thisMinSpotColor1;
+    const thisMaxSpotColor2 = $el.data('sparkline-maxspot-color-bottom') //  || thisMaxSpotColor1;
+    const thishighlightSpotColor1 = $el.data('sparkline-highlightspot-color-top') //  || '#50f050';
+    const thisHighlightLineColor1 = $el.data('sparkline-highlightline-color-top')  // || '#f02020';
+    const thishighlightSpotColor2 = $el.data('sparkline-highlightspot-color-bottom')  // || thishighlightSpotColor1;
+    const thisHighlightLineColor2 = $el.data('sparkline-highlightline-color-bottom')  // || thisHighlightLineColor1;
+    const thisFillColor1 = $el.data('sparkline-fillcolor-top')  // || 'transparent';
+    const thisFillColor2 = $el.data('sparkline-fillcolor-bottom')  // || 'transparent';
 
     $el.sparkline(sparklineValue, {
 
@@ -315,42 +317,42 @@ export class SparklineContainer implements OnInit {
 
   drawSparklines() {
     $('.sparkline:not(:has(>canvas))', this.container).each((i, el) => {
-      let $el = $(el),
+      const $el = $(el),
         sparklineType = $el.data('sparkline-type') || 'bar';
 
-      if (sparklineType == 'bar') {
+      if (sparklineType === 'bar') {
         this.barChart($el)
       }
 
-      if (sparklineType == 'line') {
+      if (sparklineType === 'line') {
         this.lineChart($el)
       }
 
-      if (sparklineType == 'pie') {
+      if (sparklineType === 'pie') {
         this.pieChart($el)
       }
 
-      if (sparklineType == 'box') {
+      if (sparklineType === 'box') {
         this.boxChart($el)
       }
 
-      if (sparklineType == 'bullet') {
+      if (sparklineType === 'bullet') {
         this.bulletChart($el)
       }
 
-      if (sparklineType == 'discrete') {
+      if (sparklineType === 'discrete') {
         this.discreteChart($el)
       }
 
-      if (sparklineType == 'tristate') {
+      if (sparklineType === 'tristate') {
         this.tristaneChart($el)
       }
 
-      if (sparklineType == 'compositebar') {
+      if (sparklineType === 'compositebar') {
         this.compositeBarChart($el)
       }
 
-      if (sparklineType == 'compositeline') {
+      if (sparklineType === 'compositeline') {
         this.compositeLineChart($el)
       }
 

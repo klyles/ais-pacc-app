@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {HighchartTable} from "./highchart-table.directive";
+import {HighchartTable} from './highchart-table.directive';
 
 @NgModule({
   imports: [

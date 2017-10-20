@@ -1,10 +1,10 @@
 
-import {ModuleWithProviders} from "@angular/core"
-import {RouterModule, Routes} from "@angular/router";
-import {WidgetsShowcaseComponent} from "./widgets-showcase.component";
+import {ModuleWithProviders} from '@angular/core'
+import {RouterModule, Routes} from '@angular/router';
+import {WidgetsShowcaseComponent} from './widgets-showcase.component';
 
 
-export const routes:Routes = [
+export const routes: Routes = [
 
   {
     path: '',

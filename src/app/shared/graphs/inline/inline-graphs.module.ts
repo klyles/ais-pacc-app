@@ -1,6 +1,6 @@
 
-import {NgModule} from "@angular/core";
-import {CommonModule} from "@angular/common";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 import { EasyPieChartContainer } from './easy-pie-chart-container.directive'
 import { SparklineContainer } from './sparkline-container.directive'
@@ -11,4 +11,4 @@ import { SparklineContainer } from './sparkline-container.directive'
   exports: [EasyPieChartContainer, SparklineContainer],
 
 })
-export class InlineGraphsModule{}
+export class InlineGraphsModule {}

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  
+
   selector: 'sa-file-input',
   template: `
     <div class="input input-file">
@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileInputComponent implements OnInit {
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
   }

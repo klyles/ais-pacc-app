@@ -3,7 +3,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {config} from '../smartadmin.config';
 
 import {LayoutService} from './layout.service'
-import {Subscription} from "rxjs/Rx";
+import {Subscription} from 'rxjs/Rx';
 
 declare var $: any;
 
@@ -12,21 +12,21 @@ declare var $: any;
   templateUrl: './layout-switcher.component.html'
 })
 export class LayoutSwitcherComponent implements OnInit, OnDestroy {
-  isActivated:boolean;
-  smartSkin:string;
+  isActivated: boolean;
+  smartSkin: string;
   store: any;
   private sub: Subscription;
 
-  constructor(public layoutService:LayoutService) {}
+  constructor(public layoutService: LayoutService) {}
 
   ngOnInit() {
-    this.sub = this.layoutService.subscribe((store)=>{
+    this.sub = this.layoutService.subscribe((store) => {
       this.store = store;
     });
     this.store = this.layoutService.store;
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.sub.unsubscribe()
   }
 
