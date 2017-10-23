@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
 
-  register(event){
+  register(event) {
     event.preventDefault();
     this.router.navigate(['/dashboard'])
   }

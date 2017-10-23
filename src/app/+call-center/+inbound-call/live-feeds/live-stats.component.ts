@@ -1,5 +1,5 @@
-import {Component, OnInit, Input, OnDestroy, NgZone} from '@angular/core';
-import {FakeDataSource} from "../../../+graphs/+flot-charts/flot-examples";
+import { Component, OnInit, Input, OnDestroy, NgZone } from '@angular/core';
+import { FakeDataSource } from "../../../+graphs/+flot-charts/flot-examples";
 
 @Component({
   selector: 'live-stats-feed',
@@ -30,7 +30,7 @@ export class LiveStatsComponent implements OnInit, OnDestroy {
   toggleSwitch() {
 
     if (this.liveSwitch) {
-      this.interval = setInterval(()=>{
+      this.interval = setInterval(() => {
         this.updateStats()
       }, 1000)
     } else {
@@ -39,7 +39,7 @@ export class LiveStatsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.interval &&  clearInterval(this.interval);
+    this.interval && clearInterval(this.interval);
   }
 
 

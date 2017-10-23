@@ -86,6 +86,7 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   form: any = { $searchStr: '', searchObjects: [], display: 'none' };
   addPatient: any = {};
   editPatient: any = {};
+
   constructor(
     private _InboundService: InboundService
   ) {
@@ -140,11 +141,13 @@ export class InboundCallComponent implements OnInit, OnDestroy {
         this.birthdate = this.individualDetails['dob'];
         this.patientAge = this.getPatAge(this.individualDetails['dob']);
         this.phoneNumber = this.individualDetails['home_phone'];
-        if (this.phoneNumber != null) {
-          this.home_phone = this.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
-        } else {
-          this.home_phone = this.phoneNumber;
-        }
+        // if (this.phoneNumber != null) {
+        //   this.home_phone = this.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+        // } else {
+        //   this.home_phone = this.phoneNumber;
+        // }
+        this.phoneNumber ? this.home_phone = this.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')
+                         : this.home_phone = this.phoneNumber;
         this._addPatients = false;
         console.log(this.home_phone);
         this.getCalls();

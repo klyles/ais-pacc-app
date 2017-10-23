@@ -1,5 +1,5 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {ChatService} from "../chat.service";
+import { Component, OnInit, Input } from '@angular/core';
+import { ChatService } from "../chat.service";
 
 @Component({
   selector: 'chat-users',
@@ -13,14 +13,14 @@ export class ChatUsersComponent implements OnInit {
 
   public isOpen = false;
 
-  public openToggle(){
+  public openToggle() {
     this.isOpen = !this.isOpen
   }
 
   constructor(private chatService: ChatService) { }
 
 
-  messageTo(user){
+  messageTo(user) {
     this.chatService.messageTo(user)
 
   }

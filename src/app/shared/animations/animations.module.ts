@@ -2,9 +2,9 @@
  * Created by griga on 12/26/16.
  */
 
-import {NgModule} from "@angular/core";
+import { NgModule } from "@angular/core";
 
-import {CommonModule} from "@angular/common";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
   imports: [CommonModule],
@@ -13,4 +13,4 @@ import {CommonModule} from "@angular/common";
   exports: []
 
 })
-export class SmartadminFormsLiteModule{}
+export class SmartadminFormsLiteModule { }

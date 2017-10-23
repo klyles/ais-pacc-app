@@ -1,6 +1,6 @@
-import {Injectable} from "@angular/core";
-import {NgRedux} from "@angular-redux/store";
-import {OptionsActions} from "./options.actions";
+import { Injectable } from '@angular/core';
+import { NgRedux } from '@angular-redux/store';
+import { OptionsActions } from './options.actions';
 
 
 /**
@@ -21,18 +21,18 @@ export class CropActions {
 
   cropSelect(crop, storeId) {
     this.ngRedux.dispatch({
-        type: CropActions.CROP_SELECT,
-        crop,
-        storeId
-      }
+      type: CropActions.CROP_SELECT,
+      crop,
+      storeId
+    }
     )
   }
   cropChange(crop, storeId) {
     this.ngRedux.dispatch({
-        type: CropActions.CROP_CHANGE,
-        crop,
-        storeId
-      }
+      type: CropActions.CROP_CHANGE,
+      crop,
+      storeId
+    }
     )
   }
 
@@ -54,13 +54,13 @@ export class CropActions {
   }
 
   randomSelection() {
-    let x = Math.round(Math.random() * 250);
-    let y = Math.round(Math.random() * 180);
+    const x = Math.round(Math.random() * 250);
+    const y = Math.round(Math.random() * 180);
 
     return {
       x: x,
       y: y,
-      x2: x + Math.round((Math.random() * 200) + 50 ),
+      x2: x + Math.round((Math.random() * 200) + 50),
       y2: y + Math.round((Math.random() * 300) + 60)
     }
   }

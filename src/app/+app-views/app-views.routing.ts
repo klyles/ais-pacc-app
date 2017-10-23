@@ -1,8 +1,8 @@
 
-import {RouterModule, Routes} from "@angular/router";
+import { RouterModule, Routes } from '@angular/router';
 
 
-export const routes:Routes = [
+export const routes: Routes = [
   {
     path: 'forum',
     loadChildren: './+forum/forum.module#ForumModule'

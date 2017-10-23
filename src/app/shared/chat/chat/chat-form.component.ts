@@ -1,6 +1,6 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {ChatService} from "../chat.service";
-import {UserService} from "../../user/user.service";
+import { Component, OnInit, Input } from '@angular/core';
+import { ChatService } from "../chat.service";
+import { UserService } from "../../user/user.service";
 
 @Component({
   selector: 'chat-form',
@@ -18,18 +18,18 @@ export class ChatFormComponent implements OnInit {
 
 
   ngOnInit() {
-    this.chatService.messageToSubject.subscribe((user)=>{
+    this.chatService.messageToSubject.subscribe((user) => {
       this.message += (user.username + ', ');
     });
 
     this.user = this.userService.userInfo;
-    this.userService.user.subscribe((user)=>{
+    this.userService.user.subscribe((user) => {
       this.user = user
     })
   }
 
-  sendMessage(){
-    if(this.message.trim() == '') return;
+  sendMessage() {
+    if (this.message.trim() == '') return;
     this.chatService.sendMessage({
       body: this.message,
       user: this.user,
@@ -39,8 +39,8 @@ export class ChatFormComponent implements OnInit {
 
   }
 
-  sendMessageEnter(){
-    if(this.enterToSend){
+  sendMessageEnter() {
+    if (this.enterToSend) {
       this.sendMessage()
     }
   }

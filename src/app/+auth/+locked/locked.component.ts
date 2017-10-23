@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-locked',
@@ -15,7 +15,7 @@ export class LockedComponent implements OnInit {
   ngOnInit() {
   }
 
-  unlock(event){
+  unlock(event) {
     event.preventDefault();
     this.router.navigate(['/dashboard/+analytics'])
   }

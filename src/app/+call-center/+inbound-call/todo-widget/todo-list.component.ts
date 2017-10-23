@@ -1,6 +1,6 @@
-import {Component, OnInit, Input, AfterContentInit, ElementRef} from '@angular/core';
-import {TodoService} from "./todo.service";
-import {Todo} from "./todo";
+import { Component, OnInit, Input, AfterContentInit, ElementRef } from '@angular/core';
+import { TodoService } from './todo.service';
+import { Todo } from './todo';
 
 @Component({
   selector: 'todo-list',
@@ -15,22 +15,22 @@ export class TodoListComponent implements OnInit {
   constructor(private el: ElementRef, private todoService: TodoService) { }
 
   ngOnInit() {
-    this.todoService.subject.subscribe((todos: Array<Todo>)=>{
+    this.todoService.subject.subscribe((todos: Array<Todo>) => {
       this.setItems(todos);
     });
 
     this.setItems(this.todoService.todos)
   }
 
-  setItems(todos: Array<Todo>){
-    this.items = todos.filter(it => it.state == this.state.name)
+  setItems(todos: Array<Todo>) {
+    this.items = todos.filter(it => it.state === this.state.name)
   }
 
-  toggleTodo(todo: Todo){
+  toggleTodo(todo: Todo) {
     this.todoService.toggleTodo(todo)
   }
 
-  deleteTodo(todo: Todo){
+  deleteTodo(todo: Todo) {
     this.todoService.deleteTodo(todo)
   }
 
