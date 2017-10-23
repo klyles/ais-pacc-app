@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  login(event){
+  login(event) {
     event.preventDefault();
     this.router.navigate(['/dashboard/analytics'])
   }

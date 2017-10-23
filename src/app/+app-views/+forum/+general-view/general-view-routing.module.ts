@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {GeneralViewComponent} from "./general-view.component";
+import {GeneralViewComponent} from './general-view.component';
 
 const routes: Routes = [{
   path: '',

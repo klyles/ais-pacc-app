@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {TopicViewComponent} from "./topic-view.component";
+import {TopicViewComponent} from './topic-view.component';
 
 const routes: Routes = [{
   path: '',

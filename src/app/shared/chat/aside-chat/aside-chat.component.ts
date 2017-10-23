@@ -1,5 +1,5 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ChatService} from "../chat.service";
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ChatService } from "../chat.service";
 
 declare var $: any;
 
@@ -12,9 +12,9 @@ export class AsideChatComponent implements OnInit {
 
   @ViewChild('chatUsersList') chatUsersList;
 
-  public state:{
-    open:boolean,
-    filter:string
+  public state: {
+    open: boolean,
+    filter: string
   }
 
   constructor(private chatService: ChatService) {
@@ -28,18 +28,18 @@ export class AsideChatComponent implements OnInit {
   public users: Array<any> = [];
 
   ngOnInit() {
-    this.chatService.getChatState().subscribe((state)=>{
+    this.chatService.getChatState().subscribe((state) => {
 
-      this.users = state.users.map((it)=>{
+      this.users = state.users.map((it) => {
         it.visible = true;
         return it
       });
     })
   }
 
-  onFilter(){
-    this.users.forEach((it)=>{
-      if(!this.state.filter){
+  onFilter() {
+    this.users.forEach((it) => {
+      if (!this.state.filter) {
         it.visible = true
       } else {
         it.visible = it.username.toLowerCase().indexOf(this.state.filter.toLocaleLowerCase()) > -1;

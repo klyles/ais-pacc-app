@@ -1,15 +1,15 @@
-import {Component, OnInit, Input} from '@angular/core';
-import {EventsService} from "../shared/events.service";
+import { Component, OnInit, Input } from '@angular/core';
+import { EventsService } from '../shared/events.service';
 
 
 class CalendarEvent {
-  constructor (
-    public id: string, 
+  constructor(
+    public id: string,
     public title: string,
     public description: string,
     public className: string,
     public icon?
-  ){}
+  ) { }
 }
 
 @Component({
@@ -19,7 +19,7 @@ class CalendarEvent {
 })
 export class AddEventComponent implements OnInit {
 
-  public icons:Array<string> = [
+  public icons: Array<string> = [
     'fa-info',
     'fa-warning',
     'fa-check',
@@ -27,7 +27,7 @@ export class AddEventComponent implements OnInit {
     'fa-lock',
     'fa-clock-o'
   ];
-  public colorClassNames:Array<any> = [
+  public colorClassNames: Array<any> = [
     {
       bg: 'bg-color-darken',
       txt: 'txt-color-white'
@@ -54,8 +54,8 @@ export class AddEventComponent implements OnInit {
     }
   ];
 
-  public activeIcon:string;
-  public activeColorClass:any;
+  public activeIcon: string;
+  public activeColorClass: any;
   @Input() public title: string;
   @Input() public description: string;
 
@@ -67,7 +67,7 @@ export class AddEventComponent implements OnInit {
     this.activeColorClass = this.colorClassNames[0]
   }
 
-  setIcon(icon:string) {
+  setIcon(icon: string) {
     this.activeIcon = icon
   }
 
@@ -76,10 +76,10 @@ export class AddEventComponent implements OnInit {
   }
 
   addExternalEvent() {
-    if(!this.description || !this.title){
+    if (!this.description || !this.title) {
       return
     }
-    let event = new CalendarEvent(
+    const event = new CalendarEvent(
       this.eventsService.generateId(),
       this.title,
       this.description,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ChatService} from "../chat.service";
+import { ChatService } from "../chat.service";
 
 @Component({
   selector: 'chat',
@@ -8,13 +8,13 @@ import {ChatService} from "../chat.service";
 })
 export class ChatComponent implements OnInit {
 
-  constructor(private chatService: ChatService) { }
-
   public users = [];
   public messages = [];
 
+  constructor(private chatService: ChatService) { }
+
   ngOnInit() {
-    this.chatService.getChatState().subscribe((state)=>{
+    this.chatService.getChatState().subscribe((state) => {
       this.users = state.users;
       this.messages = state.messages;
     })

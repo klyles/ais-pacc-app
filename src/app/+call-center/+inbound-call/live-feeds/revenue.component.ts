@@ -1,4 +1,4 @@
-import {Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'revenue-feed',
@@ -15,7 +15,7 @@ export class RevenueComponent implements OnInit {
 
   public revenueData: Array<any>;
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
     this.updateData()

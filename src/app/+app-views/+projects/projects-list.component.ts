@@ -1,5 +1,5 @@
-import {Component, OnInit} from '@angular/core';
-import {FadeInTop} from "../../shared/animations/fade-in-top.decorator";
+import { Component, OnInit } from '@angular/core';
+import { FadeInTop } from '../../shared/animations/fade-in-top.decorator';
 
 @FadeInTop()
 @Component({
@@ -7,34 +7,32 @@ import {FadeInTop} from "../../shared/animations/fade-in-top.decorator";
   templateUrl: './projects-list.component.html',
 })
 export class ProjectsListComponent implements OnInit {
-
+  public options = {
+    'ajax': 'assets/api/project-list.json',
+    'iDisplayLength': 15,
+    'columns': [
+      {
+        'class': 'details-control',
+        'orderable': false,
+        'data': null,
+        'defaultContent': ''
+      },
+      { 'data': 'name' },
+      { 'data': 'est' },
+      { 'data': 'contacts' },
+      { 'data': 'status' },
+      { 'data': 'target-actual' },
+      { 'data': 'starts' },
+      { 'data': 'ends' },
+      { 'data': 'tracker' }
+    ],
+    'order': [[1, 'asc']]
+  }
   constructor() {
   }
 
   ngOnInit() {
   }
-
-  public options = {
-  "ajax": 'assets/api/project-list.json',
-  "iDisplayLength": 15,
-  "columns": [
-    {
-      "class": 'details-control',
-      "orderable": false,
-      "data": null,
-      "defaultContent": ''
-    },
-    {"data": "name"},
-    {"data": "est"},
-    {"data": "contacts"},
-    {"data": "status"},
-    {"data": "target-actual"},
-    {"data": "starts"},
-    {"data": "ends"},
-    {"data": "tracker"}
-  ],
-  "order": [[1, 'asc']]
-}
 
   public detailsFormat(d) {
 
