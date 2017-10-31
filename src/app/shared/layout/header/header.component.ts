@@ -9,10 +9,15 @@ declare var $: any;
 })
 export class HeaderComponent implements OnInit {
   searchMobileActive = false;
+  sessionID: any;
+  userName: any;
   constructor(private router: Router) {
   }
 
   ngOnInit() {
+    this.sessionID = localStorage.getItem('SessionId');
+    this.userName = localStorage.getItem('userName');
+    console.log(this.userName);
   }
 
   toggleSearchMobile(  ) {

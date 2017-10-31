@@ -13,6 +13,10 @@ export class LoginComponent implements OnInit {
   ssoHTML: any;
   singleSignOnToken: any;
   isSignOn: boolean;
+  postResponse: any;
+  sessionId: any;
+  userId: any;
+  userName: any;
   constructor(private router: Router, private _loginService: LoginService) { }
 
   ngOnInit() {
@@ -103,10 +107,18 @@ export class LoginComponent implements OnInit {
       '__type': 'urn:inin.com:connection:singleSignOnTokenConnectionRequestSettings',
       'applicationName': 'Interaction Connect',
       'singleSignOnToken': this.singleSignOnToken
-      // 'SAMLRequest' : 'PHNhbWxwOkF1dGhuUmVxdWVzdCAgICB4bWxuczpzYW1sPSJ1cm46b2FzaXM6bmFtZXM6dGM6U0FNTDoyLjA6YXNzZXJ0aW9uIiAgICB4bWxuczpzYW1scD0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOnByb3RvY29sIiAgICBJRD0iX2YzNWY2ZTQ5MzMzYjM1MTc5MTQxZWEwODI5YjY1MDIwIiAgICBWZXJzaW9uPSIyLjAiICAgIElzc3VlSW5zdGFudD0iMjAxNy0xMC0yNFQxNjo0MzoxNy43MTEzNDdaIiAgICBEZXN0aW5hdGlvbj0iaHR0cHM6Ly9jaWNjcm0uYXNjZW5zaW9uLm9yZy9hcGkvYWh3aXZydHhwbGEwMDEuZHMuc2pocy5jb20vaWN3cy9jb25uZWN0aW9uL3NpbmdsZS1zaWduLW9uL2F1dGhlbnRpY2F0aW9uL1dpbmRvd3NJRFAvbG9naW4',
-      // 'RelayState' : '90c22f9b-0a9d-4474-87f4-b48eccbe3095|r:https://ciccrm.ascension.org/#/single-sign-on/ahwivrtxpla001.ds.sjhs.com/ahwivrtxpla001.ds.sjhs.com'
     }
     this._loginService.onsubmit(this.form)
+      .subscribe((response: any) => {
+       this.postResponse = response;
+       this.sessionId = response.sessionId;
+       this.userId = response.userID;
+       this.userName = response.userDisplayName;
+       localStorage.setItem('SessionId', this.sessionId);
+       localStorage.setItem('userName', this.userName);
+       console.log(this.sessionId);
+       console.log(this.userId);
+    });
     alert('login successful! and navigating to ' + this.returnUrl + ' ');
     this.router.navigate([this.returnUrl]);
     this.isSignOn = true;
