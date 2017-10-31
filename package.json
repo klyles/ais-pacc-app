@@ -58,6 +58,7 @@
     "bootstrap-slider": "9.8.0",
     "bootstrap-tagsinput": "0.7.1",
     "bootstrap-timepicker": "0.5.2",
+    "browser-sync": "^2.18.13",
     "chart.js": "2.6.0",
     "classlist.js": "^1.1.20150312",
     "clockpicker": "0.0.7",
