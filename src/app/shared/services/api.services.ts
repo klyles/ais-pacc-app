@@ -2,24 +2,26 @@ import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable, Subject } from 'rxjs/Rx';
 import { Injectable } from '@angular/core';
-import { BaseHeader, BaseUrl } from './apiconfig';
+import { BaseHeader, BaseUrl, BaseICUrl } from './apiconfig';
 
 @Injectable()
 export class APIServices {
   protected baseUrl: string;
   protected headers: any;
   protected options: any;
+  protected baseICUrl: string;
 
   constructor(protected _http: Http,
               private router: Router) {
     const _build = (<any> _http)._backend._browserXHR.build;
     (<any> _http)._backend._browserXHR.build = () => {
       const _xhr = _build();
-      _xhr.withCredentials = false;
+      _xhr.withCredentials = true;
 			/* set _xhr.withCredentials = true; when needed cookies to include in CORS */
       return _xhr;
     };
     this.baseUrl = BaseUrl;
+    this.baseICUrl = BaseICUrl;
     this.headers = new Headers(BaseHeader);
     this.options = new RequestOptions({headers: this.headers});
   }
