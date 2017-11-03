@@ -67,4 +67,16 @@ export class InboundService extends APIServices {
     const options = new RequestOptions({headers: headers});
     return this._http.put(url, editData, options).map(res => res.json()).subscribe();
   }
+  getI3Messages(sessionID, csrf) {
+    // const url = 'https://ciccrm.ascension.org/api/ahwivrtxpla001.ds.sjhs.com/icws/' + sessionID + '/messaging/messages';
+    // const url = 'https://ciccrm.ascension.org/api/ahwivrtxpla001.ds.sjhs.com/icws/' + sessionID + '/configuration/wrap-up-codes';
+    // const headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json',
+    //                'ININ-ICWS-CSRF-Token' : csrf});
+
+    // const options = new RequestOptions({ headers: headers });
+    // console.log(url);
+    // return this._http.get(url, options).map((response: any) => { return response.json(); }).catch(this.handleError.bind(this));
+    return this._http.get('/assets/api/applications/warpUpcodes.json').map((response: any) =>
+    {return response.json(); }).catch(this.handleError.bind(this));
+  }
 }

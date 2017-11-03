@@ -1,21 +1,37 @@
-import {Component, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoginService } from '../../../+login/login.service';
 
 declare var $: any;
 
 @Component({
   selector: 'sa-header',
-  templateUrl: './header.component.html',
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
+  isLoggedIn: boolean;
   searchMobileActive = false;
-  constructor(private router: Router) {
+  sessionID: any;
+  userName: any;
+  constructor(private router: Router, private _loginService: LoginService) {
+    this.isLoggedIn = false;
   }
 
   ngOnInit() {
+  this.getUserTimeOut();
   }
 
-  toggleSearchMobile(  ) {
+  public getUserTimeOut() {
+    setTimeout(() => this. getUserInfo(), 1000);
+  }
+
+  getUserInfo() {
+    console.log('headers in it')
+    this.sessionID = sessionStorage.getItem('SessionId');
+    this.userName = sessionStorage.getItem('userName');
+    console.log(this.userName);
+  }
+  toggleSearchMobile() {
     this.searchMobileActive = !this.searchMobileActive;
 
     $('body').toggleClass('search-mobile', this.searchMobileActive);

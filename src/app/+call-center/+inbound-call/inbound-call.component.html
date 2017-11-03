@@ -700,18 +700,25 @@
                     </li>
                   </ul>
                   </span>
-                  <span class="asc-text-primary">Call Outcomes </span>
+                  <span class="asc-text-primary">Call Outcomes:
+                    <button type="button" class="btn btn-primary">&nbsp;{{selectedOutCome}}&nbsp;</button> </span>
                   <span class="btn-grp" dropdown>
-										<button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
+									<!--	<button type="button" class="btn btn-secondary dropdown-toggle" dropdownToggle>
 											{{selectedOutCome}} <span class="caret"></span>
                   </button>
-                  <ul class="tabs_dropdown dropdown-menu scroll_bar" role="menu">
-                    <li role="menuitem" *ngFor='let item of callOutComesData'>
-                      <a class="dropdown-item" (click)="showOutCome(item.outcome_desc)">
-													{{item.outcome_desc}}
-												</a>
+                   <ul class="tabs_dropdown dropdown-menu scroll_bar" role="menu">
+                    <li role="menuitem" *ngFor='let item of _wrap$Codes.$codes | values:"key":true;let i=index'>
+                      <a class="dropdown-item" (click)="showOutCome(item.configurationId.displayName)">
+													{{item.configurationId.displayName}}
+                      </a>
                     </li>
-                  </ul>
+                  </ul> -->
+                  <div class="multiple-select" style="">
+                      <div class="options" *ngFor='let item of _wrap$Codes.$codes | values:"key":true;let i=index'
+                       id="item.configurationId.id" (click)="toggleMultiSelect($event, item.configurationId.displayName)">
+                       {{item.configurationId.displayName}}
+                      </div>
+                    </div>
                   </span>
                   <div class="widget-footer text-right mt-md">
                     <!-- <button type="submit" class="col-md-2 btn btn-success pull-right mar-sm" (click)="postCalls()">Save</button> -->

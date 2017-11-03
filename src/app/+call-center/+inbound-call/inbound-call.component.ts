@@ -1,3 +1,4 @@
+import { select } from '@angular-redux/store';
 import { Subscription } from 'rxjs/Rx';
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { FadeInTop } from '../../shared/animations/fade-in-top.decorator';
@@ -19,17 +20,14 @@ import * as moment from 'moment';
       color: #fff;
       display: block;
     }
-    li {
-      list-style: none;
-    }
-    .step2 a {
-      color: #fff;
-      font-weight: 700;
-    }
+    li {list-style: none;}
+    .step2 a {color: #fff; font-weight: 700;}
+    .options{cursor:pointer;padding:10px;border-bottom:1px solid black;}
+    .multiple-select{overflow-y:scroll; height:200px;}
   `]
 })
 export class InboundCallComponent implements OnInit, OnDestroy {
-  @ViewChild('childModal') public childModal: ModalDirective;
+  @ViewChild('childModal') public childModal: ModalDirective; 
   // private callStatus: string;
 
   private $startCallTime: any;
@@ -53,7 +51,7 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   public _id: any;
   public newData: any;
   public selectedItem: '';
-  public selectedOutCome: '';
+  // public selectedOutCome: '';
   public patID: number;
   private last_name: string;
   private first_name: string;
@@ -87,6 +85,16 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   addPatient: any = {};
   editPatient: any = {};
 
+  public selected: any[]= [];
+
+  selectedOutCome: any[] = []
+
+  sessionID: any;
+  csrf: any;
+  _wrap$Codes: any = {
+    $codes: {}
+  }
+
   constructor(
     private _InboundService: InboundService
   ) {
@@ -99,11 +107,27 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     this.callsListLength = false;
   }
 
+  toggleMultiSelect(event, val) {
+    event.preventDefault();
+    if (this.selectedOutCome.indexOf(val) === -1) {
+      this.selectedOutCome = [...this.selectedOutCome, val];
+      // jQuery('#' + val.id).toggleClass('fa fa-check ');
+    }else {
+      // jQuery('#' + val.id).toggleClass('fa fa-check');
+      this.selectedOutCome = this.selectedOutCome.filter(function(elem){
+        return elem !== val;
+      })
+      console.log(this.selectedOutCome);
+    }
+  }
   ngOnInit() {
     this.getCallStatus();
-    this.getCallOutComes();
+    // this.getCallOutComes();
     this.getStates();
     this.getApps();
+    this.sessionID = sessionStorage.getItem('SessionId');
+    this.csrf = sessionStorage.getItem('csrf');
+    this.setMessageTimeOut();
   }
   ngOnDestroy() {
     console.clear();
@@ -147,7 +171,7 @@ export class InboundCallComponent implements OnInit, OnDestroy {
         //   this.home_phone = this.phoneNumber;
         // }
         this.phoneNumber ? this.home_phone = this.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')
-                         : this.home_phone = this.phoneNumber;
+          : this.home_phone = this.phoneNumber;
         this._addPatients = false;
         console.log(this.home_phone);
         this.getCalls();
@@ -170,7 +194,7 @@ export class InboundCallComponent implements OnInit, OnDestroy {
           this.form.searchObjects = response.filter;
           this._showsearchResults = true;
           this.form.display = 'block';
-         // this._addPatients = false;
+          // this._addPatients = false;
         }
         )
     } else {
@@ -184,14 +208,25 @@ export class InboundCallComponent implements OnInit, OnDestroy {
         console.log(this.applications);
       })
   }
-  public getCallOutComes() {
-    this.patientList = this._InboundService.getCallOutComes()
-      .subscribe((response: any) => {
-        this.callOutComesData = response;
-        if (this.callOutComesData.length > 0) {
-          this.selectedOutCome = this.callOutComesData[0]['outcome_desc'];
-        }
-      })
+  // public getCallOutComes() {
+  //   this.patientList = this._InboundService.getCallOutComes()
+  //     .subscribe((response: any) => {
+  //       this.callOutComesData = response;
+  //       if (this.callOutComesData.length > 0) {
+  //         this.selectedOutCome = this.callOutComesData[0]['outcome_desc'];
+  //       }
+  //     })
+  // }
+  public getI3Messages() {
+    this._InboundService.getI3Messages(this.sessionID, this.csrf)
+      .subscribe(
+      (response: any) => {
+        this._wrap$Codes.$codes = response.items;
+        // if (this._wrap$Codes.$codes.length > 0) {
+        //      this.selectedOutCome = this._wrap$Codes.$codes[0].configurationId.displayName;
+        //      console.log(this.selectedOutCome);
+        //   }
+      });
   }
   public getStates() {
     this.statesList = this._InboundService.getStates()
@@ -236,8 +271,8 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     this.preferred_contact_method = '';
 
     this.form.display = 'none',
-    this.selectedGender = 'Select Gender',
-    this.selectedContactType = 'Select Preferred Contact';
+      this.selectedGender = 'Select Gender',
+      this.selectedContactType = 'Select Preferred Contact';
     this.selectedState = 'Select State';
     this._addPatients = true;
     this._loadmetrics = false;
@@ -320,7 +355,7 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   public showState(state: any) {
     this.selectedState = state;
   }
-  public showOutCome(callOutCome: any) {
+  public showOutCome(callOutCome) {
     this.selectedOutCome = callOutCome;
   }
   public saveNotes() {
@@ -338,6 +373,9 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   }
   public reloadTimeOut() {
     setTimeout(() => window.location.reload(), 5000)
+  }
+  public setMessageTimeOut() {
+    setTimeout(() => this.getI3Messages(), 2500)
   }
   onWizardComplete(data) {
     alert('oncall loaded!!');

@@ -24,15 +24,11 @@ export class LoginService extends APIServices {
   }
   onsubmit(form) {
     const url = this.baseICUrl;
-    console.log(url);
     const headers = new Headers({
       'Accept-Language': 'en-US'
     })
     const options = new RequestOptions({ headers: headers });
-    // return this._http.post(url, credentials, options).map(res => res.json()).subscribe();
-    // const url =  this.baseUrl + '/account/auth2';
-    // const body = 'username=' + credentials.username + '&password=' + credentials.password;
-    return this._http.post(url, form, options).map(res => res.json()).subscribe();
+    return this._http.post(url, form, options).map((response: any) => { return response.json(); }).catch(this.handleError.bind(this));
   }
   getIcFeatures(): Observable<any> {
     const url = this.baseICUrl + '/features';

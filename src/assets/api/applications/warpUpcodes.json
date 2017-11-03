@@ -1,0 +1,1089 @@
+{
+    "items": [
+        {
+            "configurationId": {
+                "id": "CBO-Requeued",
+                "displayName": "CBO-Requeued",
+                "uri": "/configuration/wrap-up-codes/CBO-Requeued"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "CBO-Transferred",
+                "displayName": "CBO-Transferred",
+                "uri": "/configuration/wrap-up-codes/CBO-Transferred"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "CBO-Athena",
+                "displayName": "CBO-Athena",
+                "uri": "/configuration/wrap-up-codes/CBO-Athena"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "CBO-Complete",
+                "displayName": "CBO-Complete",
+                "uri": "/configuration/wrap-up-codes/CBO-Complete"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "CBO-Legacy",
+                "displayName": "CBO-Legacy",
+                "uri": "/configuration/wrap-up-codes/CBO-Legacy"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "CBO-Other",
+                "displayName": "CBO-Other",
+                "uri": "/configuration/wrap-up-codes/CBO-Other"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "CBO-Requeued (upon Requeue of interaction)",
+                "displayName": "CBO-Requeued (upon Requeue of interaction)",
+                "uri": "/configuration/wrap-up-codes/CBO-Requeued%20(upon%20Requeue%20of%20interaction)"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "CBO-Requires Follow-up",
+                "displayName": "CBO-Requires Follow-up",
+                "uri": "/configuration/wrap-up-codes/CBO-Requires%20Follow-up"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "CBO-Transferred (upon Transfer of interaction)",
+                "displayName": "CBO-Transferred (upon Transfer of interaction)",
+                "uri": "/configuration/wrap-up-codes/CBO-Transferred%20(upon%20Transfer%20of%20interaction)"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "6905a5b8-843e-4a46-ae42-db53517f0268",
+                "displayName": "TXAUS BBTC Bed Placement",
+                "uri": "/configuration/wrap-up-codes/6905a5b8-843e-4a46-ae42-db53517f0268"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "c2882c95-c1ff-43f2-81e3-6b0b7ce082bc",
+                "displayName": "TXAUS BBTC Bed Request",
+                "uri": "/configuration/wrap-up-codes/c2882c95-c1ff-43f2-81e3-6b0b7ce082bc"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "7d745ca4-0655-43c0-bb42-85f02eb08f6b",
+                "displayName": "TXAUS BBTC Behavioral Health",
+                "uri": "/configuration/wrap-up-codes/7d745ca4-0655-43c0-bb42-85f02eb08f6b"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "68a35b1e-dbcb-4c5b-911f-0af6657bfab5",
+                "displayName": "TXAUS BBTC Cancel Discharge",
+                "uri": "/configuration/wrap-up-codes/68a35b1e-dbcb-4c5b-911f-0af6657bfab5"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "dbfaee5f-6b88-4b11-ac00-81e9d257c2e0",
+                "displayName": "TXAUS BBTC Donor",
+                "uri": "/configuration/wrap-up-codes/dbfaee5f-6b88-4b11-ac00-81e9d257c2e0"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "a956da92-2804-4958-8011-997aa8d91a8a",
+                "displayName": "TXAUS BBTC High Risk Maternal",
+                "uri": "/configuration/wrap-up-codes/a956da92-2804-4958-8011-997aa8d91a8a"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "8c6f354d-55a2-4060-89e8-216ccc42625e",
+                "displayName": "TXAUS BBTC High Risk NICU",
+                "uri": "/configuration/wrap-up-codes/8c6f354d-55a2-4060-89e8-216ccc42625e"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "ea37b2e5-7f01-49e9-939b-46f7af4e16d4",
+                "displayName": "TXAUS BBTC MD Office - Direct Admit",
+                "uri": "/configuration/wrap-up-codes/ea37b2e5-7f01-49e9-939b-46f7af4e16d4"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "c83f770b-d1b2-4a79-82e6-7dcef9a2efcd",
+                "displayName": "TXAUS BBTC Misc Other",
+                "uri": "/configuration/wrap-up-codes/c83f770b-d1b2-4a79-82e6-7dcef9a2efcd"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "428a196c-00f6-4039-a77a-54e61721232b",
+                "displayName": "TXAUS BBTC Overflow",
+                "uri": "/configuration/wrap-up-codes/428a196c-00f6-4039-a77a-54e61721232b"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "f5597f9c-f4ca-4d6c-be35-1221aa5d62b4",
+                "displayName": "TXAUS BBTC STEMI",
+                "uri": "/configuration/wrap-up-codes/f5597f9c-f4ca-4d6c-be35-1221aa5d62b4"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "189cef3a-633b-491d-8e58-4d5badb37ac9",
+                "displayName": "TXAUS BBTC Stroke",
+                "uri": "/configuration/wrap-up-codes/189cef3a-633b-491d-8e58-4d5badb37ac9"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "6526bc91-f3f3-42d3-9e06-6f60b44f1977",
+                "displayName": "TXAUS BBTC TC Pedi",
+                "uri": "/configuration/wrap-up-codes/6526bc91-f3f3-42d3-9e06-6f60b44f1977"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "a23e10ae-9159-46a8-bc2d-acac0e039efc",
+                "displayName": "TXAUS BBTC TC Pedi Trauma",
+                "uri": "/configuration/wrap-up-codes/a23e10ae-9159-46a8-bc2d-acac0e039efc"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "622d9e30-38c2-47ac-a8ae-8ec4e23b0376",
+                "displayName": "TXAUS BBTC TC Trauma",
+                "uri": "/configuration/wrap-up-codes/622d9e30-38c2-47ac-a8ae-8ec4e23b0376"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "635ec074-e571-4844-bfa8-a4dea46af68b",
+                "displayName": "TXAUS BBTC Upgrade Downgrade",
+                "uri": "/configuration/wrap-up-codes/635ec074-e571-4844-bfa8-a4dea46af68b"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "a894b9bf-d260-4b83-a487-fdab3781c441",
+                "displayName": "TXAUS BSC Busy Signal",
+                "uri": "/configuration/wrap-up-codes/a894b9bf-d260-4b83-a487-fdab3781c441"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "9404c668-473d-45e6-8fb9-b139d0527644",
+                "displayName": "TXAUS BSC Call Completed",
+                "uri": "/configuration/wrap-up-codes/9404c668-473d-45e6-8fb9-b139d0527644"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "5db1e211-4fed-4b37-a89d-283a9fdf29f7",
+                "displayName": "TXAUS BSC Follow Up",
+                "uri": "/configuration/wrap-up-codes/5db1e211-4fed-4b37-a89d-283a9fdf29f7"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "dbf0d7b1-f061-43a1-8564-835fc8d5e940",
+                "displayName": "TXAUS BSC Invalid Number",
+                "uri": "/configuration/wrap-up-codes/dbf0d7b1-f061-43a1-8564-835fc8d5e940"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "d2bb1a98-68d9-4f97-8916-ee7892ba7713",
+                "displayName": "TXAUS BSC No Answer",
+                "uri": "/configuration/wrap-up-codes/d2bb1a98-68d9-4f97-8916-ee7892ba7713"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "ff4ac498-d136-4cdf-9e67-164b7a9ad183",
+                "displayName": "TXAUS BSC No Answer \u2013 Left Message",
+                "uri": "/configuration/wrap-up-codes/ff4ac498-d136-4cdf-9e67-164b7a9ad183"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "4a54fc61-f4b7-4c08-b1bf-558278d64301",
+                "displayName": "TXAUS BSC Transferred Call",
+                "uri": "/configuration/wrap-up-codes/4a54fc61-f4b7-4c08-b1bf-558278d64301"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "7c8815e5-e7c2-4c68-ab2c-9f741aa051fd",
+                "displayName": "TXAUS BSC Wrong Number",
+                "uri": "/configuration/wrap-up-codes/7c8815e5-e7c2-4c68-ab2c-9f741aa051fd"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "f65b3e70-4f0a-4c28-bed2-bac8916b69bf",
+                "displayName": "TXAUS DSC Cancel/Reschedule Appt",
+                "uri": "/configuration/wrap-up-codes/f65b3e70-4f0a-4c28-bed2-bac8916b69bf"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "84232cbe-9feb-4e17-906e-8654da42db89",
+                "displayName": "TXAUS DSC Directions",
+                "uri": "/configuration/wrap-up-codes/84232cbe-9feb-4e17-906e-8654da42db89"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "47176a9b-1560-4ce5-a370-0acbe642e5ce",
+                "displayName": "TXAUS DSC Incorrect Department",
+                "uri": "/configuration/wrap-up-codes/47176a9b-1560-4ce5-a370-0acbe642e5ce"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "e0204b2a-5f26-4162-9531-d9def4a7d468",
+                "displayName": "TXAUS DSC Manager/Supervisor Request",
+                "uri": "/configuration/wrap-up-codes/e0204b2a-5f26-4162-9531-d9def4a7d468"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "f71ec83f-c0e0-4b62-9e02-0492870bf3be",
+                "displayName": "TXAUS DSC Nurse Call",
+                "uri": "/configuration/wrap-up-codes/f71ec83f-c0e0-4b62-9e02-0492870bf3be"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "ad9fcbb1-4d85-46e5-9e48-d9610c727b5c",
+                "displayName": "TXAUS DSC Physician Office Info",
+                "uri": "/configuration/wrap-up-codes/ad9fcbb1-4d85-46e5-9e48-d9610c727b5c"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "6bb0a750-ae34-48e9-ad91-448fc2f69332",
+                "displayName": "TXAUS DSC Scheduled New Patient",
+                "uri": "/configuration/wrap-up-codes/6bb0a750-ae34-48e9-ad91-448fc2f69332"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "29964b32-1e22-475b-b83a-ba2cf58e57d3",
+                "displayName": "TXAUS IMG Biopsy",
+                "uri": "/configuration/wrap-up-codes/29964b32-1e22-475b-b83a-ba2cf58e57d3"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "43cf2c3e-a23c-4c31-ba86-eec9d471e145",
+                "displayName": "TXAUS IMG Cancel",
+                "uri": "/configuration/wrap-up-codes/43cf2c3e-a23c-4c31-ba86-eec9d471e145"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "95694e62-f52d-44cd-ba78-a83b7cbbd5fd",
+                "displayName": "TXAUS IMG Confirmation",
+                "uri": "/configuration/wrap-up-codes/95694e62-f52d-44cd-ba78-a83b7cbbd5fd"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "32ffd05b-a138-4fcc-9669-a644be2ec244",
+                "displayName": "TXAUS IMG CT",
+                "uri": "/configuration/wrap-up-codes/32ffd05b-a138-4fcc-9669-a644be2ec244"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "ee55705e-75eb-4632-9203-91a7c9468e47",
+                "displayName": "TXAUS IMG CT Heart Emails",
+                "uri": "/configuration/wrap-up-codes/ee55705e-75eb-4632-9203-91a7c9468e47"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "34cee111-07fc-43e0-ba3e-b9f0d85f3e29",
+                "displayName": "TXAUS IMG CT Heart InQuicker",
+                "uri": "/configuration/wrap-up-codes/34cee111-07fc-43e0-ba3e-b9f0d85f3e29"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "f3c61f95-e561-4673-b82e-f179da26d621",
+                "displayName": "TXAUS IMG Flouro",
+                "uri": "/configuration/wrap-up-codes/f3c61f95-e561-4673-b82e-f179da26d621"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "9a09ca53-0910-4780-9867-37371d2ece36",
+                "displayName": "TXAUS IMG Ins/Auth",
+                "uri": "/configuration/wrap-up-codes/9a09ca53-0910-4780-9867-37371d2ece36"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "1966a527-591d-47fa-8bae-872f53ea06b9",
+                "displayName": "TXAUS IMG Mammo",
+                "uri": "/configuration/wrap-up-codes/1966a527-591d-47fa-8bae-872f53ea06b9"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "19717e99-7e05-47c3-93fd-db2aa917a167",
+                "displayName": "TXAUS IMG Mammo InQuicker",
+                "uri": "/configuration/wrap-up-codes/19717e99-7e05-47c3-93fd-db2aa917a167"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "448b2dff-68f6-4ab4-a078-5d800b1919f8",
+                "displayName": "TXAUS IMG MRI",
+                "uri": "/configuration/wrap-up-codes/448b2dff-68f6-4ab4-a078-5d800b1919f8"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "dc03fcae-961e-4687-b809-fbe86b7822a0",
+                "displayName": "TXAUS IMG Multi Exams Scheduled",
+                "uri": "/configuration/wrap-up-codes/dc03fcae-961e-4687-b809-fbe86b7822a0"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "a9459880-ad8b-4af7-9bb9-cc0b8a6acdfd",
+                "displayName": "TXAUS IMG Nuclear Medicine",
+                "uri": "/configuration/wrap-up-codes/a9459880-ad8b-4af7-9bb9-cc0b8a6acdfd"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "b4ed1170-44ee-43e5-9872-cc6aa8db2f8f",
+                "displayName": "TXAUS IMG Other",
+                "uri": "/configuration/wrap-up-codes/b4ed1170-44ee-43e5-9872-cc6aa8db2f8f"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "44981aaf-ef9d-4c7e-b2f9-6334e2a692f6",
+                "displayName": "TXAUS IMG Resched",
+                "uri": "/configuration/wrap-up-codes/44981aaf-ef9d-4c7e-b2f9-6334e2a692f6"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "29e1cbe9-0922-4de0-9a3b-40ab26005517",
+                "displayName": "TXAUS IMG SMCA Specials",
+                "uri": "/configuration/wrap-up-codes/29e1cbe9-0922-4de0-9a3b-40ab26005517"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "0c4ca7bd-1e13-4c6e-9e82-887d33a7315a",
+                "displayName": "TXAUS IMG Ultrasound",
+                "uri": "/configuration/wrap-up-codes/0c4ca7bd-1e13-4c6e-9e82-887d33a7315a"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "77de2d11-548e-47ab-a35d-6eb55ca60c13",
+                "displayName": "TXAUS IMG Unable to Sched",
+                "uri": "/configuration/wrap-up-codes/77de2d11-548e-47ab-a35d-6eb55ca60c13"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "3a9f80b5-52da-4739-8f9f-a716ca440da5",
+                "displayName": "TXAUS PFS Acnt Pending Insurance",
+                "uri": "/configuration/wrap-up-codes/3a9f80b5-52da-4739-8f9f-a716ca440da5"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "6ec6bd56-d309-4fa6-891b-69ea671a5c31",
+                "displayName": "TXAUS PFS Add Update Correct Insurance",
+                "uri": "/configuration/wrap-up-codes/6ec6bd56-d309-4fa6-891b-69ea671a5c31"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "e767e3d8-c076-4ecb-b1c8-c5c4d4b3f804",
+                "displayName": "TXAUS PFS Assist w/On-line Bill Pay",
+                "uri": "/configuration/wrap-up-codes/e767e3d8-c076-4ecb-b1c8-c5c4d4b3f804"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "2febecde-34e9-4449-9e74-9ceaed3a9b91",
+                "displayName": "TXAUS PFS Cardon",
+                "uri": "/configuration/wrap-up-codes/2febecde-34e9-4449-9e74-9ceaed3a9b91"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "ccfee60a-045b-4b90-8f68-31903f615a61",
+                "displayName": "TXAUS PFS COB",
+                "uri": "/configuration/wrap-up-codes/ccfee60a-045b-4b90-8f68-31903f615a61"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "9583621d-23b0-42fa-8c30-e3bbd2ff63bb",
+                "displayName": "TXAUS PFS Cost Estimate",
+                "uri": "/configuration/wrap-up-codes/9583621d-23b0-42fa-8c30-e3bbd2ff63bb"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "03da33c0-9bae-463a-b319-bf1bae28b1a3",
+                "displayName": "TXAUS PFS Credit Reporting",
+                "uri": "/configuration/wrap-up-codes/03da33c0-9bae-463a-b319-bf1bae28b1a3"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "a692f404-2ef0-4473-9dda-579abd0d4645",
+                "displayName": "TXAUS PFS Deceased/Bankruptcy",
+                "uri": "/configuration/wrap-up-codes/a692f404-2ef0-4473-9dda-579abd0d4645"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "896473be-3056-45ae-81a8-df1ee621e6e3",
+                "displayName": "TXAUS PFS DX Letters",
+                "uri": "/configuration/wrap-up-codes/896473be-3056-45ae-81a8-df1ee621e6e3"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "7e2bdc2b-551e-4f0b-a1bc-ccc9c92d8055",
+                "displayName": "TXAUS PFS ERS Events",
+                "uri": "/configuration/wrap-up-codes/7e2bdc2b-551e-4f0b-a1bc-ccc9c92d8055"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "6ef06099-c3a5-4b80-a18c-e305b5ffb28d",
+                "displayName": "TXAUS PFS Financial Assistance",
+                "uri": "/configuration/wrap-up-codes/6ef06099-c3a5-4b80-a18c-e305b5ffb28d"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "527f52da-f95d-4e26-8ed2-5f93754cf4cc",
+                "displayName": "TXAUS PFS Follow-up to Previous Call",
+                "uri": "/configuration/wrap-up-codes/527f52da-f95d-4e26-8ed2-5f93754cf4cc"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "70c5ffde-2cf2-4c87-bec2-270eb28987df",
+                "displayName": "TXAUS PFS HIPAA Auth",
+                "uri": "/configuration/wrap-up-codes/70c5ffde-2cf2-4c87-bec2-270eb28987df"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "25d39a82-d16e-4809-b53e-7c4f4cd21504",
+                "displayName": "TXAUS PFS IC Systems",
+                "uri": "/configuration/wrap-up-codes/25d39a82-d16e-4809-b53e-7c4f4cd21504"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "b272437a-8abd-48e1-ac29-9e43b4fa0d91",
+                "displayName": "TXAUS PFS Medical Records",
+                "uri": "/configuration/wrap-up-codes/b272437a-8abd-48e1-ac29-9e43b4fa0d91"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "636e656d-0bf5-4da0-9f35-cdf449e26de3",
+                "displayName": "TXAUS PFS Missing Adj.(Contr-Self Pay)",
+                "uri": "/configuration/wrap-up-codes/636e656d-0bf5-4da0-9f35-cdf449e26de3"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "fc36a589-09cf-4943-bbad-5ce0b972b56d",
+                "displayName": "TXAUS PFS Missing Payment",
+                "uri": "/configuration/wrap-up-codes/fc36a589-09cf-4943-bbad-5ce0b972b56d"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "6dd29d17-5e52-423d-8573-2c46951066d5",
+                "displayName": "TXAUS PFS Nurse Audit",
+                "uri": "/configuration/wrap-up-codes/6dd29d17-5e52-423d-8573-2c46951066d5"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "9499fc6b-7623-401b-8336-a9c09fb7d4f6",
+                "displayName": "TXAUS PFS Payment Plan",
+                "uri": "/configuration/wrap-up-codes/9499fc6b-7623-401b-8336-a9c09fb7d4f6"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "2c2e427c-b16d-4da9-a31d-3ae2f16b1e99",
+                "displayName": "TXAUS PFS Payment Trnsfr/Comb Accounts",
+                "uri": "/configuration/wrap-up-codes/2c2e427c-b16d-4da9-a31d-3ae2f16b1e99"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "1791864d-d810-424d-b13d-d00f55ab565a",
+                "displayName": "TXAUS PFS Refund",
+                "uri": "/configuration/wrap-up-codes/1791864d-d810-424d-b13d-d00f55ab565a"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "f343f103-daaf-4831-b33b-b7db2b1fcca1",
+                "displayName": "TXAUS PFS Request Ibill",
+                "uri": "/configuration/wrap-up-codes/f343f103-daaf-4831-b33b-b7db2b1fcca1"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "1f27be27-5e53-4973-88ab-15175c44a07b",
+                "displayName": "TXAUS PFS TOG/Parallon",
+                "uri": "/configuration/wrap-up-codes/1f27be27-5e53-4973-88ab-15175c44a07b"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "28fbf2cb-5aec-42ee-acc2-f35cc96b6792",
+                "displayName": "TXAUS PFS Transfer Call to other Dept",
+                "uri": "/configuration/wrap-up-codes/28fbf2cb-5aec-42ee-acc2-f35cc96b6792"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "f43ebba6-f450-4915-95a1-22afee6646b0",
+                "displayName": "TXAUS PFS Transfer to SUPV/MGR",
+                "uri": "/configuration/wrap-up-codes/f43ebba6-f450-4915-95a1-22afee6646b0"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "09bb57f9-a7a5-42d6-97ed-b08d93360738",
+                "displayName": "TXAUS PFS Update Demo/Guarantor Info",
+                "uri": "/configuration/wrap-up-codes/09bb57f9-a7a5-42d6-97ed-b08d93360738"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "4af0d046-7c02-488d-bdf0-31fba4e31a4b",
+                "displayName": "TXAUS SCC Call Back",
+                "uri": "/configuration/wrap-up-codes/4af0d046-7c02-488d-bdf0-31fba4e31a4b"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "bc2a75d8-2897-462c-a0c4-ce815fa2bd15",
+                "displayName": "TXAUS SCC Contact Made",
+                "uri": "/configuration/wrap-up-codes/bc2a75d8-2897-462c-a0c4-ce815fa2bd15"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "d505b971-5522-4eec-813c-e1a34a884ea7",
+                "displayName": "TXAUS SCC Disconnected Number",
+                "uri": "/configuration/wrap-up-codes/d505b971-5522-4eec-813c-e1a34a884ea7"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "6140d322-8f75-4fa5-8e52-a82eedbdcb8e",
+                "displayName": "TXAUS SCC Do Not Call",
+                "uri": "/configuration/wrap-up-codes/6140d322-8f75-4fa5-8e52-a82eedbdcb8e"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "f0a6e990-e254-4e07-a3c1-d75ba9bc2f1b",
+                "displayName": "TXAUS SCC Education Provided-FollowUp",
+                "uri": "/configuration/wrap-up-codes/f0a6e990-e254-4e07-a3c1-d75ba9bc2f1b"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "d12d0d61-f233-4916-a22d-f5e19fd1546a",
+                "displayName": "TXAUS SCC FollowUp Complete",
+                "uri": "/configuration/wrap-up-codes/d12d0d61-f233-4916-a22d-f5e19fd1546a"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "42db20ef-c985-44ce-a6bd-b894b4eb7865",
+                "displayName": "TXAUS SCC Information Call",
+                "uri": "/configuration/wrap-up-codes/42db20ef-c985-44ce-a6bd-b894b4eb7865"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "66a63103-365e-478e-8cb0-a9796e1c8b3b",
+                "displayName": "TXAUS SCC Invalid Number",
+                "uri": "/configuration/wrap-up-codes/66a63103-365e-478e-8cb0-a9796e1c8b3b"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "7a676e55-a14b-4f72-ae25-43b0eca133bd",
+                "displayName": "TXAUS SCC No Answer",
+                "uri": "/configuration/wrap-up-codes/7a676e55-a14b-4f72-ae25-43b0eca133bd"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "970fa5ea-c331-439d-9660-82789ae6709f",
+                "displayName": "TXAUS SCC No Answer Left Message",
+                "uri": "/configuration/wrap-up-codes/970fa5ea-c331-439d-9660-82789ae6709f"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "0f83e1ef-e5ef-4a97-83ae-7917f3b9bf11",
+                "displayName": "TXAUS SCC Triage Call",
+                "uri": "/configuration/wrap-up-codes/0f83e1ef-e5ef-4a97-83ae-7917f3b9bf11"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "0e2d7a65-2a6b-4b1f-a24f-162dd680bbaa",
+                "displayName": "TXAUS SCC Wrong Number",
+                "uri": "/configuration/wrap-up-codes/0e2d7a65-2a6b-4b1f-a24f-162dd680bbaa"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "24b103d7-98db-4203-9095-a01d6bc40511",
+                "displayName": "TXAUS SHP Benefit/Elig Inquiry",
+                "uri": "/configuration/wrap-up-codes/24b103d7-98db-4203-9095-a01d6bc40511"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "de35846c-6eab-444c-a550-cb2918457f04",
+                "displayName": "TXAUS SHP Care Coordination",
+                "uri": "/configuration/wrap-up-codes/de35846c-6eab-444c-a550-cb2918457f04"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "519f9fff-b488-4d61-8b74-8fecad0faa96",
+                "displayName": "TXAUS SHP Claim Inquiry",
+                "uri": "/configuration/wrap-up-codes/519f9fff-b488-4d61-8b74-8fecad0faa96"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "f6a9b0ff-6550-4358-bd13-df42aef51744",
+                "displayName": "TXAUS SHP Concurrent Review",
+                "uri": "/configuration/wrap-up-codes/f6a9b0ff-6550-4358-bd13-df42aef51744"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "3c2ef53b-9f34-4cc9-baee-a00eec390529",
+                "displayName": "TXAUS SHP DM Assessment",
+                "uri": "/configuration/wrap-up-codes/3c2ef53b-9f34-4cc9-baee-a00eec390529"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "6c155d47-6141-468e-9a20-7b3d629f1630",
+                "displayName": "TXAUS SHP DM Discharge",
+                "uri": "/configuration/wrap-up-codes/6c155d47-6141-468e-9a20-7b3d629f1630"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "1c5f43f6-a282-452f-9ff6-19b7c3b7ff09",
+                "displayName": "TXAUS SHP DM Opted Out",
+                "uri": "/configuration/wrap-up-codes/1c5f43f6-a282-452f-9ff6-19b7c3b7ff09"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "fb02a12e-e1c3-4886-8347-7f4db6491207",
+                "displayName": "TXAUS SHP DM Referral",
+                "uri": "/configuration/wrap-up-codes/fb02a12e-e1c3-4886-8347-7f4db6491207"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "f6e8a086-244e-4167-a453-c4fb9efc003e",
+                "displayName": "TXAUS SHP DM Status Check",
+                "uri": "/configuration/wrap-up-codes/f6e8a086-244e-4167-a453-c4fb9efc003e"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "30791559-e599-4245-813a-2b0afb702a01",
+                "displayName": "TXAUS SHP DM Unable to reach",
+                "uri": "/configuration/wrap-up-codes/30791559-e599-4245-813a-2b0afb702a01"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "6e438123-ebc3-4980-856d-e277e16adf3f",
+                "displayName": "TXAUS SHP Initial Auth",
+                "uri": "/configuration/wrap-up-codes/6e438123-ebc3-4980-856d-e277e16adf3f"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "1cefa105-bc73-4bc6-a16b-9e24477f386d",
+                "displayName": "TXAUS SHP Member Inquiry",
+                "uri": "/configuration/wrap-up-codes/1cefa105-bc73-4bc6-a16b-9e24477f386d"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "1a6ef67f-d3f4-48fe-821f-464afcd3176e",
+                "displayName": "TXAUS SHP Modify Auth",
+                "uri": "/configuration/wrap-up-codes/1a6ef67f-d3f4-48fe-821f-464afcd3176e"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "52486e61-34b5-47a1-bc36-cd853b483fae",
+                "displayName": "TXAUS SHP Outreach",
+                "uri": "/configuration/wrap-up-codes/52486e61-34b5-47a1-bc36-cd853b483fae"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "953691a8-ca2e-4a3b-b7cb-94a1a134ec6a",
+                "displayName": "TXAUS SHP Provider Inquiry",
+                "uri": "/configuration/wrap-up-codes/953691a8-ca2e-4a3b-b7cb-94a1a134ec6a"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "3ceae959-c1a3-42b6-8cc3-f58f495190af",
+                "displayName": "TXAUS SHP Transitional Care",
+                "uri": "/configuration/wrap-up-codes/3ceae959-c1a3-42b6-8cc3-f58f495190af"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "6d963027-75e8-484e-8e36-f1139cb52303",
+                "displayName": "TXAUS SMCH Payment Processing",
+                "uri": "/configuration/wrap-up-codes/6d963027-75e8-484e-8e36-f1139cb52303"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "fd5a1fad-c837-41d3-9387-366129edc6d9",
+                "displayName": "TXAUS SMCH Phys Infusions & Backline",
+                "uri": "/configuration/wrap-up-codes/fd5a1fad-c837-41d3-9387-366129edc6d9"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "828b9f28-c275-496d-847f-ea99136c5e41",
+                "displayName": "TXAUS SMCH Physician Cardiac",
+                "uri": "/configuration/wrap-up-codes/828b9f28-c275-496d-847f-ea99136c5e41"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "1998466e-bd0a-4332-9c4f-a92a73c044eb",
+                "displayName": "TXAUS SMCH Physician PT",
+                "uri": "/configuration/wrap-up-codes/1998466e-bd0a-4332-9c4f-a92a73c044eb"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "b0429d9b-f9cd-4089-9ccf-22b6cace2033",
+                "displayName": "TXAUS SMCH Physician SurgEndo",
+                "uri": "/configuration/wrap-up-codes/b0429d9b-f9cd-4089-9ccf-22b6cace2033"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "888169d9-bff1-4c85-8931-26090ee66d91",
+                "displayName": "TXAUS SMCH Pre-Registration",
+                "uri": "/configuration/wrap-up-codes/888169d9-bff1-4c85-8931-26090ee66d91"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "d93156c1-4b19-4770-8c44-ee04623c250c",
+                "displayName": "TXAUS SPR Claims",
+                "uri": "/configuration/wrap-up-codes/d93156c1-4b19-4770-8c44-ee04623c250c"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "b46ebb97-f03a-47b2-8620-6aaf90735f6c",
+                "displayName": "TXAUS SPR Contracting",
+                "uri": "/configuration/wrap-up-codes/b46ebb97-f03a-47b2-8620-6aaf90735f6c"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "e9709ef6-d997-4a23-9cf7-5fb2a325633b",
+                "displayName": "TXAUS SPR Eligibility & Benefit",
+                "uri": "/configuration/wrap-up-codes/e9709ef6-d997-4a23-9cf7-5fb2a325633b"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "e4161e76-74c2-4190-95f1-f0319c01e7b7",
+                "displayName": "TXAUS SPR Referral & Authorizations",
+                "uri": "/configuration/wrap-up-codes/e4161e76-74c2-4190-95f1-f0319c01e7b7"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "6ab3c26d-e952-40a2-8458-00205e09fb15",
+                "displayName": "TXAUS SPR Verification",
+                "uri": "/configuration/wrap-up-codes/6ab3c26d-e952-40a2-8458-00205e09fb15"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "24ae8828-91ee-4e32-9285-5e35d2d62f71",
+                "displayName": "TXAUS SSC BH Navigation-Psychiatry",
+                "uri": "/configuration/wrap-up-codes/24ae8828-91ee-4e32-9285-5e35d2d62f71"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "cea32907-fb56-44dd-b624-fbd8dd478554",
+                "displayName": "TXAUS SSC BH Navigation-Psychotherapy",
+                "uri": "/configuration/wrap-up-codes/cea32907-fb56-44dd-b624-fbd8dd478554"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "f9a26604-6fb1-4526-ae52-d747d0c7517c",
+                "displayName": "TXAUS SSC Health Management Navigate",
+                "uri": "/configuration/wrap-up-codes/f9a26604-6fb1-4526-ae52-d747d0c7517c"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "d8ed17c5-8cd8-4c7c-898a-5cabee84a92b",
+                "displayName": "TXAUS SSC Individual Therapy",
+                "uri": "/configuration/wrap-up-codes/d8ed17c5-8cd8-4c7c-898a-5cabee84a92b"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "e23a30c0-ee01-4aae-bed6-f0dc10a5038d",
+                "displayName": "TXAUS SSC Marketing",
+                "uri": "/configuration/wrap-up-codes/e23a30c0-ee01-4aae-bed6-f0dc10a5038d"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "44694a87-7b18-4458-a700-442ab6eb184d",
+                "displayName": "TXAUS SSC Maternal Behav Health Svc",
+                "uri": "/configuration/wrap-up-codes/44694a87-7b18-4458-a700-442ab6eb184d"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "21a68b3f-dc4a-476d-9610-8e1784124a28",
+                "displayName": "TXAUS SSC OP Admissions Follow Up Calls",
+                "uri": "/configuration/wrap-up-codes/21a68b3f-dc4a-476d-9610-8e1784124a28"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "2abe854b-34d1-4298-95cc-0f1cd4cb003f",
+                "displayName": "TXAUS SSC OP Admissions Initial Call",
+                "uri": "/configuration/wrap-up-codes/2abe854b-34d1-4298-95cc-0f1cd4cb003f"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "26eb7bf4-f447-40b1-9b14-0de5ebfa670e",
+                "displayName": "TXAUS SSC OP Benefit Verification",
+                "uri": "/configuration/wrap-up-codes/26eb7bf4-f447-40b1-9b14-0de5ebfa670e"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "30ba81ce-ed26-4d45-8936-5b76693f5fe4",
+                "displayName": "TXAUS SSC OP Financial",
+                "uri": "/configuration/wrap-up-codes/30ba81ce-ed26-4d45-8936-5b76693f5fe4"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "ec2baf49-1498-4ae7-b0c0-2ba3be027139",
+                "displayName": "TXAUS SSC Other",
+                "uri": "/configuration/wrap-up-codes/ec2baf49-1498-4ae7-b0c0-2ba3be027139"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "a8cab816-70c0-484f-9b2d-62f0824fa29d",
+                "displayName": "TXAUS SSC PsychoED & LOC Navigation",
+                "uri": "/configuration/wrap-up-codes/a8cab816-70c0-484f-9b2d-62f0824fa29d"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "7c5db44c-d9ae-4546-9550-4577e3aa90c7",
+                "displayName": "TXAUS SSC Resource Verification",
+                "uri": "/configuration/wrap-up-codes/7c5db44c-d9ae-4546-9550-4577e3aa90c7"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "121acfcd-b859-4da4-96a6-f51f19ff0c01",
+                "displayName": "TXAUS SSC Seton Behav Health Consults",
+                "uri": "/configuration/wrap-up-codes/121acfcd-b859-4da4-96a6-f51f19ff0c01"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "1d1b3627-dfeb-41f1-aa36-e574d7cb1de0",
+                "displayName": "TXAUS SSC Utilization Review",
+                "uri": "/configuration/wrap-up-codes/1d1b3627-dfeb-41f1-aa36-e574d7cb1de0"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "70efa876-bf20-419f-acf1-5a10ff28b9c8",
+                "displayName": "TXAUS TC Behavior Health",
+                "uri": "/configuration/wrap-up-codes/70efa876-bf20-419f-acf1-5a10ff28b9c8"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "5f00d384-76ba-4c02-b043-2cd1daae6cf4",
+                "displayName": "TXAUS TC Direct Admit",
+                "uri": "/configuration/wrap-up-codes/5f00d384-76ba-4c02-b043-2cd1daae6cf4"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "958a0dfc-ec42-4b2c-bd47-0de17c9dba38",
+                "displayName": "TXAUS TC High Risk Maternal",
+                "uri": "/configuration/wrap-up-codes/958a0dfc-ec42-4b2c-bd47-0de17c9dba38"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "20218956-0669-46f4-b118-2df94d32ea31",
+                "displayName": "TXAUS TC High Risk NICU",
+                "uri": "/configuration/wrap-up-codes/20218956-0669-46f4-b118-2df94d32ea31"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "3c726894-9383-4cd2-84e1-c194e285a4df",
+                "displayName": "TXAUS TC In-Quicker",
+                "uri": "/configuration/wrap-up-codes/3c726894-9383-4cd2-84e1-c194e285a4df"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "70384c7b-8bc6-42f4-8cd0-cb38913906d5",
+                "displayName": "TXAUS TC Misc - Other",
+                "uri": "/configuration/wrap-up-codes/70384c7b-8bc6-42f4-8cd0-cb38913906d5"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "6c6aa257-d124-49f9-b7f2-c0bce4ef02f6",
+                "displayName": "TXAUS TC Pedi",
+                "uri": "/configuration/wrap-up-codes/6c6aa257-d124-49f9-b7f2-c0bce4ef02f6"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "5296ec59-f011-4071-a2f0-dbb268a54912",
+                "displayName": "TXAUS TC Pedi Trauma",
+                "uri": "/configuration/wrap-up-codes/5296ec59-f011-4071-a2f0-dbb268a54912"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "916d5830-6f02-4424-a276-df4cdf0096d5",
+                "displayName": "TXAUS TC STEMI",
+                "uri": "/configuration/wrap-up-codes/916d5830-6f02-4424-a276-df4cdf0096d5"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "1ee5369c-288a-4519-9ca4-70f237d316b0",
+                "displayName": "TXAUS TC Stroke",
+                "uri": "/configuration/wrap-up-codes/1ee5369c-288a-4519-9ca4-70f237d316b0"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "4bbda8d4-ddd8-4fb8-aabd-94a43eb06335",
+                "displayName": "TXAUS TC Transfer Other",
+                "uri": "/configuration/wrap-up-codes/4bbda8d4-ddd8-4fb8-aabd-94a43eb06335"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "19b53ddc-87c9-4159-aa8d-f179396a1b3e",
+                "displayName": "TXAUS TC Trauma",
+                "uri": "/configuration/wrap-up-codes/19b53ddc-87c9-4159-aa8d-f179396a1b3e"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "TXAUS_Follow-Up",
+                "displayName": "TXAUS_Follow-Up",
+                "uri": "/configuration/wrap-up-codes/TXAUS_Follow-Up"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "TXAUS_New Patient",
+                "displayName": "TXAUS_New Patient",
+                "uri": "/configuration/wrap-up-codes/TXAUS_New%20Patient"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "TXAUS_Testing",
+                "displayName": "TXAUS_Testing",
+                "uri": "/configuration/wrap-up-codes/TXAUS_Testing"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "TXAUS_Took A Message",
+                "displayName": "TXAUS_Took A Message",
+                "uri": "/configuration/wrap-up-codes/TXAUS_Took%20A%20Message"
+            }
+        },
+        {
+            "configurationId": {
+                "id": "TXAUS_Transfer",
+                "displayName": "TXAUS_Transfer",
+                "uri": "/configuration/wrap-up-codes/TXAUS_Transfer"
+            }
+        }
+    ]
+}
