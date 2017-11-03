@@ -23,7 +23,7 @@ import * as moment from 'moment';
     li {list-style: none;}
     .step2 a {color: #fff; font-weight: 700;}
     .options{cursor:pointer;padding:10px;border-bottom:1px solid black;}
-    .multiple-select{overflow-y:scroll; height:100px;}
+    .multiple-select{overflow-y:scroll; height:200px;}
   `]
 })
 export class InboundCallComponent implements OnInit, OnDestroy {
