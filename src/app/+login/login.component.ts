@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   sessionId: any;
   userId: any;
   userName: any;
+  user: any;
   constructor(private router: Router, private _loginService: LoginService) { }
 
   ngOnInit() {
@@ -111,16 +112,23 @@ export class LoginComponent implements OnInit {
     this._loginService.onsubmit(this.form)
       .subscribe((response: any) => {
        this.postResponse = response;
+      //  this.updateCredentials(this.postResponse);
        this.sessionId = response.sessionId;
        this.userId = response.userID;
        this.userName = response.userDisplayName;
-       localStorage.setItem('SessionId', this.sessionId);
-       localStorage.setItem('userName', this.userName);
+       sessionStorage.setItem('SessionId', this.sessionId);
+       sessionStorage.setItem('userName', this.userName);
+       sessionStorage.setItem('csrf', response.csrfToken)
        console.log(this.sessionId);
        console.log(this.userId);
+       console.log(response.csrfToken);
     });
     alert('login successful! and navigating to ' + this.returnUrl + ' ');
     this.router.navigate([this.returnUrl]);
-    this.isSignOn = true;
   }
+  // updateCredentials(credentials) {
+  //   this.user = credentials;
+  //   console.log(this.user);
+  //   this.isSignOn = true;
+  // }
 }
