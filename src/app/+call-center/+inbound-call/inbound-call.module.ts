@@ -1,14 +1,14 @@
-import {NgModule} from '@angular/core';
-import {SmartadminModule} from '../../shared/smartadmin.module';
+import { NgModule } from '@angular/core';
+import { SmartadminModule } from '../../shared/smartadmin.module';
 import { FormsModule } from '@angular/forms';
-import {InboundCallRoutingModule} from './inbound-call-routing.module';
-import {InboundCallComponent} from './inbound-call.component';
-import {SocialNetworkComponent} from './live-feeds/social-network.component';
-import {LiveFeedsComponent} from './live-feeds/live-feeds.component';
-import {LiveStatsComponent} from './live-feeds/live-stats.component';
-import {RevenueComponent} from './live-feeds/revenue.component';
-import {BirdEyeComponent} from './bird-eye/bird-eye.component';
-import {CalendarModule} from '../../+calendar/calendar.module';
+import { InboundCallRoutingModule } from './inbound-call-routing.module';
+import { InboundCallComponent } from './inbound-call.component';
+import { SocialNetworkComponent } from './live-feeds/social-network.component';
+import { LiveFeedsComponent } from './live-feeds/live-feeds.component';
+import { LiveStatsComponent } from './live-feeds/live-stats.component';
+import { RevenueComponent } from './live-feeds/revenue.component';
+import { BirdEyeComponent } from './bird-eye/bird-eye.component';
+import { CalendarModule } from '../../+calendar/calendar.module';
 import { TodoWidgetComponent } from './todo-widget/todo-widget.component';
 import { TodoListComponent } from './todo-widget/todo-list.component';
 import { FlotChartModule } from '../../shared/graphs/flot-chart/flot-chart.module';
@@ -24,6 +24,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import 'bootstrap-daterangepicker';
 import { MaskedInput } from '../../shared/forms/input/masked-input.directive';
 import { ValuesPipeModule } from './../../shared/pipes/valuePipe.module';
+import { SearchFilterPipeModule } from './../../shared/pipes/searchPipe.module';
+
 
 @NgModule({
   imports: [
@@ -38,6 +40,7 @@ import { ValuesPipeModule } from './../../shared/pipes/valuePipe.module';
     SelectModule,
     DataTableModule,
     ValuesPipeModule,
+    SearchFilterPipeModule,
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot()
@@ -48,13 +51,9 @@ import { ValuesPipeModule } from './../../shared/pipes/valuePipe.module';
     LiveStatsComponent,
     RevenueComponent,
     SocialNetworkComponent,
-
     BirdEyeComponent,
-
     TodoWidgetComponent,
-
     TodoListComponent,
-
     OnCallComponent
   ],
   providers: [InboundService]

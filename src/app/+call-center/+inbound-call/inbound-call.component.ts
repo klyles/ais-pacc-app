@@ -5,7 +5,11 @@ import { FadeInTop } from '../../shared/animations/fade-in-top.decorator';
 import { ModalDirective } from 'ngx-bootstrap/modal';
 import { InboundService } from './inbound-call.service';
 import * as moment from 'moment';
-// declare var $: any;
+
+import { fadeInTop } from '../shared/animations/router.animations';
+
+
+declare var $: any;
 
 @FadeInTop()
 @Component({
@@ -22,12 +26,13 @@ import * as moment from 'moment';
     }
     li {list-style: none;}
     .step2 a {color: #fff; font-weight: 700;}
-    .options{cursor:pointer;padding:10px;border-bottom:1px solid black;}
-    .multiple-select{overflow-y:scroll; height:200px;}
-  `]
+    .two {
+       font-size: 20px;
+    }
+  `],
 })
 export class InboundCallComponent implements OnInit, OnDestroy {
-  @ViewChild('childModal') public childModal: ModalDirective; 
+  @ViewChild('childModal') public childModal: ModalDirective;
   // private callStatus: string;
 
   private $startCallTime: any;
@@ -85,15 +90,20 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   addPatient: any = {};
   editPatient: any = {};
 
-  public selected: any[]= [];
+  // public selected: any[] = [];
 
-  selectedOutCome: any[] = []
+  selectedOutCome: any = [];
 
   sessionID: any;
   csrf: any;
   _wrap$Codes: any = {
     $codes: {}
   }
+  demoStyle = 'style1';
+
+  demoShowTabs = false;
+
+  toggle = {};
 
   constructor(
     private _InboundService: InboundService
@@ -111,23 +121,24 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     event.preventDefault();
     if (this.selectedOutCome.indexOf(val) === -1) {
       this.selectedOutCome = [...this.selectedOutCome, val];
-      // jQuery('#' + val.id).toggleClass('fa fa-check ');
-    }else {
-      // jQuery('#' + val.id).toggleClass('fa fa-check');
-      this.selectedOutCome = this.selectedOutCome.filter(function(elem){
+    } else {
+      this.selectedOutCome = this.selectedOutCome.filter(function (elem) {
         return elem !== val;
       })
       console.log(this.selectedOutCome);
     }
   }
+
   ngOnInit() {
     this.getCallStatus();
-    // this.getCallOutComes();
     this.getStates();
     this.getApps();
     this.sessionID = sessionStorage.getItem('SessionId');
     this.csrf = sessionStorage.getItem('csrf');
     this.setMessageTimeOut();
+  }
+  setStyle(style) {
+    this.demoStyle = style
   }
   ngOnDestroy() {
     console.clear();
@@ -194,7 +205,6 @@ export class InboundCallComponent implements OnInit, OnDestroy {
           this.form.searchObjects = response.filter;
           this._showsearchResults = true;
           this.form.display = 'block';
-          // this._addPatients = false;
         }
         )
     } else {
@@ -222,10 +232,6 @@ export class InboundCallComponent implements OnInit, OnDestroy {
       .subscribe(
       (response: any) => {
         this._wrap$Codes.$codes = response.items;
-        // if (this._wrap$Codes.$codes.length > 0) {
-        //      this.selectedOutCome = this._wrap$Codes.$codes[0].configurationId.displayName;
-        //      console.log(this.selectedOutCome);
-        //   }
       });
   }
   public getStates() {
