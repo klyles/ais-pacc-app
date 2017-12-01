@@ -47,6 +47,7 @@ export class LoginService extends APIServices {
   }
   getIcSSO(): Observable<any> {
     const url = this.baseICUrl + '/server-info?singleSignOnCapabilities=saml2Post,saml2Redirect';
+    console.log('singleSignOnCapabilities=saml2Post,saml2Redirect');
     console.log(url);
     return this._http.get(url, this.options).map((response: any) => { return response.json(); }).catch(this.handleError.bind(this));
   }
