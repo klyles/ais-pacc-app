@@ -1,12 +1,14 @@
-import { LoginService } from './login.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalDirective } from 'ngx-bootstrap/modal';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
 })
 export class LoginComponent implements OnInit {
+  @ViewChild('auth2Modal') public auth2Modal: ModalDirective;
   form: any = {};
   returnUrl: string;
   idProviders: any;
@@ -18,20 +20,21 @@ export class LoginComponent implements OnInit {
   userId: any;
   userName: any;
   user: any;
-  constructor(private router: Router, private _loginService: LoginService) { }
+  tmp: any;
+  isAuthenticated: boolean;
+  constructor(private router: Router, private _loginService: LoginService) {
+    this.isAuthenticated = false;
+   }
 
   ngOnInit() {
   // retrieve the previousUrl from route params or default to '/'
     this.isSignOn = false;
     const prevUrl = localStorage.getItem('prevUrl');
-    this.returnUrl = prevUrl ? prevUrl : '/dashboard/analytics';
+    this.returnUrl = prevUrl ? prevUrl : '/call-center/inbound-call';
     this.getIcFeatures();
     this.getIcVersion();
     this.getIcSSO();
     this.ssoTimeOut();
-    // this.reDirectUri();
-    // this.getSSOReturn();
-    // this.postSamlRequest();
   }
   reDirectUri() {
     window.open('https://ciccrm.ascension.org/api/ahwivrtxpla001.ds.sjhs.com/icws/connection/single-sign-on' +
@@ -39,7 +42,6 @@ export class LoginComponent implements OnInit {
     'singleSignOnCapabilities=saml2Post%2Csaml2Redirect&redirectUri=https%3A%2F%2Fwww.google.com');
 
     console.log('navigating to: https://www.google.com');
-  //  this.getSSOResponse();
     this.responseTimeOut();
   }
   getIcFeatures() {
@@ -65,7 +67,6 @@ export class LoginComponent implements OnInit {
         this.idProviders = response.authentication.identityProviders[0].identityProviderId;
       }
     )
-    // this.reDirectUri();
   }
   public ssoTimeOut() {
     setTimeout(() => this.getIcSSOProviders(), 1000);
@@ -118,17 +119,27 @@ export class LoginComponent implements OnInit {
        this.userName = response.userDisplayName;
        sessionStorage.setItem('SessionId', this.sessionId);
        sessionStorage.setItem('userName', this.userName);
-       sessionStorage.setItem('csrf', response.csrfToken)
-       console.log(this.sessionId);
-       console.log(this.userId);
-       console.log(response.csrfToken);
+       sessionStorage.setItem('csrf', response.csrfToken);
+       this.getUserAuth2();
+       if (this.isAuthenticated = true) {
+        this.router.navigate([this.returnUrl]);
+      }
     });
-    alert('login successful! and navigating to ' + this.returnUrl + ' ');
-    this.router.navigate([this.returnUrl]);
+    // alert('login successful! and navigating to ' + this.returnUrl + ' ');
   }
   // updateCredentials(credentials) {
   //   this.user = credentials;
   //   console.log(this.user);
   //   this.isSignOn = true;
   // }
+  // timeOut() {
+  //   setTimeout(() => this.isAuthenticated = true, 7000);
+  // }
+  public getUserAuth2() {
+    this.isAuthenticated = false;
+    this.auth2Modal.show();
+  }
+  public hideauth2Modal(): void {
+    this.auth2Modal.hide();
+  }
 }
