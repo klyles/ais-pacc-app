@@ -4,7 +4,7 @@ export const BaseHeader = {
 
 export const BaseUrl = 'http://ahwwebtxaus001:3000/api';
 
-export const BaseICUrl = 'https://ciccrm.ascension.org/api/ahwivrtxpla001.ds.sjhs.com/icws/connection'
+export const BaseICUrl = 'https://ciccrm.ascension.org/api/ahwivrtxpla001.ds.sjhs.com/icws/connection';
 
 /* Use this for PROD environment:
    export const REST_API_URL = 'https://sb-fhir-dstu2.smarthealthit.org'; */
