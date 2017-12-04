@@ -346,7 +346,7 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     }
     this._addPatients = false;
     this.displayResults();
-    this.saveNotes();
+   // this.saveNotes();
     this.loadMetrics(this.patID);
   }
   public showContactType(contactMethod: any) {
@@ -364,9 +364,9 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   public showOutCome(callOutCome) {
     this.selectedOutCome = callOutCome;
   }
-  public saveNotes() {
-    this.childModal.show();
-  }
+  // public saveNotes() {
+  //   this.childModal.show();
+  // }
   public hideChildModal(): void {
     this.childModal.hide();
   }
