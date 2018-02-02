@@ -1,4 +1,10 @@
 <!-- MAIN CONTENT -->
+<style>
+  .alert-danger {
+    background-color: #3EBCA7;
+    border-left-color: #2B8273;
+  }
+</style>
 <div class="modal-dialog modal-md animated flipInX">
   <br><br><br><br>
   <div class="modal-content">
@@ -22,10 +28,10 @@
 
               <div class="col col-10">
                 <label class="input"> <i class="icon-append fa fa-user"></i>
-                    <input type="text" 
+                    <input type="text"
                     #username="ngModel" id="username"
                     name="username" placeholder="Username"
-                    required="required" 
+                    required="required"
                     [(ngModel)]="form.username"
                      autofocus>
                     <!-- <input type="hidden" name="SAMLRequest" value="PHNhbWxwOkF1dGhuUmVxdWVzdCAgICB4bWxuczpzYW1sPSJ1cm46b2FzaXM6bmFtZXM6dGM6U0FNTDoyLjA6YXNzZXJ0aW9uIiAgICB4bWxuczpzYW1scD0idXJuOm9hc2lzOm5hbWVzOnRjOlNBTUw6Mi4wOnByb3RvY29sIiAgICBJRD0iX2YzNWY2ZTQ5MzMzYjM1MTc5MTQxZWEwODI5YjY1MDIwIiAgICBWZXJzaW9uPSIyLjAiICAgIElzc3VlSW5zdGFudD0iMjAxNy0xMC0yNFQxNjo0MzoxNy43MTEzNDdaIiAgICBEZXN0aW5hdGlvbj0iaHR0cHM6Ly9jaWNjcm0uYXNjZW5zaW9uLm9yZy9hcGkvYWh3aXZydHhwbGEwMDEuZHMuc2pocy5jb20vaWN3cy9jb25uZWN0aW9uL3NpbmdsZS1zaWduLW9uL2F1dGhlbnRpY2F0aW9uL1dpbmRvd3NJRFAvbG9naW4/bG9naW5UeXBlPXNhbWwiICAgIENvbnNlbnQ9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDpjb25zZW50OnVuc3BlY2lmaWVkIiAgICBGb3JjZUF1dGhuPSJmYWxzZSIgICAgSXNQYXNzaXZlPSJmYWxzZSIgICAgQXNzZXJ0aW9uQ29uc3VtZXJTZXJ2aWNlVVJMPSJodHRwczovL2NpY2NybS5hc2NlbnNpb24ub3JnL2FwaS9haHdpdnJ0eHBsYTAwMS5kcy5zamhzLmNvbS9pY3dzL2Nvbm5lY3Rpb24vc2luZ2xlLXNpZ24tb24vcmV0dXJuIiAgICBQcm90b2NvbEJpbmRpbmc9InVybjpvYXNpczpuYW1lczp0YzpTQU1MOjIuMDpiaW5kaW5nczpIVFRQLVBPU1QiICAgIFByb3ZpZGVyTmFtZT0iaHR0cHM6Ly9BSFdJVlJUWFBMQTAwMTo4MDQzIj48c2FtbDpJc3N1ZXI+aHR0cHM6Ly9BSFdJVlJUWFBMQTAwMTo4MDQzPC9zYW1sOklzc3Vlcj48L3NhbWxwOkF1dGhuUmVxdWVzdD4="/>
@@ -48,11 +54,11 @@
 
               <div class="col col-10">
                 <label class="input"> <i class="icon-append fa fa-lock"></i>
-                    <input type="password" name="password" 
+                    <input type="password" name="password"
                     #password="ngModel" id="password"
-                    placeholder="Password" 
-                    required="required"  
-                    [(ngModel)]="form.password"> 
+                    placeholder="Password"
+                    required="required"
+                    [(ngModel)]="form.password">
                     <br>
                     <div *ngIf="password.errors && (password.dirty || password.touched)"
                       class="alert alert-danger animated shake">
@@ -78,7 +84,7 @@
         <footer>
           <span class="pull-left"> <span class="text-danger">*</span> <em> Required </em> </span>
           <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">
-               Sign in 
+               Sign in
               </button>
         </footer>
       </form>
