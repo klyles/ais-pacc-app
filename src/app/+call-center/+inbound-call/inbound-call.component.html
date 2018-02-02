@@ -14,6 +14,7 @@
                 Hold
             </button> -->
             <button (click)="endCall($event)" [disabled]="_endCall" class="btn btn-danger btn-lg"> End </button>
+            <span *ngIf="_startWarning == true" class="text-danger" style="margin-left: 1em;">Please start the call first.</span>
             <span *ngIf="_startRecording == true" class="animated fadeInDownBig mar-md"> <strong> Started : <span class="text-success"> {{$startCallTime | date:'medium'}} </span>          </strong>
             </span>
             <span *ngIf="_endRecording == true" class="animated fadeInUpBig mar-md"> <strong> Ended : <span class="text-danger"> {{$endCallTime | date:'medium'}} </span>          </strong>
@@ -52,7 +53,7 @@
                     <button type="button" class="btn btn-sm btn-primary btn-prev">
                         <i class="fa fa-arrow-left"></i>Prev
                       </button>
-                    <button type="button" class="btn btn-sm btn-success btn-next" data-last="Finish">
+                    <button [disabled]="!_startRecording" type="button" class="btn btn-sm btn-success btn-next" data-last="Finish">
                         Next<i class="fa fa-arrow-right"></i>
                       </button>
                   </div>
@@ -61,7 +62,7 @@
                   <form class="form-horizontal">
                     <div class="step-pane active" data-step="1" style="min-height: 373px;">
                       <h3><strong>Step 1 </strong> - Search Patients </h3>
-                      <input type="text" class="form-control" placeholder="search (e.g Lastname)" [(ngModel)]="form.$searchStr" (keyup)="displayResults()"
+                      <input type="text" [disabled]="!_startRecording" class="form-control" placeholder="search (e.g Lastname, Phone Number)" [(ngModel)]="form.$searchStr" (keyup)="displayResults()"
                         (blur)="_showsearchResults = false" name="$searchStr">
                       <br><br>
                       <article class="col-sm-12 no-padding" style="margin-top: -3em;">
@@ -112,24 +113,24 @@
                         <a href="{{app.link}}" target="_blank"> {{app.name}} </a>
                       </div>
                     </div>
-  
+
                     <!-- <div class="step-pane" data-step="3">
                       <h3><strong>Step 3 </strong> - Wizard continued</h3>
                       <br>
                       <br>
-  
+
                       <h1 class="text-center text-primary"> This will be your Step 3 </h1>
                       <br>
                       <br>
                       <br>
                       <br>
                     </div> -->
-  
+
                     <!-- <div class="step-pane" data-step="4">
                       <h3><strong>Step 4 </strong> - Finished!</h3>
                       <br>
                       <br>
-  
+
                       <h1 class="text-center text-success"><i class="fa fa-check"></i> Congratulations!
                         <br>
                         <small>Click finish to end wizard</small>
@@ -151,7 +152,7 @@
             <div class="row">
               <div class="col-md-6 lead"> Patient Details </div>
               <div class="col-md-6">
-                <button class="btn btn-primary pull-right" (click)="addPatientList()"><i class="fa fa-plus"></i> Add
+                <button [disabled]="!_startRecording" class="btn btn-primary pull-right" (click)="addPatientList()"><i class="fa fa-plus"></i> Add
                     </button>
               </div>
             </div>
@@ -297,7 +298,7 @@
                     <div class="col-sm-4"></div>
                     <div class="col-sm-8">
                       <button class="btn btn-primary col-sm-12" type="submit" [disabled]="true">
-                        <i class="glyphicon glyphicon-floppy-save"></i> Save 
+                        <i class="glyphicon glyphicon-floppy-save"></i> Save
                       </button>
                     </div>
                   </div>
@@ -372,7 +373,7 @@
                     <div class="col-sm-8">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
-                        <input class="form-control" type="text" value="{{home_phone}}" readonly>
+                        <input class="form-control" type="text" value="{{individualDetails.home_phone | phone}}" readonly>
                       </div>
                     </div>
                   </div>
@@ -381,7 +382,7 @@
                     <div class="col-sm-8">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                        <input class="form-control" type="number" value="{{individualDetails.work_phone}}" readonly>
+                        <input class="form-control" type="text" value="{{individualDetails.work_phone | phone}}" readonly>
                       </div>
                     </div>
                   </div>
@@ -390,7 +391,7 @@
                     <div class="col-sm-8">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                        <input class="form-control" type="number" value="{{individualDetails.mobile_phone}}" readonly>
+                        <input class="form-control" type="text" value="{{individualDetails.mobile_phone | phone}}" readonly>
                       </div>
                     </div>
                   </div>
@@ -464,7 +465,7 @@
                     <div class="col-sm-4"></div>
                     <div class="col-sm-8">
                       <button class="btn btn-primary col-sm-12" type="submit">
-                          <i class="glyphicon glyphicon-floppy-save"></i> Save 
+                          <i class="glyphicon glyphicon-floppy-save"></i> Save
                       </button>
                     </div>
                   </div> -->
@@ -474,7 +475,7 @@
           </sa-widget>
         </article>
         <!-- end of patient details -->
-  
+
         <!-- add new patient form -->
         <article class="col-sm-6 animated fadeInUp" *ngIf="_addPatients && !_loadmetrics">
           <sa-widget>
@@ -489,7 +490,7 @@
                     <div class="col-sm-8">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                        <input class="form-control" type="text" id="firstname" name="firstname" required="required" [(ngModel)]="first_name">
+                        <input class="form-control" type="text" id="firstname" name="firstname" required="required" [(ngModel)]="individualDetails.first_name">
                       </div>
                     </div>
                   </div>
@@ -498,7 +499,7 @@
                     <div class="col-sm-8">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-                        <input class="form-control" type="text" id="middlename" name="middlename" [(ngModel)]="middle_name">
+                        <input class="form-control" type="text" id="middlename" name="middlename" [(ngModel)]="individualDetails.middle_name">
                       </div>
                     </div>
                   </div>
@@ -507,7 +508,7 @@
                     <div class="col-sm-8">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
-                        <input class="form-control" type="text" id="lastname" name="lastname" required="required" [(ngModel)]="last_name">
+                        <input class="form-control" type="text" id="lastname" name="lastname" required="required" [(ngModel)]="individualDetails.last_name">
                       </div>
                     </div>
                   </div>
@@ -516,7 +517,7 @@
                     <div class="col-sm-8">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
-                        <input type="text" class="form-control" name="date" bsDatepicker [(ngModel)]="birthdate" [bsConfig]="bsConfig" />
+                        <input type="text" class="form-control" name="date" bsDatepicker [(ngModel)]="individualDetails.dob" [bsConfig]="bsConfig" />
                       </div>
                     </div>
                   </div>
@@ -525,7 +526,7 @@
                     <div class="col-sm-8">
                       <div class="input-group-btn no-padding">
                         <button type="button" class="btn btn-default dropdown-toggle col-md-12" data-toggle="dropdown" required="required">
-                            {{selectedGender}} <span class="caret"> </span>
+                            {{individualDetails.gender}} <span class="caret"> </span>
                         </button>
                         <ul class="dropdown-menu col-md-12" role="menu">
                           <li role="menuitem"><a class="dropdown-item" (click)="showGender('Male')">Male</a></li>
@@ -540,8 +541,8 @@
                     <div class="col-sm-8">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-phone-alt"></i></span>
-                        <input class="form-control" type="tel" id="homephone" name="homephone" required="required" data-smart-masked-input="(999) 999-9999"
-                          [(ngModel)]="home_phone">
+                        <input class="form-control" type="text" id="homephone" name="homephone" required="required"
+                          [(ngModel)]="individualDetails.home_phone" [textMask]="{mask: mask}">
                       </div>
                     </div>
                   </div>
@@ -552,7 +553,7 @@
                     <div class="col-sm-8">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                        <input class="form-control" type="text" id="workphone" name="workphone" [(ngModel)]="work_phone">
+                        <input class="form-control" type="text" id="workphone" name="workphone" [(ngModel)]="individualDetails.work_phone" [textMask]="{mask: mask}">
                       </div>
                     </div>
                   </div>
@@ -563,7 +564,7 @@
                     <div class="col-sm-8">
                       <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
-                        <input class="form-control" type="text" id="mobilephone" name="mobilephone" [(ngModel)]="mobile_phone">
+                        <input class="form-control" type="text" id="mobilephone" name="mobilephone" [(ngModel)]="individualDetails.mobile_phone" [textMask]="{mask: mask}">
                       </div>
                     </div>
                   </div>
@@ -655,8 +656,8 @@
                   <div class="form-group">
                     <div class="col-sm-4"></div>
                     <div class="col-sm-8">
-                      <button class="btn btn-primary col-sm-12" type="submit" [disabled]="!addPatientForm.form.valid"> 
-                            <i class="glyphicon glyphicon-floppy-save"></i> Save 
+                      <button class="btn btn-primary col-sm-12" type="submit" [disabled]="!addPatientForm.form.valid">
+                            <i class="glyphicon glyphicon-floppy-save"></i> Save
                         </button>
                     </div>
                   </div>
@@ -666,6 +667,8 @@
           </sa-widget>
         </article>
         <!-- end of add new patient -->
+      </div>
+      <div class="row">
         <article class="col-sm-6">
           <sa-widget>
             <header>
@@ -709,12 +712,12 @@
                             <div class="widget-footer text-left">
                               <span class="line-height-3"> {{item.configurationId.displayName}} </span>
                                <div class="pull-right">
-                                  <button class="btn btn-secondary mt-xs" (click)="toggleMultiSelect($event, item.configurationId.displayName);toggle[i] = !toggle[i]">
+                                  <button class="btn btn-secondary mt-xs" (click)="toggleMultiSelect($event, item.configurationId.displayName);toggle[i] = !toggle[i];">
                                       <i [ngClass]="toggle[i] ? 'txt-remove': 'txt-add'" aria-hidden="true"
                                       ></i>
                                   </button>
                               </div>
-                              
+
                             </div>
                           </div>
                         </div>
@@ -723,7 +726,7 @@
                         <div *ngIf="selectedOutCome" [ngClass]="'asc-text-primary two'">{{selectedOutCome}}</div>
                       </div>
                     </div>
-  
+
                     <!-- <div class="widget-footer text-right mt-md">
                       <button [disabled]="_endCall" class="col-md-2 btn btn-danger pull-right mar-sm" (click)="endCall($event)">Hang up</button>
                     </div> -->
@@ -744,8 +747,8 @@
                           <tr *ngFor="let calls of calls_list">
                             <td>{{calls.call_start_date_time | date:'medium'}}</td>
                             <td>{{calls.call_stop_date_time | date:'medium'}}</td>
-                            <td> Venkatesh Narlakanti </td>
-                            <!-- <td>{{calls.call_agent}}</td> -->
+                            <!-- <td> Venkatesh Narlakanti </td> -->
+                            <td>{{calls.call_agent}}</td>
                           </tr>
                         </tbody>
                         <tbody *ngIf="!callsListLength">
@@ -753,7 +756,7 @@
                             <td colspan="3">
                               <h2 class="text-center">
                                 <strong class="text-danger" *ngIf="!individualDetails"> No Records Found </strong>
-                                <strong class="text-primary" *ngIf="individualDetails"> Looks like 
+                                <strong class="text-primary" *ngIf="individualDetails"> Looks like
                                   <span class="text-success"> {{individualDetails.first_name | lowercase}} </span> never talked to any agent</strong>
                               </h2>
                             </td>
@@ -771,10 +774,10 @@
           <div class="well well-sm">
             <h3 class="asc-text-primary">Notes: </h3>
             <div class="bs-example">
-              <textarea style="min-height: 163px; width: 100%; padding: 10px" placeholder="Additional notes"></textarea>
+              <textarea style="min-height: 163px; width: 100%; padding: 10px" [(ngModel)]="notes" placeholder="Additional notes"></textarea>
               <div class="col-md-12">
                 <button [disabled]="_endCall" class="col-md-2 btn btn-danger mar-sm pull-right" (click)="endCall($event)">End</button>
-                <button type="submit" class="col-md-2 btn btn-success mar-sm pull-right" (click)="saveNotes()">Save</button>
+                <button type="submit" [disabled]="!_startRecording" class="col-md-2 btn btn-success mar-sm pull-right" (click)="saveNotes()">Save</button>
               </div>
             </div>
           </div>
@@ -782,7 +785,7 @@
       </div>
     </sa-widgets-grid>
   </div>
-  
+
   <div bsModal #childModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-md">
       <div class="modal-content">
