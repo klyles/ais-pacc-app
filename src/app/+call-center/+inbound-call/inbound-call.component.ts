@@ -154,6 +154,8 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     this.sessionID = sessionStorage.getItem('SessionId');
     this.csrf = sessionStorage.getItem('csrf');
     this.setMessageTimeOut();
+    console.log('user?? ??', sessionStorage.getItem('fullUser'))
+    console.log('group:', sessionStorage.getItem('userGroup'))
   }
   setStyle(style) {
     this.demoStyle = style

@@ -706,8 +706,11 @@
                     <div class="row">
                       <div class="col-md-6 mt-md">
                         <span class="asc-text-primary"> <strong> Call Outcomes: </strong> </span>
+                        <div>
+                          <input type="text" class="form-control" #wrapCodeFilter name="wrapCodeFilter" [(ngModel)]="searchText" placeholder="filter...">
+                        </div>
                         <div class="multiple-select mt-md">
-                          <div class="options" *ngFor='let item of _wrap$Codes.$codes | category: searchText | values:"key":true;let i=index' id={{item.configurationId.id}}
+                          <div class="options" *ngFor='let item of _wrap$Codes.$codes | search: "displayName" :searchText | values:"key":true;let i=index' id={{item.configurationId.id}}
                             >
                             <div class="widget-footer text-left">
                               <span class="line-height-3"> {{item.configurationId.displayName}} </span>

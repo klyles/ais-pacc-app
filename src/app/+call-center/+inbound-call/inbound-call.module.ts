@@ -26,6 +26,7 @@ import 'bootstrap-daterangepicker';
 import { ValuesPipeModule } from './../../shared/pipes/valuePipe.module';
 import { SearchFilterPipeModule } from './../../shared/pipes/searchPipe.module';
 import { PhonePipe } from '../../shared/pipes/phone.pipe';
+import { SearchPipe } from '../../shared/pipes/wrapCodeFilter.pipe'
 import { TextMaskModule } from 'angular2-text-mask';
 
 
@@ -58,7 +59,8 @@ import { TextMaskModule } from 'angular2-text-mask';
     TodoWidgetComponent,
     TodoListComponent,
     OnCallComponent,
-    PhonePipe
+    PhonePipe,
+    SearchPipe
   ],
   providers: [InboundService]
 })
