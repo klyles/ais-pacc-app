@@ -8,6 +8,7 @@ import * as moment from 'moment';
 
 import { fadeInTop } from '../shared/animations/router.animations';
 
+
 declare var $: any;
 
 @FadeInTop()
@@ -39,23 +40,7 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   private $minutes: any;
   private $seconds: any;
   private context: any;
-  private individualDetails: any = {
-    first_name: null,
-    middle_name: null,
-    last_name: null,
-    dob: null,
-    gender: null,
-    home_phone: null,
-    work_phone: null,
-    mobile_phone: null,
-    email: null,
-    address1: null,
-    address2: null,
-    city: null,
-    state: null,
-    zip: null,
-    preferred_contact_method: null
-  }
+  private individualDetails: any;
   private patientList: any;
   private callStatusData: any;
   private callOutComesData: any;
@@ -97,10 +82,8 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   private callsListLength: boolean;
   private applications: any;
   private appLinks: any;
-  public notes: string = '';
-  private _startWarning: boolean = true;
 
-  public mask=['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
+  phoneNumber: any;
 
   birthdate: Date;
   form: any = { $searchStr: '', searchObjects: [], display: 'none' };
@@ -113,7 +96,6 @@ export class InboundCallComponent implements OnInit, OnDestroy {
 
   sessionID: any;
   csrf: any;
-  // what is this???
   _wrap$Codes: any = {
     $codes: {}
   }
@@ -154,8 +136,6 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     this.sessionID = sessionStorage.getItem('SessionId');
     this.csrf = sessionStorage.getItem('csrf');
     this.setMessageTimeOut();
-    console.log('user?? ??', sessionStorage.getItem('fullUser'))
-    console.log('group:', sessionStorage.getItem('userGroup'))
   }
   setStyle(style) {
     this.demoStyle = style
@@ -165,7 +145,6 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     console.log('On Destroy');
   }
   public startCall() {
-    this._startWarning = false;
     this._startRecording = true;
     const startTime = new Date();
     this.$startCallTime = startTime.getTime();
@@ -173,10 +152,6 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     this._endCall = false;
   }
   public endCall() {
-
-    // check to see if a wrap code has been given...
-    // otherwise, throw an error.
-
     this._endRecording = true;
     const endTime = new Date();
     this.$endCallTime = endTime.getTime();
@@ -186,8 +161,7 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     this.$seconds = Math.floor(diff / 1000) % 60;
     this._endCall = true;
     this.postCalls();
-    this.postNotes();
-    this.reloadTimeOut();
+    this.reloadTimeOut()
   }
   public loadMetrics($id: any) {
     this._InboundService.getPatientDetail($id)
@@ -195,13 +169,20 @@ export class InboundCallComponent implements OnInit, OnDestroy {
       (response: any) => {
         this._loadmetrics = true;
         this.individualDetails = response;
-        console.log('Patient:',this.individualDetails)
         this.patID = response.id;
         this.selectedContactType = this.individualDetails['preferred_contact_method'];
         this.selectedState = this.individualDetails['state'];
         this.selectedGender = this.individualDetails['gender'];
         this.birthdate = this.individualDetails['dob'];
         this.patientAge = this.getPatAge(this.individualDetails['dob']);
+        this.phoneNumber = this.individualDetails['home_phone'];
+        // if (this.phoneNumber != null) {
+        //   this.home_phone = this.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+        // } else {
+        //   this.home_phone = this.phoneNumber;
+        // }
+        this.phoneNumber ? this.home_phone = this.phoneNumber.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3')
+          : this.home_phone = this.phoneNumber;
         this._addPatients = false;
         console.log(this.home_phone);
         this.getCalls();
@@ -234,7 +215,7 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     this.appLinks = this._InboundService.getApps()
       .subscribe((response: any) => {
         this.applications = response.applications;
-        // console.log(this.applications);
+        console.log(this.applications);
       })
   }
   // public getCallOutComes() {
@@ -263,7 +244,6 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     this.callsList = this._InboundService.getCalls(this.patID)
       .subscribe((response: any) => {
         this.calls_list = response;
-        // console.log(this.calls_list)
         this.callsSum = this.calls_list.length;
         if (this.calls_list.length > 0) {
           this.callsListLength = true;
@@ -275,7 +255,6 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     const postCallData = {
       'call_start_date_time': moment(this.$startCallTime).format('MM/DD/YYYY, hh:mm:ss a'),
       'call_stop_date_time': moment(this.$endCallTime).format('MM/DD/YYYY, hh:mm:ss a'),
-      'call_agent': sessionStorage.getItem('userName')
     }
     console.log(postCallData);
     this._InboundService.postCallsData(postCallData, this._id);
@@ -298,8 +277,8 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     this.preferred_contact_method = '';
 
     this.form.display = 'none',
-    this.selectedGender = 'Select Gender',
-    this.selectedContactType = 'Select Preferred Contact';
+      this.selectedGender = 'Select Gender',
+      this.selectedContactType = 'Select Preferred Contact';
     this.selectedState = 'Select State';
     this._addPatients = true;
     this._loadmetrics = false;
@@ -333,9 +312,9 @@ export class InboundCallComponent implements OnInit, OnDestroy {
         'middle_name': this.middle_name,
         'dob': moment(this.birthdate).format('MM/DD/YYYY'),
         'gender': this.selectedGender,
-        'home_phone': this.individualDetails.home_phone.replace(/\D/g, ''), // strips formatting on save
-        'work_phone': this.individualDetails.work_phone.replace(/\D/g, ''),
-        'mobile_phone': this.individualDetails.mobile_phone.replace(/\D/g, ''),
+        'home_phone': this.home_phone,
+        'work_phone': this.work_phone,
+        'mobile_phone': this.mobile_phone,
         'email': this.email,
         'address1': this.address1,
         'address2': this.address2,
@@ -352,9 +331,9 @@ export class InboundCallComponent implements OnInit, OnDestroy {
         'last_name': this.last_name.toUpperCase(),
         'dob': moment(this.birthdate).format('MM/DD/YYYY'),
         'gender': this.selectedGender,
-        'home_phone': this.individualDetails.home_phone.replace(/\D/g, ''),
-        'work_phone': this.individualDetails.work_phone.replace(/\D/g, ''),
-        'mobile_phone': this.individualDetails.mobile_phone.replace(/\D/g, ''),
+        'home_phone': this.home_phone,
+        'work_phone': this.work_phone,
+        'mobile_phone': this.mobile_phone,
         'email': this.email,
         'address1': this.address1,
         'address2': this.address2,
@@ -385,11 +364,9 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   public showOutCome(callOutCome) {
     this.selectedOutCome = callOutCome;
   }
-  public postNotes() {
-    // this.childModal.show();
-    console.log('saving notes');
-    this._InboundService.postNotes(this.notes);
-  }
+  // public saveNotes() {
+  //   this.childModal.show();
+  // }
   public hideChildModal(): void {
     this.childModal.hide();
   }
