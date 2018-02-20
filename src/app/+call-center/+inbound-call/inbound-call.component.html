@@ -14,7 +14,7 @@
                 Hold
             </button> -->
             <button (click)="endCall($event)" [disabled]="_endCall" class="btn btn-danger btn-lg"> End </button>
-            <span *ngIf="_startWarning == true" class="text-danger" style="margin-left: 1em;">Please start the call first.</span>
+            <span *ngIf="_callWarning == true" class="text-danger" style="margin-left: 1em;">{{_warningMessage}}</span>
             <span *ngIf="_startRecording == true" class="animated fadeInDownBig mar-md"> <strong> Started : <span class="text-success"> {{$startCallTime | date:'medium'}} </span>          </strong>
             </span>
             <span *ngIf="_endRecording == true" class="animated fadeInUpBig mar-md"> <strong> Ended : <span class="text-danger"> {{$endCallTime | date:'medium'}} </span>          </strong>
@@ -660,6 +660,10 @@
                             <i class="glyphicon glyphicon-floppy-save"></i> Save
                         </button>
                     </div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-8">
+                      <p style="margin-top: 1em;" *ngIf="!addPatientForm.form.valid"><span class="text-danger">*</span> indicates a required field.</p>
+                    </div>
                   </div>
                 </div>
               </form>
@@ -709,9 +713,8 @@
                         <div>
                           <input type="text" class="form-control" #wrapCodeFilter name="wrapCodeFilter" [(ngModel)]="searchText" placeholder="filter...">
                         </div>
-                        <div class="multiple-select mt-md">
-                          <div class="options" *ngFor='let item of _wrap$Codes.$codes | search: "displayName" :searchText | values:"key":true;let i=index' id={{item.configurationId.id}}
-                            >
+                        <div class="multiple-select mt-md" *ngIf="_startRecording == true">
+                          <div class="options" *ngFor='let item of _wrap$Codes.$codes | search: "displayName" :searchText | values:"key":true;let i=index' id={{item.configurationId.id}}>
                             <div class="widget-footer text-left">
                               <span class="line-height-3"> {{item.configurationId.displayName}} </span>
                                <div class="pull-right">

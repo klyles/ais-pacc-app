@@ -98,7 +98,8 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   private applications: any;
   private appLinks: any;
   public notes: string = '';
-  private _startWarning: boolean = true;
+  private _callWarning: boolean = true;
+  private _warningMessage: string = 'Please start the call first.';
 
   public mask=['(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 
@@ -165,7 +166,7 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     console.log('On Destroy');
   }
   public startCall() {
-    this._startWarning = false;
+    this._callWarning = false;
     this._startRecording = true;
     const startTime = new Date();
     this.$startCallTime = startTime.getTime();
@@ -176,18 +177,24 @@ export class InboundCallComponent implements OnInit, OnDestroy {
 
     // check to see if a wrap code has been given...
     // otherwise, throw an error.
+    if (this.selectedOutCome.length){
+      this._callWarning = false;
+      this._endRecording = true;
+      const endTime = new Date();
+      this.$endCallTime = endTime.getTime();
 
-    this._endRecording = true;
-    const endTime = new Date();
-    this.$endCallTime = endTime.getTime();
+      const diff = this.$endCallTime - this.$startCallTime;
+      this.$minutes = Math.floor(diff / 60000);
+      this.$seconds = Math.floor(diff / 1000) % 60;
+      this._endCall = true;
+      this.postCalls();
+      this.postNotes();
+      this.reloadTimeOut();
+    } else {
+      this._warningMessage = 'Please select an outcome before ending the call.'
+      this._callWarning = true;
+    }
 
-    const diff = this.$endCallTime - this.$startCallTime;
-    this.$minutes = Math.floor(diff / 60000);
-    this.$seconds = Math.floor(diff / 1000) % 60;
-    this._endCall = true;
-    this.postCalls();
-    this.postNotes();
-    this.reloadTimeOut();
   }
   public loadMetrics($id: any) {
     this._InboundService.getPatientDetail($id)
