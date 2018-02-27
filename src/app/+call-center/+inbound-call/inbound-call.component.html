@@ -747,14 +747,15 @@
                             <th>Call Start</th>
                             <th>Call End</th>
                             <th>Agent</th>
+                            <th>Notes</th>
                           </tr>
                         </thead>
                         <tbody *ngIf="callsListLength">
-                          <tr *ngFor="let calls of calls_list">
-                            <td>{{calls.call_start_date_time | date:'medium'}}</td>
-                            <td>{{calls.call_stop_date_time | date:'medium'}}</td>
-                            <!-- <td> Venkatesh Narlakanti </td> -->
-                            <td>{{calls.call_agent}}</td>
+                          <tr *ngFor="let call of calls_list">
+                            <td>{{call.call_start_date_time | date:'medium'}}</td>
+                            <td>{{call.call_stop_date_time | date:'medium'}}</td>
+                            <td>{{call.call_agent}}</td>
+                            <td>{{call.call_note_id}}</td>
                           </tr>
                         </tbody>
                         <tbody *ngIf="!callsListLength">

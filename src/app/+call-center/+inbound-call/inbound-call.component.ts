@@ -155,8 +155,8 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     this.sessionID = sessionStorage.getItem('SessionId');
     this.csrf = sessionStorage.getItem('csrf');
     this.setMessageTimeOut();
-    console.log('user?? ??', sessionStorage.getItem('fullUser'))
-    console.log('group:', sessionStorage.getItem('userGroup'))
+    // console.log('user', sessionStorage.getItem('fullUser'))
+    // console.log('group:', sessionStorage.getItem('userGroup'))
   }
   setStyle(style) {
     this.demoStyle = style
@@ -187,9 +187,13 @@ export class InboundCallComponent implements OnInit, OnDestroy {
       this.$minutes = Math.floor(diff / 60000);
       this.$seconds = Math.floor(diff / 1000) % 60;
       this._endCall = true;
-      this.postCalls();
-      this.postNotes();
-      this.reloadTimeOut();
+      this.postNotes().subscribe(
+        (res: any) => {
+          console.log(res)
+          this.postCalls(res.id);
+          // this.reloadTimeOut();
+        }
+      )
     } else {
       this._warningMessage = 'Please select an outcome before ending the call.'
       this._callWarning = true;
@@ -201,7 +205,7 @@ export class InboundCallComponent implements OnInit, OnDestroy {
       .subscribe(
       (response: any) => {
         this._loadmetrics = true;
-        this.individualDetails = response;
+        this.individualDetails = response; // patient details
         console.log('Patient:',this.individualDetails)
         this.patID = response.id;
         this.selectedContactType = this.individualDetails['preferred_contact_method'];
@@ -270,19 +274,21 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     this.callsList = this._InboundService.getCalls(this.patID)
       .subscribe((response: any) => {
         this.calls_list = response;
-        // console.log(this.calls_list)
+        console.log('Calls List:',this.calls_list)
         this.callsSum = this.calls_list.length;
         if (this.calls_list.length > 0) {
           this.callsListLength = true;
         }
       })
   }
-  public postCalls() {
+  public postCalls(notesID) {
     this._id = this.patID;
     const postCallData = {
       'call_start_date_time': moment(this.$startCallTime).format('MM/DD/YYYY, hh:mm:ss a'),
       'call_stop_date_time': moment(this.$endCallTime).format('MM/DD/YYYY, hh:mm:ss a'),
-      'call_agent': sessionStorage.getItem('userName')
+      'call_agent': sessionStorage.getItem('userName'),
+      'call_note_id': notesID
+
     }
     console.log(postCallData);
     this._InboundService.postCallsData(postCallData, this._id);
@@ -394,8 +400,12 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   }
   public postNotes() {
     // this.childModal.show();
-    console.log('saving notes');
-    this._InboundService.postNotes(this.notes);
+    const data = {
+      note_text: this.notes,
+      call_agent: sessionStorage.getItem('userName'),
+      patientId: this.individualDetails.id,
+    }
+    return this._InboundService.postNotes(data);
   }
   public hideChildModal(): void {
     this.childModal.hide();

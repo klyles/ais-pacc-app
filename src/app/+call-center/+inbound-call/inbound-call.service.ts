@@ -79,9 +79,13 @@ export class InboundService extends APIServices {
     return this._http.get('/assets/api/applications/wrapUpcodes.json').map((response: any) =>
     {return response.json(); }).catch(this.handleError.bind(this));
   }
-  postNotes(callNotes: string){
-    const url = this.baseUrl + '/post_notes';
+  postNotes(data: any){
+    const url = this.baseUrl + '/Notes';
     // console.log(url);
-    console.log('saving notes:', callNotes)
+    console.log('saving notes:', data)
+
+    const headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
+    const options = new RequestOptions({headers: headers});
+    return this._http.post(url, data, options).map(res => res.json());
   }
 }
