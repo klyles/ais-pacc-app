@@ -22,12 +22,9 @@ import { InboundService } from './inbound-call.service';
 import { DataTableModule } from 'angular2-datatable';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import 'bootstrap-daterangepicker';
-// import { MaskedInput } from '../../shared/forms/input/masked-input.directive';
+import { MaskedInput } from '../../shared/forms/input/masked-input.directive';
 import { ValuesPipeModule } from './../../shared/pipes/valuePipe.module';
 import { SearchFilterPipeModule } from './../../shared/pipes/searchPipe.module';
-import { PhonePipe } from '../../shared/pipes/phone.pipe';
-import { SearchPipe } from '../../shared/pipes/wrapCodeFilter.pipe'
-import { TextMaskModule } from 'angular2-text-mask';
 
 
 @NgModule({
@@ -46,8 +43,7 @@ import { TextMaskModule } from 'angular2-text-mask';
     SearchFilterPipeModule,
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    BsDatepickerModule.forRoot(),
-    TextMaskModule
+    BsDatepickerModule.forRoot()
   ],
   declarations: [
     InboundCallComponent,
@@ -58,9 +54,7 @@ import { TextMaskModule } from 'angular2-text-mask';
     BirdEyeComponent,
     TodoWidgetComponent,
     TodoListComponent,
-    OnCallComponent,
-    PhonePipe,
-    SearchPipe
+    OnCallComponent
   ],
   providers: [InboundService]
 })

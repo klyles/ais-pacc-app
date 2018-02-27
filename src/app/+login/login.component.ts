@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   reDirectUri() {
     window.open('https://ciccrm.ascension.org/api/ahwivrtxpla001.ds.sjhs.com/icws/connection/single-sign-on' +
     '/identity-providers/' + this.idProviders + '?' +
-    'singleSignOnCapabilities=saml2Post%2Csaml2Redirect&redirectUri=https%3A%2F%2Fwww.google.com'); //wait why tho?
+    'singleSignOnCapabilities=saml2Post%2Csaml2Redirect&redirectUri=https%3A%2F%2Fwww.google.com');
 
     console.log('navigating to: https://www.google.com');
     this.responseTimeOut();
@@ -113,7 +113,6 @@ export class LoginComponent implements OnInit {
     this._loginService.onsubmit(this.form)
       .subscribe((response: any) => {
        this.postResponse = response;
-       console.log('user maybe?',this.postResponse)
       //  this.updateCredentials(this.postResponse);
        this.sessionId = response.sessionId;
        this.userId = response.userID;
