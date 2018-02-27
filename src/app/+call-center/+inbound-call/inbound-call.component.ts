@@ -82,6 +82,9 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   private callsListLength: boolean;
   private applications: any;
   private appLinks: any;
+  public notes: string = '';
+  private _callWarning: boolean = true;
+  private _warningMessage: string = 'Please start the call first.';
 
   phoneNumber: any;
 
@@ -145,6 +148,8 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     console.log('On Destroy');
   }
   public startCall() {
+    this._callWarning = false;
+
     this._startRecording = true;
     const startTime = new Date();
     this.$startCallTime = startTime.getTime();
@@ -152,16 +157,29 @@ export class InboundCallComponent implements OnInit, OnDestroy {
     this._endCall = false;
   }
   public endCall() {
-    this._endRecording = true;
-    const endTime = new Date();
-    this.$endCallTime = endTime.getTime();
+    // check to see if a wrap code has been given...
+    // otherwise, throw an error.
+    if (this.selectedOutCome.length){
+      this._callWarning = false;
+      this._endRecording = true;
+      const endTime = new Date();
+      this.$endCallTime = endTime.getTime();
 
-    const diff = this.$endCallTime - this.$startCallTime;
-    this.$minutes = Math.floor(diff / 60000);
-    this.$seconds = Math.floor(diff / 1000) % 60;
-    this._endCall = true;
-    this.postCalls();
-    this.reloadTimeOut()
+      const diff = this.$endCallTime - this.$startCallTime;
+      this.$minutes = Math.floor(diff / 60000);
+      this.$seconds = Math.floor(diff / 1000) % 60;
+      this._endCall = true;
+      this.postNotes().subscribe(
+        (res: any) => {
+          console.log(res)
+          this.postCalls(res.id);
+          // this.reloadTimeOut();
+        }
+      )
+    } else {
+      this._warningMessage = 'Please select an outcome before ending the call.'
+      this._callWarning = true;
+    }
   }
   public loadMetrics($id: any) {
     this._InboundService.getPatientDetail($id)
@@ -250,11 +268,13 @@ export class InboundCallComponent implements OnInit, OnDestroy {
         }
       })
   }
-  public postCalls() {
+  public postCalls(notesID) {
     this._id = this.patID;
     const postCallData = {
       'call_start_date_time': moment(this.$startCallTime).format('MM/DD/YYYY, hh:mm:ss a'),
       'call_stop_date_time': moment(this.$endCallTime).format('MM/DD/YYYY, hh:mm:ss a'),
+      'call_agent': sessionStorage.getItem('userName'),
+      'call_note_id': notesID
     }
     console.log(postCallData);
     this._InboundService.postCallsData(postCallData, this._id);
@@ -364,9 +384,15 @@ export class InboundCallComponent implements OnInit, OnDestroy {
   public showOutCome(callOutCome) {
     this.selectedOutCome = callOutCome;
   }
-  // public saveNotes() {
-  //   this.childModal.show();
-  // }
+  public postNotes() {
+    // this.childModal.show();
+    const data = {
+      note_text: this.notes,
+      call_agent: sessionStorage.getItem('userName'),
+      patientId: this.individualDetails.id,
+    }
+    return this._InboundService.postNotes(data);
+  }
   public hideChildModal(): void {
     this.childModal.hide();
   }

@@ -79,4 +79,13 @@ export class InboundService extends APIServices {
     return this._http.get('/assets/api/applications/warpUpcodes.json').map((response: any) =>
     {return response.json(); }).catch(this.handleError.bind(this));
   }
+  postNotes(data: any){
+    const url = this.baseUrl + '/Notes';
+    // console.log(url);
+    console.log('saving notes:', data)
+
+    const headers = new Headers({ 'Content-Type': 'application/json', 'Accept': 'application/json' });
+    const options = new RequestOptions({headers: headers});
+    return this._http.post(url, data, options).map(res => res.json());
+  }
 }
